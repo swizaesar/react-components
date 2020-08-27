@@ -1,12 +1,14 @@
 import React, { Suspense, useEffect, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 import routesList from "./RoutesList";
+import Sidebar from "../Components/Sidebar";
 // import Header from "../Components/Header";
 
 const RouteGuestLayout = (props) => {
     return (
         <Switch>
             <Suspense fallback={<div>Loading...</div>}>
+                <Sidebar routes={routesList.filter((item) => item.sidebar)} />
                 {routesList
                     .filter((item) => item.layout === "")
                     .map((item, key) => {
@@ -19,6 +21,8 @@ const RouteGuestLayout = (props) => {
                                 ) : (
                                     false
                                 )} */}
+                                {/* {item.isSidebar === true &&
+                                
                                 <div>
                                     <Route
                                         exact
