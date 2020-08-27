@@ -6,7 +6,7 @@ const LandingPage = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
             laudantium quaerat necessitatibus voluptas dolor ab accusantium
             ullam neque recusandae pariatur ea commodi quos, excepturi fuga
-            officiis et aliquid, voluptates distinctio.
+            officiis et aliquid, voluptates
         </div>
     );
 };
