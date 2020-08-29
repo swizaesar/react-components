@@ -18,11 +18,11 @@ const RouteGuestLayout = (props) => {
         <Switch>
             <Suspense fallback={<div>Loading...</div>}>
                 <Sidebar routes={routesList.filter((item) => item.sidebar)} />
+
                 <Style>
                     {routesList
                         .filter((item) => item.layout === "")
                         .map((item, key) => {
-                            document.title = item.title;
                             return (
                                 <Fragment key={key}>
                                     {/* {item.isHeader === true &&

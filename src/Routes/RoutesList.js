@@ -13,7 +13,7 @@ export default [
             name: "Home",
             activeName: "",
         },
-        title: "button",
+        title: "Home",
     },
     {
         component: lazy(() => import("../Pages/Button")),
@@ -27,6 +27,20 @@ export default [
             name: "Button",
             activeName: "button",
         },
-        title: "Home",
+        title: "Button",
+    },
+    {
+        component: lazy(() => import("../Pages/Molekul/ValidationForm")),
+        path: "/validation-form",
+        isHeader: true,
+        layout: "",
+        isFooter: true,
+        setting: "molekul",
+        sidebar: {
+            icon: "fas fa-wallet mr-2",
+            name: "Validation Form",
+            activeName: "validation-form",
+        },
+        title: "Button",
     },
 ];
