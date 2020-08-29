@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Col } from "reactstrap";
-
-import FormInput from "./FormInput";
+import renderType from "./renderType";
 
 const FormValidation = ({ form = [], item, validationClick, id }) => {
     const checkVal = true;
@@ -17,18 +16,13 @@ const FormValidation = ({ form = [], item, validationClick, id }) => {
     return (
         <Fragment>
             <Col xl={item.col}>
-                <FormInput
-                    validationClick={validationClick}
-                    id={id}
-                    action={item.action}
-                    status={item.status}
-                    onGetValue={onGetValue}
-                    checkVal={checkVal}
-                    type={item.type}
-                    valid={item.valid}
-                    name={item.name}
-                    placeholder={item.placeholder}
-                />
+                {renderType({
+                    id,
+                    item,
+                    checkVal,
+                    validationClick,
+                    onGetValue,
+                })[item.action](item.action)}
             </Col>
         </Fragment>
     );

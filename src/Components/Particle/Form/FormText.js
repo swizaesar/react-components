@@ -14,16 +14,7 @@ const ButtonPassword = styled.button`
     color: #6c6c6c;
     padding: 7px 10px;
 `;
-const renderType = () => {
-    return {
-        input: () => {
-            return "masuk sini inputnya";
-        },
-        textarea: () => {
-            return "masuk sini textareanya";
-        },
-    };
-};
+
 const FormInput = ({
     validationClick,
     value,
@@ -61,16 +52,12 @@ const FormInput = ({
     };
     useEffect(() => {
         if (validationClick) {
-            console.log("masuk sini", status);
             setValid(!status);
         }
     }, [validationClick, status]);
-    console.log("action", action);
-    console.log("renderType", renderType()[action]);
     return (
         <FormGroup>
             {label && <label>{label}</label>}
-            <p>{renderType()[action](action)}</p>
             <Style
                 name={name}
                 id={name}

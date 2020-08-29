@@ -18,7 +18,7 @@ const ValidationForm = () => {
         {
             type: "text",
             name: "name",
-            action: "textarea",
+            action: "input",
             placeholder: "Name",
             col: 6,
             valid: "Nama tidak boleh kosong",
