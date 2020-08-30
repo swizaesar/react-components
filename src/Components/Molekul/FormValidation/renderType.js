@@ -7,13 +7,18 @@ const renderType = ({
     checkVal,
     validationClick,
     onGetValue = () => {},
+    isValid,
+    setValid,
 }) => {
     return {
         input: () => {
             return (
                 <FormInput
+                    isValid={isValid}
+                    setValid={setValid}
                     validationClick={validationClick}
                     id={id}
+                    character={item.character}
                     action={item.action}
                     status={item.status}
                     onGetValue={onGetValue}

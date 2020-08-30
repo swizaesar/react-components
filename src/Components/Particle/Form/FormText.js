@@ -24,6 +24,7 @@ const FormInput = ({
     className,
     id,
     name,
+    character,
     rows,
     label,
     valid = "Form tidak boleh kosong",
@@ -31,11 +32,15 @@ const FormInput = ({
     onGetValue = () => {},
     readOnly = false,
     status,
+    isValid,
+    setValid,
 }) => {
-    const [isValid, setValid] = useState(false);
     const [showPassword, setShowPassword] = useState(true);
+
+    const [isValue, setValue] = useState("");
     const _onGetValue = (e) => {
-        if (e.target.value === "") {
+        let value = e.target.value;
+        if (value === "") {
             setValid(true);
         } else {
             setValid(false);
@@ -43,9 +48,18 @@ const FormInput = ({
         onGetValue({
             id: id,
             name: e.target.name,
-            value: e.target.value,
-            status: e.target.value === "" ? false : true,
+            value: value,
+            status:
+                character === undefined
+                    ? value === ""
+                        ? false
+                        : true
+                    : character.min.length > value.length ||
+                      character.max.length < value.length
+                    ? false
+                    : true,
         });
+        setValue(value);
     };
     const handlerShowPassword = () => {
         setShowPassword(!showPassword);
@@ -59,6 +73,7 @@ const FormInput = ({
         <FormGroup>
             {label && <label>{label}</label>}
             <Style
+                invalid={isValid}
                 name={name}
                 id={name}
                 onChange={(e) => _onGetValue(e)}
@@ -82,7 +97,15 @@ const FormInput = ({
             )}
             {isValid ? (
                 <small className="text-danger">
-                    <i>{valid}</i>
+                    <i>
+                        {character === undefined
+                            ? valid
+                            : character.min.length > isValue.length
+                            ? character.min.valid
+                            : character.max.length < isValue.length
+                            ? character.max.valid
+                            : valid}
+                    </i>
                 </small>
             ) : (
                 false

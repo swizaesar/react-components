@@ -24,6 +24,16 @@ const ValidationForm = () => {
             valid: "Nama tidak boleh kosong",
             value: "",
             status: false,
+            character: {
+                min: {
+                    length: 3,
+                    valid: "Minimal 3 character",
+                },
+                max: {
+                    length: 10,
+                    valid: "Maximal 10 character",
+                },
+            },
         },
     ];
     const handlerSubmitData = () => {
