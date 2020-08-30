@@ -20,7 +20,7 @@ const FormValidation = ({ form = [], item, validationClick, id }) => {
                     onGetValue,
                     isValid,
                     setValid,
-                })[item.action](item.action)}
+                })[item.type](item.type)}
             </Col>
         </Fragment>
     );

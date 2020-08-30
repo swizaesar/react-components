@@ -10,7 +10,7 @@ const renderType = ({
     setValid,
 }) => {
     return {
-        input: () => {
+        text: () => {
             return (
                 <FormInput
                     isValid={isValid}
@@ -23,7 +23,28 @@ const renderType = ({
             );
         },
         textarea: () => {
-            return "masuk sini";
+            return (
+                <FormInput
+                    isValid={isValid}
+                    item={item}
+                    setValid={setValid}
+                    validationClick={validationClick}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
+        email: () => {
+            return (
+                <FormInput
+                    isValid={isValid}
+                    item={item}
+                    setValid={setValid}
+                    validationClick={validationClick}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
         },
     };
 };

@@ -7,7 +7,6 @@ const ValidationForm = () => {
     const listForm = [
         {
             type: "email",
-            action: "input",
             name: "email",
             placeholder: "Email",
             col: 6,
@@ -18,7 +17,6 @@ const ValidationForm = () => {
         {
             type: "text",
             name: "name",
-            action: "input",
             placeholder: "Name",
             col: 6,
             valid: "Nama tidak boleh kosong",
