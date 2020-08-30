@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, Fragment } from "react";
+import React, { Suspense, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 import routesList from "./RoutesList";
 import Sidebar from "../Components/Sidebar";
@@ -48,7 +48,6 @@ const RouteGuestLayout = (props) => {
                                 )} */}
                                 </Fragment>
                             );
-                            return "false";
                         })}
                 </Style>
             </Suspense>

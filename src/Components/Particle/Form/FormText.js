@@ -18,25 +18,14 @@ const ButtonPassword = styled.button`
 const FormInput = ({
     validationClick,
     value,
-    type,
-    action,
-    placeholder,
+    item,
     className,
     id,
-    name,
-    character,
-    rows,
-    label,
-    valid = "Form tidak boleh kosong",
-    checkVal,
     onGetValue = () => {},
-    readOnly = false,
-    status,
     isValid,
     setValid,
 }) => {
     const [showPassword, setShowPassword] = useState(true);
-
     const [isValue, setValue] = useState("");
     const _onGetValue = (e) => {
         let value = e.target.value;
@@ -50,12 +39,12 @@ const FormInput = ({
             name: e.target.name,
             value: value,
             status:
-                character === undefined
+                item.character === undefined
                     ? value === ""
                         ? false
                         : true
-                    : character.min.length > value.length ||
-                      character.max.length < value.length
+                    : item.character.min.length > value.length ||
+                      item.character.max.length < value.length
                     ? false
                     : true,
         });
@@ -66,25 +55,25 @@ const FormInput = ({
     };
     useEffect(() => {
         if (validationClick) {
-            setValid(!status);
+            setValid(!item.status);
         }
-    }, [validationClick, status]);
+    }, [validationClick, item.status, setValid]);
     return (
         <FormGroup>
-            {label && <label>{label}</label>}
+            {item.label && <label>{item.label}</label>}
             <Style
                 invalid={isValid}
-                name={name}
-                id={name}
+                name={item.name}
+                id={item.name}
                 onChange={(e) => _onGetValue(e)}
-                readOnly={readOnly}
-                rows={rows}
+                readOnly={item.readOnly !== undefined ? false : item.readOnly}
+                rows={item.rows}
                 value={value}
-                type={showPassword ? type : "text"}
-                placeholder={placeholder}
+                type={item.type}
+                placeholder={item.placeholder}
                 className={className}
             />
-            {type === "password" ? (
+            {item.type === "password" ? (
                 <ButtonPassword onClick={handlerShowPassword} type="button">
                     <i
                         className={`fa ${
@@ -98,13 +87,13 @@ const FormInput = ({
             {isValid ? (
                 <small className="text-danger">
                     <i>
-                        {character === undefined
-                            ? valid
-                            : character.min.length > isValue.length
-                            ? character.min.valid
-                            : character.max.length < isValue.length
-                            ? character.max.valid
-                            : valid}
+                        {item.character === undefined
+                            ? item.valid
+                            : item.character.min.length > isValue.length
+                            ? item.character.min.valid
+                            : item.character.max.length < isValue.length
+                            ? item.character.max.valid
+                            : item.valid}
                     </i>
                 </small>
             ) : (

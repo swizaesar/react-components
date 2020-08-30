@@ -8,7 +8,6 @@ const Sidebar = (props) => {
         return routes
             .filter((item) => !item.setting)
             .map((prop, key) => {
-                console.log("item", window.location.pathname.split("/")[1]);
                 return (
                     <NavItem key={key}>
                         <NavLink
@@ -35,7 +34,6 @@ const Sidebar = (props) => {
         return routes
             .filter((item) => item.setting === "particle")
             .map((prop, key) => {
-                console.log("item", window.location.pathname.split("/")[1]);
                 return (
                     <NavItem key={key}>
                         <NavLink
@@ -62,7 +60,6 @@ const Sidebar = (props) => {
         return routes
             .filter((item) => item.setting === "molekul")
             .map((prop, key) => {
-                console.log("item", window.location.pathname.split("/")[1]);
                 return (
                     <NavItem key={key}>
                         <NavLink

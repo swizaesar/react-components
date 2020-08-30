@@ -39,7 +39,6 @@ const ValidationForm = () => {
     const handlerSubmitData = () => {
         let isError = false;
         listForm.forEach((item) => {
-            console.log("item", item);
             if (!item.status) {
                 isError = true;
             }

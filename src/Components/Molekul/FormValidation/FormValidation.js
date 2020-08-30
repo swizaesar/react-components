@@ -7,14 +7,7 @@ const FormValidation = ({ form = [], item, validationClick, id }) => {
 
     const [isValid, setValid] = useState(false);
     const onGetValue = (param) => {
-        let getStatus = form[id];
-        console.log(param);
         setValid(!param.status);
-        // console.log("getStatus[param.name]", getStatus[param.name]);
-        // getStatus[param.name] = {
-        //     value: param.value,
-        //     status: param.status,
-        // };
     };
     return (
         <Fragment>
