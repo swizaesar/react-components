@@ -1,6 +1,8 @@
 import React from "react";
 import FormText from "../../Particle/Form/FormText";
 
+import FormEmail from "../../Particle/Form/FormEmail";
+
 const renderType = ({
     id,
     item,
@@ -8,6 +10,7 @@ const renderType = ({
     onGetValue = () => {},
     isValid,
     setValid,
+    validateEmail = () => {},
 }) => {
     return {
         text: () => {
@@ -36,7 +39,8 @@ const renderType = ({
         },
         email: () => {
             return (
-                <FormText
+                <FormEmail
+                    validateEmail={validateEmail}
                     isValid={isValid}
                     item={item}
                     setValid={setValid}

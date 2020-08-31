@@ -29,11 +29,6 @@ const FormText = ({
     const [isValue, setValue] = useState("");
     const _onGetValue = (e) => {
         let value = e.target.value;
-        if (value === "") {
-            setValid(true);
-        } else {
-            setValid(false);
-        }
         onGetValue({
             id: id,
             name: e.target.name,
