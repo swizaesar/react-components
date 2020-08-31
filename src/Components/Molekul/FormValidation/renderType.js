@@ -1,5 +1,5 @@
 import React from "react";
-import FormInput from "../../Particle/Form/FormText";
+import FormText from "../../Particle/Form/FormText";
 
 const renderType = ({
     id,
@@ -12,7 +12,7 @@ const renderType = ({
     return {
         text: () => {
             return (
-                <FormInput
+                <FormText
                     isValid={isValid}
                     item={item}
                     setValid={setValid}
@@ -24,7 +24,7 @@ const renderType = ({
         },
         textarea: () => {
             return (
-                <FormInput
+                <FormText
                     isValid={isValid}
                     item={item}
                     setValid={setValid}
@@ -36,7 +36,7 @@ const renderType = ({
         },
         email: () => {
             return (
-                <FormInput
+                <FormText
                     isValid={isValid}
                     item={item}
                     setValid={setValid}

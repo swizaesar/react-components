@@ -12,7 +12,9 @@ const Button = () => {
                         <ButtonStyle>button</ButtonStyle>
                     </div>
                     <div className="mb-3">
-                        <ButtonStyle padding="3px 30px">button</ButtonStyle>
+                        <ButtonStyle color="" padding="3px 30px">
+                            button
+                        </ButtonStyle>
                     </div>
                 </CardBody>
             </Card>

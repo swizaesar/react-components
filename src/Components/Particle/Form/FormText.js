@@ -15,7 +15,7 @@ const ButtonPassword = styled.button`
     padding: 7px 10px;
 `;
 
-const FormInput = ({
+const FormText = ({
     validationClick,
     value,
     item,
@@ -102,4 +102,4 @@ const FormInput = ({
         </FormGroup>
     );
 };
-export default FormInput;
+export default FormText;
