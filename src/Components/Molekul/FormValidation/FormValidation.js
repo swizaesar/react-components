@@ -1,18 +1,24 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Col } from "reactstrap";
 import renderType from "./renderType";
 
-const FormValidation = ({ form = [], item, validationClick, id }) => {
+const FormValidation = ({
+    onGetValue = () => {},
+    form = [],
+    item,
+    isStatus,
+    id,
+    validateForm = true,
+}) => {
     const checkVal = true;
     const validateEmail = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     };
-    const [isValid, setValid] = useState(false);
-    const onGetValue = (param) => {
-        setValid(!param.status);
-        console.log("param", param);
-    };
+    // const onGetValue = (param) => {
+    //     console.log("param", param);
+    //     form[id].status = param.status;
+    // };
     return (
         <Fragment>
             <Col xl={item.col}>
@@ -20,11 +26,10 @@ const FormValidation = ({ form = [], item, validationClick, id }) => {
                     id,
                     item,
                     checkVal,
-                    validationClick,
+                    isStatus,
                     onGetValue,
-                    isValid,
-                    setValid,
                     validateEmail,
+                    validateForm,
                 })[item.type](item.type)}
             </Col>
         </Fragment>

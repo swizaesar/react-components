@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormGroup, Input } from "reactstrap";
 import styled from "styled-components";
+import { findAllByDisplayValue } from "@testing-library/react";
 
 const Style = styled(Input)`
     background: #f9f9f9;
@@ -16,19 +17,21 @@ const ButtonPassword = styled.button`
 `;
 
 const FormText = ({
-    validationClick,
+    isStatus,
     value,
     item,
     className,
     id,
     onGetValue = () => {},
-    isValid,
-    setValid,
+    validateForm = true,
 }) => {
     const [showPassword, setShowPassword] = useState(true);
     const [isValue, setValue] = useState("");
+    const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
+        console.log("isStatus", isStatus);
+        console.log("validationClick", isStatus);
         onGetValue({
             id: id,
             name: e.target.name,
@@ -43,16 +46,18 @@ const FormText = ({
                     ? false
                     : true,
         });
+        setValid(!item.status);
         setValue(value);
     };
     const handlerShowPassword = () => {
         setShowPassword(!showPassword);
     };
     useEffect(() => {
-        if (validationClick) {
+        if (!validateForm) {
             setValid(!item.status);
+            console.log("masuk masuk");
         }
-    }, [validationClick, item.status, setValid]);
+    }, [validateForm]);
     return (
         <FormGroup>
             {item.label && <label>{item.label}</label>}

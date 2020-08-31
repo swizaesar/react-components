@@ -3,10 +3,12 @@ import Form from "../../Components/Molekul/FormValidation";
 import { Button } from "reactstrap";
 
 const ValidationForm = () => {
-    const [validationClick, setValidationClick] = useState(false);
-    const listForm = [
+    const [validationClick, setValidationClick] = useState(true);
+    const [validateForm, setValidateForm] = useState(true);
+    const [listForm, setForm] = useState([
         {
             type: "email",
+            action: "email",
             name: "email",
             placeholder: "Email",
             col: 6,
@@ -16,6 +18,7 @@ const ValidationForm = () => {
         },
         {
             type: "text",
+            action: "text",
             name: "name",
             placeholder: "Name",
             col: 6,
@@ -33,20 +36,45 @@ const ValidationForm = () => {
                 },
             },
         },
-    ];
+    ]);
+    // const onGetValue = (param) => {
+    //     let isError = false;
+    //     for (let key in param) {
+    //         if (!param[key].status) {
+    //             isError = true;
+    //         }
+    //     }
+    //     setValidationClick(isError);
+    //     setValidateForm(false);
+    //     console.log("isError", isError);
+    //     if (!validationClick) {
+    //         alert("form is valid, put your action endpoint is here");
+    //     }
+    // };
     const handlerSubmitData = () => {
         let isError = false;
-        listForm.forEach((item) => {
-            if (!item.status) {
+        for (let key in listForm) {
+            if (!listForm[key].status) {
                 isError = true;
             }
-        });
-
+        }
         setValidationClick(isError);
+        setValidateForm(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("form is valid, put your action endpoint is here");
+        }
+        // onGetValue(listForm);
+        // console.log("validationClick", validationClick);
     };
     return (
         <div>
-            <Form validationClick={validationClick} form={listForm} />
+            <Form
+                setForm={setForm}
+                validateForm={validateForm}
+                validationClick={validationClick}
+                form={listForm}
+            />
             <Button onClick={handlerSubmitData}>check value</Button>
         </div>
     );

@@ -7,35 +7,39 @@ const Style = styled(Input)`
 `;
 
 const FormEmail = ({
-    validationClick,
+    isStatus,
     value,
     item,
     className,
     id,
     onGetValue = () => {},
-    isValid,
-    setValid,
     validateEmail = () => {},
+    validateForm = true,
 }) => {
     const [isValue, setValue] = useState("");
 
+    const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
+        console.log("isStatus", isStatus);
         validateEmail(value);
-        setValue(value);
+
+        console.log("validationClick", isStatus);
         onGetValue({
             id: id,
             name: e.target.name,
             value: value,
             status: validateEmail(value) ? true : false,
         });
+        setValid(!item.status);
+        setValue(value);
     };
     useEffect(() => {
-        if (validationClick) {
+        if (!validateForm) {
             setValid(!item.status);
             console.log("masuk masuk");
         }
-    }, [validationClick, item.status, setValid]);
+    }, [validateForm]);
     return (
         <FormGroup>
             {item.label && <label>{item.label}</label>}

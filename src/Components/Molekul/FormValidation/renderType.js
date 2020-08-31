@@ -6,20 +6,18 @@ import FormEmail from "../../Particle/Form/FormEmail";
 const renderType = ({
     id,
     item,
-    validationClick,
+    isStatus,
     onGetValue = () => {},
-    isValid,
-    setValid,
     validateEmail = () => {},
+    validateForm = true,
 }) => {
     return {
         text: () => {
             return (
                 <FormText
-                    isValid={isValid}
+                    validateForm={validateForm}
                     item={item}
-                    setValid={setValid}
-                    validationClick={validationClick}
+                    isStatus={isStatus}
                     id={id}
                     onGetValue={onGetValue}
                 />
@@ -28,10 +26,9 @@ const renderType = ({
         textarea: () => {
             return (
                 <FormText
-                    isValid={isValid}
+                    validateForm={validateForm}
                     item={item}
-                    setValid={setValid}
-                    validationClick={validationClick}
+                    isStatus={isStatus}
                     id={id}
                     onGetValue={onGetValue}
                 />
@@ -40,11 +37,10 @@ const renderType = ({
         email: () => {
             return (
                 <FormEmail
+                    validateForm={validateForm}
                     validateEmail={validateEmail}
-                    isValid={isValid}
                     item={item}
-                    setValid={setValid}
-                    validationClick={validationClick}
+                    isStatus={isStatus}
                     id={id}
                     onGetValue={onGetValue}
                 />
