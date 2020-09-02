@@ -30,7 +30,7 @@ const FormValidation = ({
                     onGetValue,
                     validateEmail,
                     validateForm,
-                })[item.type](item.type)}
+                })[item.action](item.action)}
             </Col>
         </Fragment>
     );

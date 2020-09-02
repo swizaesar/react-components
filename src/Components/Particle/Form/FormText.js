@@ -62,7 +62,6 @@ const FormText = ({
         <FormGroup>
             {item.label && <label>{item.label}</label>}
             <Style
-                invalid={isValid}
                 name={item.name}
                 id={item.name}
                 onChange={(e) => _onGetValue(e)}

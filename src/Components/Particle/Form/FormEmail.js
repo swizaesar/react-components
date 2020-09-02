@@ -39,12 +39,11 @@ const FormEmail = ({
             setValid(!item.status);
             console.log("masuk masuk");
         }
-    }, [validateForm]);
+    }, [validateForm, item]);
     return (
         <FormGroup>
             {item.label && <label>{item.label}</label>}
             <Style
-                invalid={isValid}
                 name={item.name}
                 id={item.name}
                 onChange={(e) => _onGetValue(e)}

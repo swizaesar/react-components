@@ -10,7 +10,7 @@ const Form = ({
     setForm = () => {},
 }) => {
     const onGetValue = (param) => {
-        let isError = false;
+        // let isError = false;
         form[param.id].value = param.value;
         form[param.id].status = param.status;
         // for (let key in form) {
