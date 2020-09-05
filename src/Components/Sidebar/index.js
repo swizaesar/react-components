@@ -1,6 +1,7 @@
 import React from "react";
 import Style from "./style";
 import { Nav, NavItem, NavLink } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
     const { routes = [] } = props;
@@ -10,22 +11,22 @@ const Sidebar = (props) => {
             .map((prop, key) => {
                 return (
                     <NavItem key={key}>
-                        <NavLink
-                            href={`${prop.path}`}
+                        <Link
+                            to={`${prop.path}`}
                             // tag={NavLinkRRD}
                             // onClick={this.closeCollapse}
-                            className={
+                            className={`nav-link ${
                                 window.location.pathname.split("/")[1] ===
                                 prop.sidebar.activeName
                                     ? "active"
                                     : ""
-                            }
+                            }`}
                         >
                             {prop.sidebar.icon && (
                                 <i className={`${prop.sidebar.icon} mr-2`} />
                             )}
                             {prop.sidebar.name}
-                        </NavLink>
+                        </Link>
                     </NavItem>
                 );
             });
@@ -36,11 +37,11 @@ const Sidebar = (props) => {
             .map((prop, key) => {
                 return (
                     <NavItem key={key}>
-                        <NavLink
-                            href={`${prop.path}`}
+                        <Link
+                            to={`${prop.path}`}
                             // tag={NavLinkRRD}
                             // onClick={this.closeCollapse}
-                            className={`nav-component ${
+                            className={`nav-link nav-component ${
                                 window.location.pathname.split("/")[1] ===
                                 prop.sidebar.activeName
                                     ? "active"
@@ -51,7 +52,7 @@ const Sidebar = (props) => {
                                 <i className={`${prop.sidebar.icon} mr-2`} />
                             )}
                             {prop.sidebar.name}
-                        </NavLink>
+                        </Link>
                     </NavItem>
                 );
             });
@@ -62,11 +63,11 @@ const Sidebar = (props) => {
             .map((prop, key) => {
                 return (
                     <NavItem key={key}>
-                        <NavLink
-                            href={`${prop.path}`}
+                        <Link
+                            to={`${prop.path}`}
                             // tag={NavLinkRRD}
                             // onClick={this.closeCollapse}
-                            className={`nav-component ${
+                            className={`nav-link nav-component ${
                                 window.location.pathname.split("/")[1] ===
                                 prop.sidebar.activeName
                                     ? "active"
@@ -77,7 +78,7 @@ const Sidebar = (props) => {
                                 <i className={`${prop.sidebar.icon} mr-2`} />
                             )}
                             {prop.sidebar.name}
-                        </NavLink>
+                        </Link>
                     </NavItem>
                 );
             });

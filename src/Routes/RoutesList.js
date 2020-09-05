@@ -30,6 +30,20 @@ export default [
         title: "Button",
     },
     {
+        component: lazy(() => import("../Pages/Rating")),
+        path: "/rating",
+        isHeader: true,
+        layout: "",
+        isFooter: true,
+        setting: "particle",
+        sidebar: {
+            icon: "fas fa-wallet mr-2",
+            name: "Rating",
+            activeName: "rating",
+        },
+        title: "Rating",
+    },
+    {
         component: lazy(() => import("../Pages/Molekul/ValidationForm")),
         path: "/validation-form",
         isHeader: true,
