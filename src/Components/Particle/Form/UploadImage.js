@@ -67,7 +67,6 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
     useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
-            console.log("masuk masuk");
         }
     }, [validateForm]);
     return (
@@ -81,7 +80,8 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
                     type="file"
                 />
                 <div className="image" onClick={handleClickImage}>
-                    <img src={image} alt="" />
+                    {image && <img src={image} alt="" />}
+
                     <div className="label-title">
                         <span>{item.placeholder}</span>
                     </div>

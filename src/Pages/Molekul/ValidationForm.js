@@ -71,6 +71,16 @@ const ValidationForm = () => {
             status: false,
             normalData: false,
         },
+        {
+            type: "image",
+            action: "uploadImageMultiple",
+            name: "image-multiple",
+            col: 6,
+            valid: "Harap masukan file",
+            value: [],
+            status: false,
+            max: 3,
+        },
     ]);
     // const onGetValue = (param) => {
     //     let isError = false;

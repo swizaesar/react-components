@@ -5,6 +5,7 @@ import FormEmail from "../../Particle/Form/FormEmail";
 import UploadFile from "../../Particle/Form/UploadFile";
 import ImageUpload from "../../Particle/Form/UploadImage";
 import FormPrice from "../../Particle/Form/FormPrice";
+import FormUploadImageMultiple from "../../Particle/FormUploadImageMutiple";
 
 const renderType = ({
     id,
@@ -66,6 +67,17 @@ const renderType = ({
                 <ImageUpload
                     validateForm={validateForm}
                     validateEmail={validateEmail}
+                    item={item}
+                    isStatus={isStatus}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
+        uploadImageMultiple: () => {
+            return (
+                <FormUploadImageMultiple
+                    validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}
                     id={id}

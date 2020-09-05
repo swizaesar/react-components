@@ -19,10 +19,6 @@ const Form = ({
         //     }
         // }
         setForm(form);
-        console.log(
-            "onGetvalue status",
-            (form[param.id].status = param.status)
-        );
         console.log("onGetvalue form", form);
     };
     return (
