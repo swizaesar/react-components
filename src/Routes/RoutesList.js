@@ -57,4 +57,18 @@ export default [
         },
         title: "Button",
     },
+    {
+        component: lazy(() => import("../Pages/Tab")),
+        path: "/tab",
+        isHeader: true,
+        layout: "",
+        isFooter: true,
+        setting: "molekul",
+        sidebar: {
+            icon: "fas fa-wallet mr-2",
+            name: "Tab Menu",
+            activeName: "tab",
+        },
+        title: "Tab",
+    },
 ];
