@@ -19,7 +19,10 @@ const Code = () => {
                     <pre>
                         <div>
                             <span className="code-red">import </span>
-                            <span>React </span>
+                            <span>React, </span>
+                            <span className="code-yellow">{"{ "}</span>
+                            <span>useState</span>
+                            <span className="code-yellow">{" } "}</span>
                             <span className="code-red">from </span>
                             <span className="code-string">{"'react'"}</span>
                             <span>;</span>
@@ -940,6 +943,136 @@ const Code = () => {
                                 <span className="code-brace">)</span>
                             </div>
                         </div>
+
+                        <div>
+                            <span className="code-primary">
+                                <i>const </i>
+                            </span>
+                            <span className="code-green">
+                                handlerSubmitData{" "}
+                            </span>
+                            <span className="code-red">= </span>
+                            <span className="code-brace">() </span>
+                            <span className="code-primary">{"=>"} </span>
+                            <span className="code-brace">{"{"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-primary">
+                                <i>let </i>
+                            </span>
+                            <span>isError </span>
+                            <span className="code-red">= </span>
+                            <span className="code-number">false</span>
+                            <span>;</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-red">for </span>
+                            <span className="code-primary">(</span>
+                            <span className="code-primary">let </span>
+                            <span>key </span>
+                            <span className="code-red">in </span>
+                            <span>listForm</span>
+                            <span className="code-primary">) </span>
+                            <span className="code-primary">{"{"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-red">if </span>
+                            <span className="code-yellow">(</span>
+                            <span className="code-red">!</span>
+                            <span>listForm</span>
+                            <span className="code-brace">{"["}</span>
+                            <span>key</span>
+                            <span className="code-brace">{"]"}</span>
+                            <span>.status</span>
+                            <span className="code-yellow">) </span>
+                            <span className="code-yellow">{"{"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span>isError </span>
+                            <span className="code-red">= </span>
+                            <span className="code-number">true</span>
+                            <span>;</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-yellow">{"}"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-primary">{"}"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-green">
+                                setValidationClick
+                            </span>
+                            <span className="code-primary">(</span>
+                            <span>isError</span>
+                            <span className="code-primary">)</span>
+                            <span>;</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-green">setValidateForm</span>
+                            <span className="code-primary">(</span>
+                            <span className="code-number">false</span>
+                            <span className="code-primary">)</span>
+                            <span>;</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-red">if </span>
+                            <span className="code-primary">(</span>
+                            <span className="code-red">!</span>
+                            <span>isError</span>
+                            <span className="code-primary">) </span>
+                            <span className="code-primary">{"{"}</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-primary">alert</span>
+                            <span className="code-yellow">(</span>
+                            <span className="code-string">
+                                {
+                                    '"form is valid, put your action endpoint is here"'
+                                }
+                            </span>
+                            <span className="code-yellow">)</span>
+                            <span>;</span>
+                        </div>
+                        <div>
+                            <span> </span>
+                            <span> </span>
+                            <span className="code-primary">{"}"}</span>
+                        </div>
+
+                        <div>
+                            <span className="code-brace">{"}"}</span>
+                        </div>
                         <div>
                             <span> </span>
                             <span> </span>
@@ -983,7 +1116,7 @@ const Code = () => {
                                         <span className="code-green">
                                             setForm
                                         </span>
-                                        <span>=</span>
+                                        <span className="code-red">=</span>
                                         <span className="code-brace">
                                             {"{"}
                                         </span>
@@ -1005,7 +1138,7 @@ const Code = () => {
                                         <span className="code-green">
                                             validateForm
                                         </span>
-                                        <span>=</span>
+                                        <span className="code-red">=</span>
                                         <span className="code-brace">
                                             {"{"}
                                         </span>
@@ -1027,7 +1160,7 @@ const Code = () => {
                                         <span className="code-green">
                                             validationClick
                                         </span>
-                                        <span>=</span>
+                                        <span className="code-red">=</span>
                                         <span className="code-brace">
                                             {"{"}
                                         </span>
@@ -1047,7 +1180,7 @@ const Code = () => {
                                         <span> </span>
                                         <span> </span>
                                         <span className="code-green">form</span>
-                                        <span>=</span>
+                                        <span className="code-red">=</span>
                                         <span className="code-brace">
                                             {"{"}
                                         </span>
