@@ -41,7 +41,6 @@ const ValidationForm = () => {
         {
             action: "price",
             name: "price",
-            placeholder: "price",
             col: 6,
             valid: "Harap isi form harga",
             value: "",
@@ -68,7 +67,7 @@ const ValidationForm = () => {
             name: "image",
             placeholder: "Klik Untuk Masukan Gambar",
             col: 6,
-            valid: "Harap masukan file",
+            valid: "Harap masukan gambar",
             value: "",
             status: false,
             normalData: false,
@@ -78,7 +77,7 @@ const ValidationForm = () => {
             action: "uploadImageMultiple",
             name: "image-multiple",
             col: 6,
-            valid: "Harap masukan file",
+            valid: "Harap masukan gambar",
             value: [],
             status: false,
             max: 3,
@@ -142,7 +141,7 @@ const ValidationForm = () => {
                                                 form={listForm}
                                             />
                                             <Button onClick={handlerSubmitData}>
-                                                check value
+                                                Submit
                                             </Button>
                                         </Fragment>
                                     );
@@ -157,6 +156,12 @@ const ValidationForm = () => {
                             },
                         ]}
                     />
+                    <div>
+                        <p>Download Component Form in here</p>
+                    </div>
+                    <div>
+                        <p>Download particle Form in here</p>
+                    </div>
                 </CardBody>
             </Card>
         </section>

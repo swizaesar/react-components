@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Card, CardBody } from "reactstrap";
 
 const Style = styled(Card)`
+    height: 400px;
+    overflow: auto;
     background: #282a2d;
     code {
         pre {

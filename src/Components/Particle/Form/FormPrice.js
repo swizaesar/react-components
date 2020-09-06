@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input";
 import { CurrencyStyle } from "./index.style";
+import { FormGroup } from "reactstrap";
 
 const FormPrice = (props) => {
     const {
@@ -47,34 +48,36 @@ const FormPrice = (props) => {
     }, [validateForm]);
 
     return (
-        <CurrencyStyle>
-            {item.label && <label>{item.label}</label>}
-            <div className="currency-row">
-                <CurrencyInput
-                    name={item.name}
-                    value={amount}
-                    className="form-control form-control-alternative"
-                    onChangeEvent={handleChange}
-                    precision={0}
-                    decimalSeparator=","
-                    thousandSeparator="."
-                    prefix={item.currencyLogo}
-                />
-            </div>
-            {isValid ? (
-                item.min ? (
-                    <small className="text-danger">
-                        <i>{item.min.valid}</i>
-                    </small>
+        <FormGroup>
+            <CurrencyStyle>
+                {item.label && <label>{item.label}</label>}
+                <div className="currency-row">
+                    <CurrencyInput
+                        name={item.name}
+                        value={amount}
+                        className="form-control form-control-alternative"
+                        onChangeEvent={handleChange}
+                        precision={0}
+                        decimalSeparator=","
+                        thousandSeparator="."
+                        prefix={item.currencyLogo}
+                    />
+                </div>
+                {isValid ? (
+                    item.min ? (
+                        <small className="text-danger">
+                            <i>{item.min.valid}</i>
+                        </small>
+                    ) : (
+                        <small className="text-danger">
+                            <i>{item.valid}</i>
+                        </small>
+                    )
                 ) : (
-                    <small className="text-danger">
-                        <i>{item.valid}</i>
-                    </small>
-                )
-            ) : (
-                false
-            )}
-        </CurrencyStyle>
+                    false
+                )}
+            </CurrencyStyle>
+        </FormGroup>
     );
 };
 export default FormPrice;
