@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.code-primary{
+  color: #00d0ff;
+}
+.code-red{
+  color: #f50459;
+}
+.code-green{
+  color: #beef06;
+}
+.code-yellow{
+  color: #c4a528;
+}
+.code-string{
+  color: #fdd904;
+}
+.code-brace{
+  color: #a26aae;
+}
+.code-number{
+  color: #d303ff;
+}

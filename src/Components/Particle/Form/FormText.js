@@ -67,7 +67,7 @@ const FormText = ({
                 onChange={(e) => _onGetValue(e)}
                 readOnly={item.readOnly !== undefined ? false : item.readOnly}
                 rows={item.rows}
-                value={value}
+                value={item.value ? item.value : value}
                 type={item.type}
                 placeholder={item.placeholder}
                 className={className}

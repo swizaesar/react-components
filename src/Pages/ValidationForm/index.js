@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Form from "../../Components/Molekul/FormValidation";
-import { Button } from "reactstrap";
+import { Button, Card, CardBody } from "reactstrap";
+import TabMenu from "../../Components/Molekul/TabMenu";
+import Code from "./Code";
 
 const ValidationForm = () => {
     const [validationClick, setValidationClick] = useState(true);
@@ -113,15 +115,51 @@ const ValidationForm = () => {
         // console.log("validationClick", validationClick);
     };
     return (
-        <div>
-            <Form
-                setForm={setForm}
-                validateForm={validateForm}
-                validationClick={validationClick}
-                form={listForm}
-            />
-            <Button onClick={handlerSubmitData}>check value</Button>
-        </div>
+        <section>
+            <h3 className="title">Validation Form</h3>
+            <Card>
+                <CardBody>
+                    <TabMenu
+                        color={{
+                            text: "#aaa",
+                            background: "#aaa",
+                            activeColor: "#000",
+                            activeBackground: "#000",
+                        }}
+                        data={[
+                            {
+                                title: "HTML",
+                                key: 1,
+                                render: () => {
+                                    return (
+                                        <Fragment>
+                                            <Form
+                                                setForm={setForm}
+                                                validateForm={validateForm}
+                                                validationClick={
+                                                    validationClick
+                                                }
+                                                form={listForm}
+                                            />
+                                            <Button onClick={handlerSubmitData}>
+                                                check value
+                                            </Button>
+                                        </Fragment>
+                                    );
+                                },
+                            },
+                            {
+                                title: "Code",
+                                key: 2,
+                                render: () => {
+                                    return <Code />;
+                                },
+                            },
+                        ]}
+                    />
+                </CardBody>
+            </Card>
+        </section>
     );
 };
 export default ValidationForm;

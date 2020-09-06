@@ -44,7 +44,7 @@ export default [
         title: "Rating",
     },
     {
-        component: lazy(() => import("../Pages/Molekul/ValidationForm")),
+        component: lazy(() => import("../Pages/ValidationForm")),
         path: "/validation-form",
         isHeader: true,
         layout: "",

@@ -13,8 +13,8 @@ const LandingPage = () => {
                     <Card className="shadow">
                         <CardBody>
                             <p>
-                                Pertama, install semua library framework yang
-                                dibutuhkan pada semua components :
+                                First, install all the required framework
+                                libraries for all components:
                             </p>
                             <Card className="card-code">
                                 <CardBody>
