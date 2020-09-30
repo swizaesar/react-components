@@ -6,6 +6,7 @@ import UploadFile from "../../Particle/Form/UploadFile";
 import ImageUpload from "../../Particle/Form/UploadImage";
 import FormPrice from "../../Particle/Form/FormPrice";
 import FormUploadImageMultiple from "../../Particle/FormUploadImageMutiple";
+import InputRangeMultiple from "../../Particle/Form/InputRange";
 
 const renderType = ({
     id,
@@ -88,6 +89,17 @@ const renderType = ({
         price: () => {
             return (
                 <FormPrice
+                    validateForm={validateForm}
+                    item={item}
+                    isStatus={isStatus}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
+        inputRange: () => {
+            return (
+                <InputRangeMultiple
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}

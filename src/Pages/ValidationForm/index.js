@@ -82,6 +82,21 @@ const ValidationForm = () => {
             status: false,
             max: 3,
         },
+        {
+            type: "range",
+            action: "inputRange",
+            name: "input-range",
+            formatLabel: "kg",
+            col: 6,
+            isMulti: true,
+            valid: "Harap masukan gambar",
+            value: 100,
+            status: false,
+            maxValue: 100,
+            minValue: 0,
+            haveInput: true,
+            haveRange: true,
+        },
     ]);
     // const onGetValue = (param) => {
     //     let isError = false;
