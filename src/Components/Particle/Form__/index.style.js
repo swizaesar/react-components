@@ -12,7 +12,7 @@ export const ImageUploadStyle = styled.div`
         width: 100%;
         border: 1px solid #ddd;
         background: #fff;
-        height: ${(props) => props.height || "160px"};
+        height: 160px;
         position: relative;
         transition: all 0.7s ease-in;
         cursor: pointer;
@@ -111,7 +111,7 @@ export const CurrencyStyle = styled.div`
         width: 100%;
         display: block;
 
-        background: #ffff;
+        background: #f9f9f9;
         outline: none;
     }
     span.error {

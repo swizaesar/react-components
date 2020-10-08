@@ -3,6 +3,7 @@ import InputRange from "react-input-range";
 import CurrencyInput from "react-currency-input";
 import "react-input-range/lib/css/index.css";
 import { FormGroup, Col, Row } from "reactstrap";
+import FormPrice from "./FormPrice";
 // import "./style.css";
 const InputRangeMultiple = ({
     maxValue,
@@ -53,6 +54,8 @@ const InputRangeMultiple = ({
             },
             status: true,
         });
+        console.log("resultValue", resultValue);
+        console.log("valueFloat", valueFloat);
     };
     const handleValueMax = (e, resultValue, valueFloat) => {
         e.preventDefault();
@@ -87,7 +90,6 @@ const InputRangeMultiple = ({
                 <FormGroup>
                     <Row>
                         <Col xl="6">
-                            {item.labelMin && <label>{item.labelMin}</label>}
                             <CurrencyInput
                                 name={item.name}
                                 value={amountMin}
@@ -96,11 +98,10 @@ const InputRangeMultiple = ({
                                 precision={0}
                                 decimalSeparator=","
                                 thousandSeparator="."
-                                prefix={item.prefix}
+                                prefix={"min "}
                             />
                         </Col>
                         <Col xl="6">
-                            {item.labelMax && <label>{item.labelMax}</label>}
                             <CurrencyInput
                                 name={item.name}
                                 value={amountMax}
@@ -109,7 +110,7 @@ const InputRangeMultiple = ({
                                 precision={0}
                                 decimalSeparator=","
                                 thousandSeparator="."
-                                prefix={item.prefix}
+                                prefix={"max "}
                             />
                             {validInput && (
                                 <small className="text-danger">

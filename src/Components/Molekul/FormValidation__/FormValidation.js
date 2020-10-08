@@ -1,10 +1,10 @@
-/*eslint-disable*/
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Col } from "reactstrap";
 import renderType from "./renderType";
 
 const FormValidation = ({
     onGetValue = () => {},
+    form = [],
     item,
     isStatus,
     id,

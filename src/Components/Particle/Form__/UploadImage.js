@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState, useRef, useEffect } from "react";
 import { ImageUploadStyle } from "./index.style";
 import { FormGroup } from "reactstrap";
@@ -14,7 +15,7 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
     //     normalData = false,
     // } = props;
     const [isValid, setValid] = useState(false);
-    // const [errorInput, setValueText] = useState(true);
+    const [errorInput, setValueText] = useState(true);
     const [image, setImage] = useState("");
     const inputFileRef = useRef(null);
     const handleClickImage = () => {
@@ -29,7 +30,7 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
     const handleOnChangeImage = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
-        // let error = false;
+        let error = false;
         let value = "";
         if (item.normalData) {
             value = file;
@@ -37,9 +38,15 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
             value = await toBase64(file);
         }
 
-        // error = value ? true : false;
+        error = value ? true : false;
         setImage(URL.createObjectURL(file));
-        // setValueText(error);;
+        setValueText(error);
+        // onGetValue({
+        //     name,
+        //     value,
+        //     success: error,
+        //     error: !error,
+        // });
         onGetValue({
             id: id,
             name: item.name,
@@ -58,17 +65,13 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
             reader.onload = () => resolve(reader.result);
             reader.onerror = (error) => reject(error);
         });
-    const handleSetValid = () => {
+    useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
         }
-    };
-    const handleSetValidCallback = React.useCallback(handleSetValid);
-    useEffect(() => {
-        handleSetValidCallback();
-    }, [handleSetValidCallback]);
+    }, [validateForm]);
     return (
-        <ImageUploadStyle height={item.heightStyle}>
+        <ImageUploadStyle>
             <FormGroup>
                 <input
                     id={item.name}

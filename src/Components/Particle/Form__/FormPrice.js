@@ -15,24 +15,11 @@ const FormPrice = (props) => {
     const [amount, setAmount] = useState(defaultValue);
     const [isValid, setValid] = useState(false);
 
-    const [unFormatValue, setFormatValue] = useState(0);
-
     const handleChange = (e, resultValue, valueFloat) => {
         e.preventDefault();
         const value = valueFloat;
         if (item.min) {
             const error = value < item.min.price ? false : true;
-            setValid(!error);
-            setAmount(resultValue);
-            onGetValue({
-                id: id,
-                name: e.target.name,
-                value: value,
-                status: error,
-            });
-        }
-        if (item.max) {
-            const error = value > item.max.price ? false : true;
             setValid(!error);
             setAmount(resultValue);
             onGetValue({
@@ -52,13 +39,14 @@ const FormPrice = (props) => {
                 status: error,
             });
         }
-        setFormatValue(value);
+        console.log();
     };
     useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
         }
     }, [validateForm]);
+
     return (
         <FormGroup>
             <CurrencyStyle>
@@ -72,18 +60,13 @@ const FormPrice = (props) => {
                         precision={0}
                         decimalSeparator=","
                         thousandSeparator="."
-                        suffix={item.suffix}
                         prefix={item.currencyLogo}
                     />
                 </div>
                 {isValid ? (
-                    item.min && unFormatValue < item.min.price ? (
+                    item.min ? (
                         <small className="text-danger">
                             <i>{item.min.valid}</i>
-                        </small>
-                    ) : item.max && unFormatValue > item.max.price ? (
-                        <small className="text-danger">
-                            <i>{item.max.valid}</i>
                         </small>
                     ) : (
                         <small className="text-danger">

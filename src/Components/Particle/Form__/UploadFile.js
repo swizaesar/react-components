@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect } from "react";
 // import Button from "../Button";
 import styled from "styled-components";
 import { FormGroup, Input, Button } from "reactstrap";
@@ -34,15 +34,12 @@ const UploadFile = ({ validateForm, item, isStatus, id, onGetValue }) => {
     const handlerUploadClick = () => {
         inputFileRef.current.click();
     };
-    const handleSetValid = () => {
+    useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
+            console.log("masuk masuk");
         }
-    };
-    const handleSetValidCallback = useCallback(handleSetValid);
-    useEffect(() => {
-        handleSetValidCallback();
-    }, [handleSetValidCallback]);
+    }, [validateForm]);
     return (
         <Style>
             <FormGroup>

@@ -19,6 +19,7 @@ const Form = ({
         //     }
         // }
         setForm(form);
+        console.log("onGetvalue form", form);
     };
     return (
         <Fragment>

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FormGroup, Input } from "reactstrap";
 import styled from "styled-components";
+import { findAllByDisplayValue } from "@testing-library/react";
 
 const Style = styled(Input)`
-    background: #ffff;
+    background: #f9f9f9;
 `;
 const ButtonPassword = styled.button`
     position: absolute;
     right: 15px;
-    top: ${(props) => (props.label ? "0px" : "unset")};
-    bottom: ${(props) => (!props.label ? "16px" : "unset")};
+    top: 0px;
     background: transparent;
     border: none;
     color: #6c6c6c;
@@ -30,6 +30,8 @@ const FormText = ({
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
+        console.log("isStatus", isStatus);
+        console.log("validationClick", isStatus);
         onGetValue({
             id: id,
             name: e.target.name,
@@ -50,29 +52,23 @@ const FormText = ({
     const handlerShowPassword = () => {
         setShowPassword(!showPassword);
     };
-    const handleSetValid = () => {
+    useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
+            console.log("masuk masuk");
         }
-    };
-    const handleSetValidCallback = React.useCallback(handleSetValid);
-    useEffect(() => {
-        handleSetValidCallback();
-    }, [handleSetValidCallback]);
+    }, [validateForm]);
     return (
         <FormGroup>
-            {item.label && (
-                <label style={{ color: "#c2c2c2" }}>{item.label}</label>
-            )}
+            {item.label && <label>{item.label}</label>}
             <Style
-                label={item.label}
                 name={item.name}
                 id={item.name}
                 onChange={(e) => _onGetValue(e)}
                 readOnly={item.readOnly !== undefined ? false : item.readOnly}
                 rows={item.rows}
-                defaultValue={item.value ? item.value : value}
-                type={showPassword ? item.type : "text"}
+                value={item.value ? item.value : value}
+                type={item.type}
                 placeholder={item.placeholder}
                 className={className}
             />

@@ -3,7 +3,7 @@ import { FormGroup, Input } from "reactstrap";
 import styled from "styled-components";
 
 const Style = styled(Input)`
-    background: #ffff;
+    background: #f9f9f9;
 `;
 
 const FormEmail = ({
@@ -21,7 +21,10 @@ const FormEmail = ({
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
+        console.log("isStatus", isStatus);
         validateEmail(value);
+
+        console.log("validationClick", isStatus);
         onGetValue({
             id: id,
             name: e.target.name,
@@ -31,15 +34,12 @@ const FormEmail = ({
         setValid(!item.status);
         setValue(value);
     };
-    const handleSetValid = () => {
+    useEffect(() => {
         if (!validateForm) {
             setValid(!item.status);
+            console.log("masuk masuk");
         }
-    };
-    const handleSetValidCallback = React.useCallback(handleSetValid);
-    useEffect(() => {
-        handleSetValidCallback();
-    }, [handleSetValidCallback]);
+    }, [validateForm, item]);
     return (
         <FormGroup>
             {item.label && <label>{item.label}</label>}
@@ -49,7 +49,7 @@ const FormEmail = ({
                 onChange={(e) => _onGetValue(e)}
                 readOnly={item.readOnly !== undefined ? false : item.readOnly}
                 rows={item.rows}
-                defaultValue={value}
+                value={value}
                 type={item.type}
                 placeholder={item.placeholder}
                 className={className}

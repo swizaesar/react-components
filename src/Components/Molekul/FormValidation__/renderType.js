@@ -6,9 +6,6 @@ import UploadFile from "../../Particle/Form/UploadFile";
 import ImageUpload from "../../Particle/Form/UploadImage";
 import FormPrice from "../../Particle/Form/FormPrice";
 import FormUploadImageMultiple from "../../Particle/FormUploadImageMutiple";
-import FormRePassword from "../../Particle/Form/FormRePassword";
-import FormDate from "../../Particle/Form/FormDate";
-import FormSelect from "../../Particle/Form/FormSelect";
 import InputRangeMultiple from "../../Particle/Form/InputRange";
 
 const renderType = ({
@@ -23,39 +20,6 @@ const renderType = ({
         text: () => {
             return (
                 <FormText
-                    validateForm={validateForm}
-                    item={item}
-                    isStatus={isStatus}
-                    id={id}
-                    onGetValue={onGetValue}
-                />
-            );
-        },
-        password: () => {
-            return (
-                <FormText
-                    validateForm={validateForm}
-                    item={item}
-                    isStatus={isStatus}
-                    id={id}
-                    onGetValue={onGetValue}
-                />
-            );
-        },
-        confirmPassword: () => {
-            return (
-                <FormRePassword
-                    validateForm={validateForm}
-                    item={item}
-                    isStatus={isStatus}
-                    id={id}
-                    onGetValue={onGetValue}
-                />
-            );
-        },
-        select: () => {
-            return (
-                <FormSelect
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}
@@ -126,18 +90,6 @@ const renderType = ({
             return (
                 <FormPrice
                     validateForm={validateForm}
-                    item={item}
-                    isStatus={isStatus}
-                    id={id}
-                    onGetValue={onGetValue}
-                />
-            );
-        },
-        datepicker: () => {
-            return (
-                <FormDate
-                    validateForm={validateForm}
-                    validateEmail={validateEmail}
                     item={item}
                     isStatus={isStatus}
                     id={id}

@@ -6,30 +6,24 @@ const Style = styled(Input)`
     background: #ffff;
 `;
 
-const FormEmail = ({
-    isStatus,
+const FormSelect = ({
     value,
     item,
     className,
     id,
     onGetValue = () => {},
-    validateEmail = () => {},
     validateForm = true,
 }) => {
-    const [isValue, setValue] = useState("");
-
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
-        validateEmail(value);
         onGetValue({
             id: id,
             name: e.target.name,
             value: value,
-            status: validateEmail(value) ? true : false,
+            status: true,
         });
         setValid(!item.status);
-        setValue(value);
     };
     const handleSetValid = () => {
         if (!validateForm) {
@@ -53,16 +47,18 @@ const FormEmail = ({
                 type={item.type}
                 placeholder={item.placeholder}
                 className={className}
-            />
+            >
+                {item.option.map((list, key) => {
+                    return (
+                        <option key={key} value={list.value}>
+                            {list.name}
+                        </option>
+                    );
+                })}
+            </Style>
             {isValid ? (
                 <small className="text-danger">
-                    <i>
-                        {isValue === ""
-                            ? item.valid
-                            : isValue !== "" && validateEmail(isValue)
-                            ? false
-                            : "Format email (Cth: asd@xxx.com)"}
-                    </i>
+                    <i>{item.valid}</i>
                 </small>
             ) : (
                 false
@@ -70,4 +66,4 @@ const FormEmail = ({
         </FormGroup>
     );
 };
-export default FormEmail;
+export default FormSelect;
