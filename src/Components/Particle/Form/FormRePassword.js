@@ -18,7 +18,6 @@ const ButtonPassword = styled.button`
 `;
 
 const FormRePassword = ({
-    isStatus,
     item,
     className,
     id,
@@ -58,6 +57,7 @@ const FormRePassword = ({
                     : false,
         });
         setReValid(!item.status);
+        setValid(isValid);
         setReValue(value);
     };
     const handlerShowPassword = () => {
@@ -68,7 +68,7 @@ const FormRePassword = ({
     };
     const handleSetValid = () => {
         if (!validateForm) {
-            setValid(item.value === "" ? true : false);
+            setValid(isValue === "" ? true : false);
             setReValid(!item.status);
         }
     };
