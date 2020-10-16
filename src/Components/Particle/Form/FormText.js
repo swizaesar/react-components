@@ -8,7 +8,7 @@ const Style = styled(Input)`
 const ButtonPassword = styled.button`
     position: absolute;
     right: 15px;
-    top: ${(props) => (props.label ? "0px" : "unset")};
+    top: 0;
     bottom: ${(props) => (!props.label ? "16px" : "unset")};
     background: transparent;
     border: none;
@@ -64,29 +64,33 @@ const FormText = ({
             {item.label && (
                 <label style={{ color: "#c2c2c2" }}>{item.label}</label>
             )}
-            <Style
-                label={item.label}
-                name={item.name}
-                id={item.name}
-                onChange={(e) => _onGetValue(e)}
-                readOnly={item.readOnly !== undefined ? false : item.readOnly}
-                rows={item.rows}
-                defaultValue={item.value ? item.value : value}
-                type={showPassword ? item.type : "text"}
-                placeholder={item.placeholder}
-                className={className}
-            />
-            {item.type === "password" ? (
-                <ButtonPassword onClick={handlerShowPassword} type="button">
-                    <i
-                        className={`fa ${
-                            !showPassword ? "fa-eye" : "fa-eye-slash"
-                        }`}
-                    ></i>
-                </ButtonPassword>
-            ) : (
-                false
-            )}
+            <div className="position-relative">
+                <Style
+                    label={item.label}
+                    name={item.name}
+                    id={item.name}
+                    onChange={(e) => _onGetValue(e)}
+                    readOnly={
+                        item.readOnly !== undefined ? false : item.readOnly
+                    }
+                    rows={item.rows}
+                    defaultValue={item.value ? item.value : value}
+                    type={showPassword ? item.type : "text"}
+                    placeholder={item.placeholder}
+                    className={className}
+                />
+                {item.type === "password" ? (
+                    <ButtonPassword onClick={handlerShowPassword} type="button">
+                        <i
+                            className={`fa ${
+                                !showPassword ? "fa-eye" : "fa-eye-slash"
+                            }`}
+                        ></i>
+                    </ButtonPassword>
+                ) : (
+                    false
+                )}
+            </div>
             {isValid ? (
                 <small className="text-danger">
                     <i>

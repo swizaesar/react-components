@@ -49,7 +49,7 @@ const FormEmail = ({
                 onChange={(e) => _onGetValue(e)}
                 readOnly={item.readOnly !== undefined ? false : item.readOnly}
                 rows={item.rows}
-                defaultValue={value}
+                defaultValue={item.value}
                 type={item.type}
                 placeholder={item.placeholder}
                 className={className}

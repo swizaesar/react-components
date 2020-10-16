@@ -18,6 +18,7 @@ const ButtonPassword = styled.button`
 `;
 
 const FormRePassword = ({
+    isStatus,
     item,
     className,
     id,

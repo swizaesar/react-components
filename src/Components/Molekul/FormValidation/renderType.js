@@ -5,11 +5,12 @@ import FormEmail from "../../Particle/Form/FormEmail";
 import UploadFile from "../../Particle/Form/UploadFile";
 import ImageUpload from "../../Particle/Form/UploadImage";
 import FormPrice from "../../Particle/Form/FormPrice";
-import FormUploadImageMultiple from "../../Particle/FormUploadImageMutiple";
+import FormUploadImageMultiple from "../../Particle/Form/FormUploadImageMultiple";
 import FormRePassword from "../../Particle/Form/FormRePassword";
 import FormDate from "../../Particle/Form/FormDate";
 import FormSelect from "../../Particle/Form/FormSelect";
 import InputRangeMultiple from "../../Particle/Form/InputRange";
+import FormTime from "../../Particle/Form/FormTime";
 
 const renderType = ({
     id,
@@ -148,6 +149,17 @@ const renderType = ({
         inputRange: () => {
             return (
                 <InputRangeMultiple
+                    validateForm={validateForm}
+                    item={item}
+                    isStatus={isStatus}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
+        time: () => {
+            return (
+                <FormTime
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}

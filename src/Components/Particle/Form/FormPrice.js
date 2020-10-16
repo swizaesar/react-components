@@ -12,7 +12,9 @@ const FormPrice = (props) => {
         item,
         validateForm,
     } = props;
-    const [amount, setAmount] = useState(defaultValue);
+    const [amount, setAmount] = useState(
+        item.defaultValue ? item.defaultValue : defaultValue
+    );
     const [isValid, setValid] = useState(false);
 
     const [unFormatValue, setFormatValue] = useState(0);
@@ -69,7 +71,7 @@ const FormPrice = (props) => {
                         value={amount}
                         className="form-control form-control-alternative"
                         onChangeEvent={handleChange}
-                        precision={0}
+                        precision={item.precision ? item.precision : 0}
                         decimalSeparator=","
                         thousandSeparator="."
                         suffix={item.suffix}
