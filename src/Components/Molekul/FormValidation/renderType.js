@@ -168,6 +168,17 @@ const renderType = ({
                 />
             );
         },
+        phone: () => {
+            return (
+                <FormNumberPhone
+                    validateForm={validateForm}
+                    item={item}
+                    isStatus={isStatus}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
     };
 };
 export default renderType;
