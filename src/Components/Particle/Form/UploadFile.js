@@ -27,7 +27,7 @@ const UploadFile = ({ validateForm, item, isStatus, id, onGetValue }) => {
             id: id,
             name: e.target.name,
             value: value.name,
-            status: value.name === "" ? false : true,
+            status: item.required ? (value.name === "" ? false : true) : true,
         });
         setValid(!item.status);
     };
@@ -46,7 +46,11 @@ const UploadFile = ({ validateForm, item, isStatus, id, onGetValue }) => {
     return (
         <Style>
             <FormGroup>
-                {item.label && <label>{item.label}</label>}
+                {item.label && (
+                    <label htmlFor={item.id} className={item.labelClass}>
+                        {item.label}
+                    </label>
+                )}
                 <input
                     name={item.name}
                     id={item.name}

@@ -10,6 +10,8 @@ const ValidationForm = () => {
     const [listForm, setForm] = useState([
         {
             type: "text",
+            label: "Nama",
+            required: true,
             action: "text",
             name: "name",
             placeholder: "Name",
@@ -31,6 +33,8 @@ const ValidationForm = () => {
         {
             type: "email",
             action: "email",
+            required: true,
+            label: "Email",
             name: "email",
             placeholder: "Email",
             col: 6,
@@ -39,8 +43,22 @@ const ValidationForm = () => {
             status: false,
         },
         {
+            type: "phone",
+            required: true,
+            action: "phone",
+            name: "phone",
+            label: "Nomor Telpon",
+            placeholder: "Nomor Telpon",
+            col: 6,
+            valid: "Nomor Telpon tidak boleh kosong",
+            value: "",
+            status: false,
+        },
+        {
             action: "price",
+            required: true,
             name: "price",
+            label: "Harga",
             col: 6,
             valid: "Harap isi form harga",
             value: "",
@@ -63,6 +81,8 @@ const ValidationForm = () => {
         },
         {
             type: "image",
+            label: "Upload Gambar",
+            required: true,
             action: "uploadImage",
             name: "image",
             placeholder: "Klik Untuk Masukan Gambar",
@@ -74,6 +94,7 @@ const ValidationForm = () => {
         },
         {
             type: "image",
+            label: "Upload Gambar Multiple",
             action: "uploadImageMultiple",
             name: "image-multiple",
             col: 6,
@@ -82,21 +103,22 @@ const ValidationForm = () => {
             status: false,
             max: 3,
         },
-        {
-            type: "range",
-            action: "inputRange",
-            name: "input-range",
-            formatLabel: "kg",
-            col: 6,
-            isMulti: true,
-            valid: "Harap masukan gambar",
-            value: 100,
-            status: false,
-            maxValue: 100,
-            minValue: 0,
-            haveInput: true,
-            haveRange: true,
-        },
+        // {
+        //     label: "Input Range",
+        //     type: "range",
+        //     action: "inputRange",
+        //     name: "input-range",
+        //     formatLabel: "kg",
+        //     col: 6,
+        //     isMulti: true,
+        //     valid: "",
+        //     value: 100,
+        //     status: false,
+        //     maxValue: 100,
+        //     minValue: 0,
+        //     haveInput: true,
+        //     haveRange: true,
+        // },
     ]);
     // const onGetValue = (param) => {
     //     let isError = false;
@@ -137,8 +159,6 @@ const ValidationForm = () => {
                         color={{
                             text: "#aaa",
                             background: "#aaa",
-                            activeColor: "#000",
-                            activeBackground: "#000",
                         }}
                         data={[
                             {
@@ -171,12 +191,12 @@ const ValidationForm = () => {
                             },
                         ]}
                     />
-                    <div>
+                    {/* <div>
                         <p>Download Component Form in here</p>
                     </div>
                     <div>
                         <p>Download particle Form in here</p>
-                    </div>
+                    </div> */}
                 </CardBody>
             </Card>
         </section>

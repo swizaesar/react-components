@@ -29,19 +29,22 @@ const FormText = ({
     const [isValue, setValue] = useState("");
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
+        console.log("item.character", item.character);
         let value = e.target.value;
         onGetValue({
             id: id,
             name: e.target.name,
             value: value,
             status:
-                item.character === undefined
-                    ? value === ""
+                item.required === true
+                    ? item.character === undefined
+                        ? value === ""
+                            ? false
+                            : true
+                        : item.character.min.length > value.length ||
+                          item.character.max.length < value.length
                         ? false
                         : true
-                    : item.character.min.length > value.length ||
-                      item.character.max.length < value.length
-                    ? false
                     : true,
         });
         setValid(!item.status);
@@ -62,17 +65,29 @@ const FormText = ({
     return (
         <FormGroup>
             {item.label && (
-                <label style={{ color: "#c2c2c2" }}>{item.label}</label>
+                <label htmlFor={item.id} className={item.labelClass}>
+                    {item.label}
+                    {item.required === true ? (
+                        <span className="text-danger">*</span>
+                    ) : (
+                        item.required === "optional" && (
+                            <span style={{ color: "#aaa", fontSize: 14 }}>
+                                {" "}
+                                (Optional)
+                            </span>
+                        )
+                    )}
+                </label>
             )}
             <div className="position-relative">
                 <Style
+                    maxLength={item?.character?.max?.length}
+                    minLength={item?.character?.min?.length}
                     label={item.label}
                     name={item.name}
                     id={item.name}
                     onChange={(e) => _onGetValue(e)}
-                    readOnly={
-                        item.readOnly !== undefined ? false : item.readOnly
-                    }
+                    readOnly={item.readOnly === true ? true : false}
                     rows={item.rows}
                     defaultValue={item.value ? item.value : value}
                     type={showPassword ? item.type : "text"}
@@ -96,9 +111,9 @@ const FormText = ({
                     <i>
                         {item.character === undefined
                             ? item.valid
-                            : item.character.min.length > isValue.length
+                            : isValue.length < item.character.min.length
                             ? item.character.min.valid
-                            : item.character.max.length < isValue.length
+                            : isValue.length > item.character.max.length
                             ? item.character.max.valid
                             : item.valid}
                     </i>

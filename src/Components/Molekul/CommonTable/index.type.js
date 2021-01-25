@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Progress } from "reactstrap";
+import { Progress } from "reactstrap";
+import Button from "../../Particle/Button";
 import { formatMoney, percentage } from "../../../Utils/PriceConverter";
 import { Fragment } from "react";
 import styled from "styled-components";
@@ -9,7 +10,7 @@ const ProgressStyle = styled(Progress)`
     background-color: #fff;
 `;
 
-const tableTypeActions = ({ actions, item }) => {
+const tableTypeActions = ({ actions, item, key }) => {
     return {
         isDelete: () => {
             return "masuk sini";
@@ -20,8 +21,13 @@ const tableTypeActions = ({ actions, item }) => {
         isViewLink: () => {
             return (
                 <Link to={item.url ? item.url : ""}>
-                    <Button color="primary" size="sm" type="button">
-                        View
+                    <Button
+                        className={key === 1 ? "ml-2" : ""}
+                        color="primary"
+                        size="sm"
+                        type="button"
+                    >
+                        Lihat
                     </Button>
                 </Link>
             );
@@ -29,36 +35,56 @@ const tableTypeActions = ({ actions, item }) => {
         isViewModal: () => {
             return (
                 <Button
+                    className={key === 1 ? "ml-2" : ""}
                     color="primary"
                     onClick={() => actions.function(item)}
                     size="sm"
                     type="button"
                 >
-                    View
+                    Lihat
+                </Button>
+            );
+        },
+        isCostumeButton: () => {
+            return (
+                <Button
+                    className={key === 1 ? "ml-2" : ""}
+                    color={actions.color}
+                    onClick={() => actions.function(item)}
+                    size="sm"
+                    type="button"
+                >
+                    {actions.name}
                 </Button>
             );
         },
         isDeleteModal: () => {
             return (
                 <Button
+                    className={key === 1 ? "ml-2" : ""}
                     color="danger"
                     onClick={() => actions.function(item)}
                     size="sm"
                     type="button"
                 >
-                    Remove
+                    {actions.name}
                 </Button>
             );
         },
         isButtonAction: () => {
             return (
-                <Button color="primary" size="sm" type="button">
-                    View
+                <Button
+                    className={key === 1 ? "ml-2" : ""}
+                    color="primary"
+                    size="sm"
+                    type="button"
+                >
+                    Lihat
                 </Button>
             );
         },
         isCostume: () => {
-            return actions.renderItem(item);
+            return actions.renderItem(item, key);
         },
         isEditModal: () => {
             return "masuk sini";
@@ -66,7 +92,16 @@ const tableTypeActions = ({ actions, item }) => {
     };
 };
 
-const tableType = ({ number, value, itemOptionTable, item, img, percent }) => {
+const tableType = ({
+    number,
+    value,
+    itemOptionTable,
+    item,
+    img,
+    className,
+    percent,
+    key,
+}) => {
     return {
         number: () => {
             return <span>{number}</span>;
@@ -81,7 +116,7 @@ const tableType = ({ number, value, itemOptionTable, item, img, percent }) => {
             return (
                 <div className="d-flex justify-content-start">
                     <Button color="primary" size="sm" type="button">
-                        View
+                        Lihat
                     </Button>
                     <Button color="primary" size="sm" type="button">
                         Edit
@@ -94,7 +129,14 @@ const tableType = ({ number, value, itemOptionTable, item, img, percent }) => {
         },
         text: () => {
             return (
-                <span className={value === null ? "d-block text-center" : ""}>
+                <span
+                    style={{ textTransform: "capitalize" }}
+                    className={
+                        value === null
+                            ? "d-block text-center"
+                            : `${className !== undefined ? className : ""}`
+                    }
+                >
                     {value === null ? "-" : value}
                 </span>
             );

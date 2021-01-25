@@ -80,26 +80,23 @@ const FormStyle = styled.div`
     }
 `;
 const FormNumberPhone = (props) => {
-    const {
-        item,
-        className,
-        id,
-        onGetValue = () => {},
-        validateForm = true,
-    } = props;
+    const { item, id, onGetValue = () => {}, validateForm = true } = props;
     const [value, setValue] = useState("");
     const [isValid, setValid] = useState(false);
 
     const _onGetValue = (vals) => {
-        setValue(value);
         onGetValue({
             id: id,
             name: item.name,
             value: vals.value,
-            status: vals.value.length < 1 ? false : true,
+            status: item.required
+                ? vals.value.length < 9
+                    ? false
+                    : true
+                : true,
         });
-        setValid(!item.status);
-        console.log("isValid", isValid);
+        setValue(value);
+        setValid(vals.value.length < 1 ? true : false);
     };
     const handleSetValid = () => {
         if (!validateForm) {
@@ -113,22 +110,31 @@ const FormNumberPhone = (props) => {
     return (
         <FormStyle>
             <FormGroup>
-                <Label for={item.name}>{item.label}</Label>
+                <Label for={item.name}>
+                    {item.label}
+                    {item.required && <span className="text-danger">*</span>}
+                </Label>
                 <NumberFormat
                     id={item.name}
                     name={item.name}
+                    max={13}
+                    min={9}
                     className="form-control"
-                    format="(####) ####-####"
+                    format="(####) #### #####"
                     placeholder={item.placeholder}
                     onValueChange={(vals) => {
                         _onGetValue(vals);
                     }}
                     value={item.value}
-                    mask="_"
+                    mask=""
                 ></NumberFormat>
                 {isValid ? (
                     <small className="text-danger">
-                        <i>{item.valid}</i>
+                        <i>
+                            {item.value.length < 9 && item.value.length > 0
+                                ? "Nomor telepon tidak valid"
+                                : item.valid}
+                        </i>
                     </small>
                 ) : (
                     false

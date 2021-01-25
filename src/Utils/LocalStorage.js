@@ -4,6 +4,6 @@ export default () => {
         save: (value = String, item) =>
             storage.setItem(value, JSON.stringify(item)),
         get: (value = String) => JSON.parse(storage.getItem(value)),
-        remove: (value = String) => storage.removeItem(value)
+        remove: (value = String) => storage.removeItem(value),
     };
 };

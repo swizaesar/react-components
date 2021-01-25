@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input";
 import { CurrencyStyle } from "./index.style";
@@ -6,6 +5,7 @@ import { FormGroup } from "reactstrap";
 
 const FormPrice = (props) => {
     const {
+        className = "",
         id,
         defaultValue = 0,
         onGetValue = () => {},
@@ -21,55 +21,70 @@ const FormPrice = (props) => {
 
     const handleChange = (e, resultValue, valueFloat) => {
         e.preventDefault();
+
         const value = valueFloat;
-        if (item.min) {
-            const error = value < item.min.price ? false : true;
-            setValid(!error);
+        if (item.min !== undefined) {
+            let error = value < item.min?.price ? false : true;
+
             setAmount(resultValue);
             onGetValue({
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: error,
+                status: item.required ? error : true,
             });
+            setValid(!error);
         }
-        if (item.max) {
-            const error = value > item.max.price ? false : true;
-            setValid(!error);
+        if (item.max !== undefined) {
+            let error = value > item.max?.price ? false : true;
             setAmount(resultValue);
             onGetValue({
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: error,
+                status: item.required ? error : true,
             });
-        } else {
-            const error = value ? true : false;
+            setValid(!error);
+        }
+        if (item.max === undefined && item.min === undefined) {
+            let error = value === 0 ? true : false;
             setValid(!error);
             setAmount(resultValue);
             onGetValue({
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: error,
+                status: item.required ? error : true,
             });
         }
         setFormatValue(value);
     };
-    useEffect(() => {
+    const handleSetValid = () => {
         if (!validateForm) {
             setValid(!item.status);
         }
-    }, [validateForm]);
+    };
+    const handleSetValidCallback = React.useCallback(handleSetValid);
+    useEffect(() => {
+        handleSetValidCallback();
+    }, [handleSetValidCallback]);
+
     return (
         <FormGroup>
             <CurrencyStyle>
-                {item.label && <label>{item.label}</label>}
+                {item.label && (
+                    <label htmlFor={item.id} className={item.labelClass}>
+                        {item.label}
+                        {item.required && (
+                            <span className="text-danger">*</span>
+                        )}
+                    </label>
+                )}
                 <div className="currency-row">
                     <CurrencyInput
                         name={item.name}
                         value={amount}
-                        className="form-control form-control-alternative"
+                        className={`form-control form-control-alternative ${className}`}
                         onChangeEvent={handleChange}
                         precision={item.precision ? item.precision : 0}
                         decimalSeparator=","

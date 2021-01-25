@@ -1,12 +1,18 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { FormGroup } from "reactstrap";
 import styled from "styled-components";
 import Select from "react-select";
+import { useStore } from "../../../Reducers";
 const Style = styled(Select)`
+    text-transform: capitalize;
     background: #ffff;
     width: ${(props) => props.width};
+    @media (max-width: 450px) {
+        font-size: 12px;
+    }
 `;
-
+const DEFAULT_LIMIT_DATA = 100;
 const FormSelect = ({
     value,
     item,
@@ -15,17 +21,46 @@ const FormSelect = ({
     onGetValue = () => {},
     validateForm = true,
 }) => {
+    const { service = { group: false, key: false, api: () => {} } } = item;
+    const { dispatch, state } = useStore();
     const [isValid, setValid] = useState(false);
-    const [selectedOption, setSelected] = useState(item.option[0]);
+    const [selectedOption, setSelected] = useState("");
+    const [data, setData] = useState([]);
+    const [params, setParams] = useState({
+        page: 0,
+        size: DEFAULT_LIMIT_DATA,
+    });
     const handleChange = (results) => {
         setSelected(results);
-        if (item.isMulti) {
-            _onGetValue(results);
-        } else {
-            _onGetValue(results.value);
-        }
+        _onGetValue(results);
+
         // checkValid(results);
     };
+    const getData = () => {
+        service.api({ dispatch, params });
+        setParams(params);
+    };
+    const getDataCallBack = React.useCallback(getData, []);
+    const responseGetData = (state) => {
+        if (state[service.group] && state[service.group][service.key]) {
+            const { data } = state[service.group][service.key];
+            setData(
+                data.content.map((item) => {
+                    return {
+                        ...{ label: "Pilih", value: 0 },
+                        ...{ label: item.name, value: item.id },
+                    };
+                })
+            );
+        }
+    };
+    const responseGetDataCallBack = React.useCallback(responseGetData, []);
+    useEffect(() => {
+        getDataCallBack();
+    }, [getDataCallBack]);
+    useEffect(() => {
+        responseGetDataCallBack(state);
+    }, [state, responseGetDataCallBack]);
     const _onGetValue = (results) => {
         let valueResult = results;
         onGetValue({
@@ -41,16 +76,42 @@ const FormSelect = ({
             setValid(!item.status);
         }
     };
+
+    const getShortData = React.useCallback((data) => {
+        if (data.length > 1) {
+            return data
+                .filter(function (obj) {
+                    return obj.value === item.value;
+                })
+                .map(function (obj) {
+                    return setSelected(obj);
+                });
+        }
+    });
     const handleSetValidCallback = React.useCallback(handleSetValid);
     useEffect(() => {
         handleSetValidCallback();
     }, [handleSetValidCallback]);
+    useEffect(() => {
+        getShortData(data);
+    }, [data, getShortData]);
     return (
         <FormGroup>
-            {item.label && <label>{item.label}</label>}
+            {item.label && (
+                <label htmlFor={item.id} className={item.labelClass}>
+                    {item.label}
+                    {item.required && <span className="text-danger">*</span>}
+                </label>
+            )}
             <Style
                 width={item.width}
-                placeholder={item.placeholder}
+                placeholder={
+                    item.placeholder === null ||
+                    item.placeholder === undefined ||
+                    !item.placeholder === null
+                        ? "Pilih"
+                        : item.placeholder
+                }
                 name={item.name}
                 id={item.name}
                 onChange={(e) => handleChange(e)}
@@ -60,7 +121,7 @@ const FormSelect = ({
                 type={item.type}
                 value={selectedOption}
                 classNamePrefix={className}
-                options={item.option}
+                options={item.service ? data : item.option}
                 isMulti={item.isMulti}
                 closeMenuOnSelect={item.isMulti ? false : true}
             >

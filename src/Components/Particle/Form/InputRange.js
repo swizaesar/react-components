@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputRange from "react-input-range";
 import CurrencyInput from "react-currency-input";
 import "react-input-range/lib/css/index.css";
-import { FormGroup, Col, Row } from "reactstrap";
+import { FormGroup, Col, Row, Label } from "reactstrap";
 // import "./style.css";
 const InputRangeMultiple = ({
     maxValue,
@@ -21,10 +21,17 @@ const InputRangeMultiple = ({
     const [amountMax, setAmountMax] = useState(item.maxValue);
     const [valueRange, setValueRange] = useState(item.maxValue);
     const handlerGetValue = (value) => {
-        if (item.isMulti) {
+        console.log("valueRange", valueRange);
+        if (item.isMulti === true) {
             setValueMulti(value);
             setAmountMin(value.min);
             setAmountMax(value.max);
+            if (value.min > value.max) {
+                setAmountMin(value.max);
+            }
+            if (value.max < value.min) {
+                setAmountMax(value.min);
+            }
         } else {
             setValueRange(value);
         }
@@ -85,9 +92,24 @@ const InputRangeMultiple = ({
         <div>
             {item.haveInput && item.isMulti && (
                 <FormGroup>
+                    {item.label && (
+                        <Label for={item.name} className={item.labelClass}>
+                            {item.label}
+                            {item.required && (
+                                <span className="text-danger">*</span>
+                            )}
+                        </Label>
+                    )}
                     <Row>
                         <Col xl="6">
-                            {item.labelMin && <label>{item.labelMin}</label>}
+                            {item.labelMin && (
+                                <label
+                                    htmlFor={item.id}
+                                    className={item.labelClass}
+                                >
+                                    {item.labelMin}
+                                </label>
+                            )}
                             <CurrencyInput
                                 name={item.name}
                                 value={amountMin}
@@ -100,7 +122,14 @@ const InputRangeMultiple = ({
                             />
                         </Col>
                         <Col xl="6">
-                            {item.labelMax && <label>{item.labelMax}</label>}
+                            {item.labelMax && (
+                                <label
+                                    htmlFor={item.id}
+                                    className={item.labelClass}
+                                >
+                                    {item.labelMax}
+                                </label>
+                            )}
                             <CurrencyInput
                                 name={item.name}
                                 value={amountMax}
@@ -129,7 +158,7 @@ const InputRangeMultiple = ({
                                     item.formatLabel ||
                                     item.formatLabel === undefined
                                         ? `${value} ${item.formatLabel}`
-                                        : value
+                                        : Number(value)
                                 }
                                 draggableTrack
                                 maxValue={item.maxValue}

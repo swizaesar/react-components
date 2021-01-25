@@ -12,7 +12,7 @@ const Style = styled.div`
             transition: all 0.25s ease;
 
             background: ${color.primary};
-            color: #fff;
+            color: ${color.user.primary};
             &.disabled {
                 background: #e8e8e8;
                 color: #5d5d5d;
@@ -50,11 +50,23 @@ const Style = styled.div`
         right: 0;
     }
 `;
-const InputOrder = () => {
-    const [orderItem, setOrderItem] = React.useState(1);
+const InputOrder = ({
+    handleUpdateDataOrder = () => {},
+    onGetValue = () => {},
+    max = 100,
+    defaultValue = 1,
+}) => {
+    const [orderItem, setOrderItem] = React.useState(defaultValue);
 
     const handleAddItem = () => {
-        setOrderItem(orderItem + 1);
+        let value = orderItem;
+        if (value > max) {
+            setOrderItem(max);
+        }
+        if (value < max) {
+            setOrderItem(value + 1);
+        }
+        handleUpdateDataOrder(value + 1);
     };
     const handleRemoveItem = () => {
         let value = orderItem;
@@ -62,17 +74,25 @@ const InputOrder = () => {
         if (value < 1) {
             setOrderItem(0);
         }
+        handleUpdateDataOrder(value - 1);
     };
     const handleChangeItem = (e) => {
         let value = e.target.value.replace(/[^0-9]/g, "");
         if (value < 1) {
             setOrderItem(0);
         }
-        if (value === NaN) {
-            setOrderItem(0);
+        if (value > max) {
+            setOrderItem(max);
         }
-        setOrderItem(Number(value));
+        if (value < max) {
+            setOrderItem(Number(value));
+        }
+        handleUpdateDataOrder(value);
     };
+    React.useEffect(() => {
+        onGetValue(orderItem);
+    });
+
     return (
         <Style id="input-order">
             <div className="order-form">
@@ -105,6 +125,13 @@ const InputOrder = () => {
                 <div className="error">
                     <i className="text-danger">
                         Minimal pembelian produk 1 barang
+                    </i>
+                </div>
+            )}
+            {orderItem === max && (
+                <div className="error">
+                    <i className="text-secondary">
+                        Jumlah barang yang tersedia adalah {max}
                     </i>
                 </div>
             )}

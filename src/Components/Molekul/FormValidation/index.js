@@ -8,6 +8,7 @@ const Form = ({
     handlerStatusForm = () => {},
     validateForm = true,
     setForm = () => {},
+    onCheckValue = () => {},
 }) => {
     const onGetValue = (param) => {
         // let isError = false;
@@ -19,6 +20,7 @@ const Form = ({
         //     }
         // }
         setForm(form);
+        onCheckValue(form);
     };
     return (
         <Fragment>

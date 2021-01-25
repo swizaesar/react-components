@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { useEffect } from "react";
 
-const TablePagination = props => {
+const TablePagination = (props) => {
     const {
         currentPage,
-        totalPage,
+        total_page,
         limitPagination,
-        onClickNumber = () => {}
+        onClickNumber = () => {},
     } = props;
     const [paginationListNumber, setPaginationListNUmber] = useState(false);
 
     useEffect(() => {
-        if (totalPage > 1 && currentPage) {
+        if (total_page > 1 && currentPage) {
             const listOfNumber = Array.from(
-                Array(Number(totalPage + 1)).keys()
+                Array(Number(total_page + 1)).keys()
             );
             let startPagination = 1;
 
-            if (totalPage > limitPagination) {
+            if (total_page > limitPagination) {
                 startPagination = currentPage;
                 if (
-                    currentPage <= totalPage &&
-                    currentPage >= totalPage - limitPagination
+                    currentPage <= total_page &&
+                    currentPage >= total_page - limitPagination
                 ) {
-                    startPagination = totalPage - limitPagination + 1;
+                    startPagination = total_page - limitPagination + 1;
                 }
             }
 
@@ -35,37 +35,36 @@ const TablePagination = props => {
                 )
             );
         }
-    }, [totalPage, currentPage, limitPagination]);
+    }, [total_page, currentPage, limitPagination]);
 
     const eventOnClickNumber = (e, number) => {
         e.preventDefault();
         onClickNumber(number);
     };
 
-    const eventOnClickNextPagination = e => {
+    const eventOnClickNextPagination = (e) => {
         e.preventDefault();
         onClickNumber(currentPage + 1);
     };
 
-    const eventOnClickPrevPagination = e => {
+    const eventOnClickPrevPagination = (e) => {
         e.preventDefault();
         onClickNumber(currentPage - 1);
     };
-    const eventOnClickFirstPagination = e => {
+    const eventOnClickFirstPagination = (e) => {
         e.preventDefault();
         onClickNumber(1);
     };
-    const eventOnClickLastPagination = e => {
+    const eventOnClickLastPagination = (e) => {
         e.preventDefault();
-        onClickNumber(totalPage);
+        onClickNumber(total_page);
     };
-
     return (
         <div className="pagination-table">
             {paginationListNumber.length > 0 && (
                 <Pagination
-                    className="pagination justify-content-end"
-                    listClassName="justify-content-end"
+                    className="pagination justify-content-center"
+                    listClassName="justify-content-center"
                 >
                     <PaginationItem disabled={currentPage === 1}>
                         <PaginationLink
@@ -91,7 +90,7 @@ const TablePagination = props => {
                         </PaginationLink>
                     </PaginationItem>
                     {paginationListNumber &&
-                        paginationListNumber.map(item => {
+                        paginationListNumber.map((item) => {
                             return (
                                 <PaginationItem
                                     className={
@@ -103,7 +102,7 @@ const TablePagination = props => {
                                     <PaginationLink
                                         href="#pablo"
                                         className="number"
-                                        onClick={e =>
+                                        onClick={(e) =>
                                             eventOnClickNumber(e, item)
                                         }
                                     >
@@ -113,7 +112,7 @@ const TablePagination = props => {
                             );
                         })}
 
-                    <PaginationItem disabled={currentPage === totalPage}>
+                    <PaginationItem disabled={currentPage === total_page}>
                         <PaginationLink
                             aria-label="Next"
                             href="#pablo"
@@ -124,7 +123,7 @@ const TablePagination = props => {
                             <span className="sr-only">Next</span>
                         </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem disabled={currentPage === totalPage}>
+                    <PaginationItem disabled={currentPage === total_page}>
                         <PaginationLink
                             aria-label="Last"
                             href="#pablo"

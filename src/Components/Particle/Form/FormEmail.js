@@ -26,7 +26,11 @@ const FormEmail = ({
             id: id,
             name: e.target.name,
             value: value,
-            status: validateEmail(value) ? true : false,
+            status: item.required
+                ? validateEmail(value)
+                    ? true
+                    : false
+                : true,
         });
         setValid(!item.status);
         setValue(value);
@@ -42,7 +46,12 @@ const FormEmail = ({
     }, [handleSetValidCallback]);
     return (
         <FormGroup>
-            {item.label && <label>{item.label}</label>}
+            {item.label && (
+                <label htmlFor={item.id} className={item.labelClass}>
+                    {item.label}
+                    {item.required && <span className="text-danger">*</span>}
+                </label>
+            )}
             <Style
                 name={item.name}
                 id={item.name}

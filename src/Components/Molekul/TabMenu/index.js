@@ -5,6 +5,7 @@ const TabMenu = ({
     color = {
         text: false,
         background: false,
+        activeText: false,
         activeColor: false,
         activeBackground: false,
     },
@@ -61,6 +62,11 @@ const TabMenu = ({
                                 onClick={(e) => handleClickMenuTab(e, key)}
                             >
                                 {item.title}
+                                <span
+                                    className={`border-active-link ${
+                                        key === activeTab ? "active" : ""
+                                    }`}
+                                ></span>
                             </div>
                         );
                     })}

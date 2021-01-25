@@ -9,7 +9,7 @@ export const ImageUploadStyle = styled.div`
     }
     .image {
         display: block;
-        width: 100%;
+        width: ${(props) => props.width || "100%"};
         border: 1px solid #ddd;
         background: #fff;
         height: ${(props) => props.height || "160px"};
@@ -83,6 +83,24 @@ export const ImageUploadStyle = styled.div`
             padding-right: 0;
         }
     }
+    ${(props) =>
+        props.avatar === true &&
+        `
+            .image{
+                height: ${(props) => props.height || "150px"};
+                margin: auto;
+                width: ${(props) => props.width || "150px"};
+                border-radius: 50%;
+                .label-title{
+                    border-radius: 50%;
+                    span{
+                        position: absolute;
+                        bottom: 0;
+                        background: unset;
+                    }
+                }
+            }
+        `}
 `;
 export const CurrencyStyle = styled.div`
     width: 100%;

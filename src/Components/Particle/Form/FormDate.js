@@ -60,19 +60,35 @@ const FormDate = ({
     };
     return (
         <FormGroup>
-            {item.label && !item.range && <label>{item.label}</label>}
+            {item.label && !item.range && (
+                <label>
+                    {item.label}
+                    {item.required && <span className="text-danger">*</span>}
+                </label>
+            )}
             <Style>
                 {item.range ? (
                     <Row>
                         <Col xl="6" md="6" sm="6" xs="12">
                             {item.labelStartDate && (
-                                <label> {item.labelStartDate}</label>
+                                <label
+                                    htmlFor={item.id}
+                                    className={item.labelClass}
+                                >
+                                    {item.labelStartDate}
+                                    {item.required && (
+                                        <span className="text-danger">*</span>
+                                    )}
+                                </label>
                             )}
                             <DatePicker
                                 className="w-100"
                                 selected={startDate}
                                 onChange={(value) => handleSetStartDate(value)}
                                 selectsStart
+                                showMonthDropdown
+                                showYearDropdown
+                                adjustDateOnChange
                                 dateFormat="dd-MM-y"
                                 startDate={startDate}
                                 endDate={endDate}
@@ -82,11 +98,20 @@ const FormDate = ({
 
                         <Col xl="6" md="6" sm="6" xs="12">
                             {item.labelEndDate && (
-                                <label> {item.labelEndDate}</label>
+                                <label>
+                                    {" "}
+                                    {item.labelEndDate}
+                                    {item.required && (
+                                        <span className="text-danger">*</span>
+                                    )}
+                                </label>
                             )}
                             <DatePicker
                                 className="w-100"
                                 selected={endDate}
+                                showMonthDropdown
+                                showYearDropdown
+                                adjustDateOnChange
                                 onChange={(value) => handleSetEndDate(value)}
                                 selectsEnd
                                 dateFormat="dd-MM-y"
@@ -99,7 +124,11 @@ const FormDate = ({
                     </Row>
                 ) : (
                     <DatePicker
+                        maxDate={item.maxDate}
                         selected={value}
+                        showMonthDropdown
+                        showYearDropdown
+                        adjustDateOnChange
                         dateFormat="dd-MM-y"
                         onChange={(value) => _onGetValue(value)}
                         customInput={<CustomDate />}

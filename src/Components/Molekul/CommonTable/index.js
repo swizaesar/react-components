@@ -16,10 +16,14 @@ const DEFAULT_LIMIT_DATA = 10;
 const DEFAULT_LIMIT_PAGINATION = 5;
 
 const CommonTable = ({
+    searchBy = "full_name",
+    isRefresh = true,
+    edit = false,
     dummyData,
-    setDataDummy,
+    setDataDummy = () => {},
     configuration = {
         searchInput: true,
+        searchValue: "",
         nav: {
             hasSearch: true,
         },
@@ -33,14 +37,20 @@ const CommonTable = ({
     },
     title = false,
 }) => {
-    const { optionTable, service, nav, searchInput } = configuration;
+    const {
+        optionTable,
+        service,
+        nav,
+        searchInput,
+        searchValue,
+    } = configuration;
     const { dispatch, state } = useStore();
     const [isLoading, setLoading] = useState(false);
     const [configTable, setConfigurationTable] = useState(false);
     const [dataTable, setDataTable] = useState([]);
     const [params, setParams] = useState({
-        page: 1,
-        limit: DEFAULT_LIMIT_DATA,
+        page: 0,
+        size: DEFAULT_LIMIT_DATA,
     });
 
     const getData = (params) => {
@@ -53,6 +63,8 @@ const CommonTable = ({
             setParams(params);
         }
         if (!service) {
+            // setParams(params);
+            // setDataDummy(dummyData);
             // console.log('params', params);
         }
     };
@@ -62,27 +74,25 @@ const CommonTable = ({
     const responseGetData = (state) => {
         if (service) {
             if (state[service.group] && state[service.group][service.key]) {
-                const { data, isSuccess, headers } = state[service.group][
-                    service.key
-                ];
-
+                const { data, isSuccess } = state[service.group][service.key];
                 if (isSuccess) {
                     const {
-                        current_page,
+                        number,
                         next_page,
-                        total_page,
-                        total_data,
-                    } = headers;
-                    const isPagination = Number(total_data) > 1;
+                        total_pages,
+                        total_elements,
+                    } = data;
+
+                    const isPagination = Number(total_elements) > 1;
                     const responseHeaderData = {
-                        currentPage: Number(current_page),
+                        currentPage: Number(number + 1),
                         nextPage: next_page,
-                        totalPage: Number(total_page),
-                        total: total_data,
+                        total_page: Number(total_pages),
+                        total_elements: total_elements,
                         isPagination: isPagination,
-                        paginationListNumber: total_page,
+                        paginationListNumber: total_pages,
                     };
-                    setDataTable(data);
+                    setDataTable(data.content);
                     setConfigurationTable(responseHeaderData);
                 }
                 setLoading(false);
@@ -91,40 +101,48 @@ const CommonTable = ({
             // const { data, isSuccess, headers } = dummyData[dummyData.length];
             // const { data, isSuccess, headers } = state;
             setDataTable(dummyData);
+            setDataDummy(dummyData);
             setLoading(false);
+            return dataTable;
         }
     };
 
     const responseGetDataCallBack = useCallback(responseGetData, []);
 
     useEffect(() => {
-        getDataCallBack(params);
-    }, [params, getDataCallBack]);
+        if (isRefresh) {
+            getDataCallBack(params);
+        }
+    }, [isRefresh, params, getDataCallBack]);
 
     useEffect(() => {
-        responseGetDataCallBack(state);
-    }, [state, responseGetDataCallBack]);
+        if (isRefresh) {
+            responseGetDataCallBack(state);
+        }
+    }, [isRefresh, state, responseGetDataCallBack]);
 
     const onClickNumber = (number) => {
         getData({
             page: number,
-            limit: DEFAULT_LIMIT_DATA,
+            size: DEFAULT_LIMIT_DATA,
         });
     };
     const onSearchDataDummy = (value) => {};
     const onSearchData = (value) => {
-        getData({
-            page: 1,
-            limit: 10,
-            search: value,
-        });
-    };
-    const onGetValueFilter = ({ value, key }) => {
-        params[key] = value;
+        // let example =
         params.page = 1;
-        params.limit = 10;
+        params.size = 10;
+        params.filters = `[["${searchValue}","like","${value}"]]`;
+
         getData(params);
     };
+    const onGetValueFilter = ({ value }) => {
+        params.sort = value;
+        params.page = 1;
+        params.size = 10;
+        getData(params);
+    };
+
     return (
         <StyleCommon>
             <Row>
@@ -139,6 +157,7 @@ const CommonTable = ({
                         )}
                         <div>
                             <TableTop
+                                searchBy={searchBy}
                                 searchInput={searchInput}
                                 onSearchDataDummy={onSearchDataDummy}
                                 setDataTable={setDataTable}
@@ -151,8 +170,13 @@ const CommonTable = ({
                                 dataNav={nav}
                             ></TableTop>
                             <Table className="align-items-center" responsive>
-                                <TableHead dataHead={optionTable}></TableHead>
+                                <TableHead
+                                    dataNav={nav}
+                                    dataHead={optionTable}
+                                ></TableHead>
                                 <TableBody
+                                    edit={edit}
+                                    dummyData={dummyData}
                                     isLoading={isLoading}
                                     optionTable={optionTable}
                                     dataTable={dataTable}

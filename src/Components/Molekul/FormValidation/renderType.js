@@ -11,6 +11,8 @@ import FormDate from "../../Particle/Form/FormDate";
 import FormSelect from "../../Particle/Form/FormSelect";
 import InputRangeMultiple from "../../Particle/Form/InputRange";
 import FormTime from "../../Particle/Form/FormTime";
+import FormNumberPhone from "../../Particle/Form/FormNumberPhone";
+import FormHTML from "../../Particle/Form/FormHTML";
 
 const renderType = ({
     id,
@@ -57,6 +59,7 @@ const renderType = ({
         select: () => {
             return (
                 <FormSelect
+                    service={item.service}
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}
@@ -115,6 +118,7 @@ const renderType = ({
         uploadImageMultiple: () => {
             return (
                 <FormUploadImageMultiple
+                    service={item.service}
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}
@@ -171,6 +175,17 @@ const renderType = ({
         phone: () => {
             return (
                 <FormNumberPhone
+                    validateForm={validateForm}
+                    item={item}
+                    isStatus={isStatus}
+                    id={id}
+                    onGetValue={onGetValue}
+                />
+            );
+        },
+        html: () => {
+            return (
+                <FormHTML
                     validateForm={validateForm}
                     item={item}
                     isStatus={isStatus}

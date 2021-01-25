@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "./style";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {

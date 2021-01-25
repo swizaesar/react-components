@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const RatingStyle = styled.div`
+    text-align: left;
     i {
         font-size: 14px;
+    }
+    span {
+        font-size: 12px;
     }
 `;
 
@@ -12,7 +16,7 @@ const Rating = ({
     totalStars = 5,
     activeColor = "#ffc400",
     inActiveColor = "#bbc0d5",
-    textColor = "text-white",
+    textColor = "text-black-50",
 }) => {
     return (
         <RatingStyle>

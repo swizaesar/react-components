@@ -12,10 +12,10 @@ const LandingPage = () => {
                     <h6>NPM</h6>
                     <Card className="shadow">
                         <CardBody>
-                            <p>
+                            {/* <p>
                                 First, install all the required framework
                                 libraries for all components:
-                            </p>
+                            </p> */}
                             <Card className="card-code">
                                 <CardBody>
                                     <code>
@@ -27,6 +27,10 @@ const LandingPage = () => {
                                         </pre>
                                         <pre>
                                             npm install --save styled-components
+                                        </pre>
+                                        <pre>npm install react-select</pre>
+                                        <pre>
+                                            npm install react-number-format
                                         </pre>
                                     </code>
                                 </CardBody>

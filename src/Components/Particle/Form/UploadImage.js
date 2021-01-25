@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { ImageUploadStyle } from "./index.style";
 import { FormGroup } from "reactstrap";
 
-// import ImageDummy from "../../Assets/Dummy/dummy.jpg";
-
 const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
     // const {
     //     id,
@@ -15,7 +13,7 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
     // } = props;
     const [isValid, setValid] = useState(false);
     // const [errorInput, setValueText] = useState(true);
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(item.value);
     const inputFileRef = useRef(null);
     const handleClickImage = () => {
         inputFileRef.current.click();
@@ -44,19 +42,22 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
             id: id,
             name: item.name,
             value: value,
-            status:
-                value === null || value === undefined || value === ""
+            status: item.required
+                ? value === null || value === undefined || value === ""
                     ? false
-                    : true,
+                    : true
+                : true,
         });
         setValid(!item.status);
     };
     const toBase64 = (file) =>
         new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = (error) => reject(error);
+            if (file !== undefined) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+            }
         });
     const handleSetValid = () => {
         if (!validateForm) {
@@ -68,14 +69,27 @@ const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
         handleSetValidCallback();
     }, [handleSetValidCallback]);
     return (
-        <ImageUploadStyle height={item.heightStyle}>
+        <ImageUploadStyle
+            avatar={item.avatar}
+            height={item.heightStyle}
+            width={item.widthStyle}
+        >
             <FormGroup>
+                {item.label && (
+                    <label htmlFor="">
+                        {item.label}
+                        {item.required && (
+                            <span className="text-danger">*</span>
+                        )}
+                    </label>
+                )}
                 <input
                     id={item.name}
                     name={item.name}
                     ref={inputFileRef}
                     onChange={handleOnChangeImage}
                     type="file"
+                    accept="image/x-png,image/gif,image/jpeg, image/jpg"
                 />
                 <div className="image" onClick={handleClickImage}>
                     {image && <img src={image} alt="" />}
