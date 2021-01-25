@@ -3,10 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import routesList from "./RoutesList";
 import Sidebar from "../Components/Sidebar";
 import styled from "styled-components";
-import { sidebarWidth } from "../Utils/Variable";
 
 const Style = styled.section`
-    width: calc(100% - ${sidebarWidth.width}px);
+    width: calc(100% - 250px);
     margin: 0 0 0 auto;
     padding: 20px;
 `;
