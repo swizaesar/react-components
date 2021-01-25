@@ -85,27 +85,27 @@ const FormUploadImageMultiple = ({
     const [data, setData] = useState(item.value || []);
     const refInput = useRef();
 
-    useEffect(() => {
-        if (!isFirstGet) {
-            setData(item.value);
-            onGetValue({
-                id: id,
-                name: item.name,
-                value: data,
-                status: item.required
-                    ? item.max !== undefined
-                        ? data.length < 1
-                            ? false
-                            : true
-                        : data.length < 1
-                        ? false
-                        : true
-                    : true,
-            });
-            setFirstGet(true);
-        }
-        return () => {};
-    }, []);
+    // useEffect(() => {
+    //     if (!isFirstGet) {
+    //         setData(item.value);
+    //         onGetValue({
+    //             id: id,
+    //             name: item.name,
+    //             value: data,
+    //             status: item.required
+    //                 ? item.max !== undefined
+    //                     ? data.length < 1
+    //                         ? false
+    //                         : true
+    //                     : data.length < 1
+    //                     ? false
+    //                     : true
+    //                 : true,
+    //         });
+    //         setFirstGet(true);
+    //     }
+    //     return () => {};
+    // }, []);
     const eventOnClickImage = (e) => {
         e.preventDefault();
         refInput.current.click();
@@ -178,14 +178,15 @@ const FormUploadImageMultiple = ({
             id: id,
             name: item.name,
             value: data,
-            status:
-                item.max !== undefined
+            status: item.required
+                ? item.max !== undefined
                     ? data.length < 1
                         ? false
                         : true
                     : data.length < 1
                     ? false
-                    : true,
+                    : true
+                : true,
         });
         setFirstGet(false);
         // }
@@ -219,24 +220,24 @@ const FormUploadImageMultiple = ({
     useEffect(() => {
         handleSetValidCallback();
     }, [handleSetValidCallback]);
-    useEffect(() => {
-        if (!isFirstGet) {
-            onGetValue({
-                id: id,
-                name: item.name,
-                value: data,
-                status:
-                    item.max !== undefined
-                        ? data.length < 1
-                            ? false
-                            : true
-                        : data.length < 1
-                        ? false
-                        : true,
-            });
-            setFirstGet(true);
-        }
-    }, [isFirstGet, id, item, data]);
+    // useEffect(() => {
+    //     if (!isFirstGet) {
+    //         onGetValue({
+    //             id: id,
+    //             name: item.name,
+    //             value: data,
+    //             status:
+    //                 item.max !== undefined
+    //                     ? data.length < 1
+    //                         ? false
+    //                         : true
+    //                     : data.length < 1
+    //                     ? false
+    //                     : true,
+    //         });
+    //         setFirstGet(true);
+    //     }
+    // }, [isFirstGet, id, item, data]);
     return (
         <FormUploadImageMultipleStyle>
             {/* <GrowingLoading active={isLoadingRemove}></GrowingLoading> */}

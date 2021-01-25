@@ -77,7 +77,7 @@ const ValidationForm = () => {
             col: 6,
             valid: "Harap masukan file",
             value: "",
-            status: false,
+            status: true,
         },
         {
             type: "image",
@@ -100,7 +100,7 @@ const ValidationForm = () => {
             col: 6,
             valid: "Harap masukan gambar",
             value: [],
-            status: false,
+            status: true,
             max: 3,
         },
         // {
@@ -150,6 +150,7 @@ const ValidationForm = () => {
         // onGetValue(listForm);
         // console.log("validationClick", validationClick);
     };
+    console.log(listForm);
     return (
         <section>
             <h3 className="title">Validation Form</h3>
