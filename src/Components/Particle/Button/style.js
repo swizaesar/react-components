@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Button } from "reactstrap";
-import { color } from "../../../Utils/Variable";
+// import { color } from "../../../Utils/Variable";
 
 const Style = styled(Button)`
-    color: ${(props) =>
+    /* color: ${(props) =>
         props.color === "primary"
             ? color.user.primary
             : props.color === "outline-primary"
@@ -89,6 +89,6 @@ const Style = styled(Button)`
                 : `1px solid  ${props.color}`};
         opacity: 0.8;
         transform: translateY(-1px);
-    }
+    } */
 `;
 export default Style;
