@@ -10,7 +10,7 @@ export const color = {
         lakugan: "#0c258c",
     },
 };
-export const sidebar = {
+export const sidebarWidth = {
     width: 250,
 };
 export const aside = {

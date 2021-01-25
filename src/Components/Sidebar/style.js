@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Navbar } from "reactstrap";
-import { sidebar } from "../../Utils/Variable";
+import { sidebarWidth } from "../../Utils/Variable";
 const Style = styled(Navbar)`
     position: fixed;
     display: block;
@@ -12,7 +12,7 @@ const Style = styled(Navbar)`
     bottom: 0;
     height: 100%;
     background: #33383e;
-    width: ${sidebar.width}px;
+    width: ${sidebarWidth.width}px;
     .navbar-heading {
         padding-left: 10px;
     }
