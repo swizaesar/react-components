@@ -146,7 +146,7 @@ const Using = () => {
     console.log(listForm);
     return (
         <Style>
-            <h3 className="title">Validation Form</h3>
+            <h3 className="title">Validasi Form</h3>
             <div className="desc">
                 <p>
                     Validasi form input, form pada form input ini menyediakan
