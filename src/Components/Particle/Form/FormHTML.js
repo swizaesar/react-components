@@ -109,8 +109,9 @@ const FormHTML = ({
                         <span
                             className={
                                 editorValue.replace(/(<([^>]+)>)/gi, "")
-                                    .length >
-                                    item.maxLength - 1 && "text-danger"
+                                    .length > item.maxLength
+                                    ? "text-danger"
+                                    : ""
                             }
                         >
                             {editorValue.replace(/(<([^>]+)>)/gi, "").length}/

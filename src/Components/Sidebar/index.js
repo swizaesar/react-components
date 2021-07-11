@@ -2,7 +2,38 @@ import React from "react";
 import Style from "./style";
 import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
-
+import Button from "../Particle/Button";
+import styled from "styled-components";
+const ButtonStyle = styled(Button)`
+    background: transparent;
+    width: 100%;
+    color: #aaa;
+    border: unset;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: transparent !important;
+        border-color: #41474e !important;
+        box-shadow: unset !important;
+    }
+    .btn-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .fa-angle-right {
+        transition: all 0.25s ease;
+        &.active {
+            transition: all 0.25s ease;
+            transform: rotate(90deg);
+        }
+    }
+`;
 const Sidebar = (props) => {
     const { routes = [] } = props;
     const createLinkComponentsHome = (routes) => {
@@ -57,28 +88,94 @@ const Sidebar = (props) => {
                 );
             });
     };
+    const SidebarList = ({ data }) => {
+        const [isShow, setShow] = React.useState(
+            window.location.pathname.split("/")[1] === data.activeList
+                ? true
+                : false
+        );
+        const handleShowList = () => {
+            setShow(!isShow);
+        };
+        return (
+            <div style={{ borderBottom: "2px solid #41474e" }}>
+                <ButtonStyle onClick={handleShowList}>
+                    {data.sidebar.icon && (
+                        <i className={`${data.sidebar.icon} mr-2`} />
+                    )}
+                    <div className="btn-list">
+                        {data.sidebar.name}
+                        <i
+                            className={`fas fa-angle-right ${
+                                isShow ? "active" : ""
+                            }`}
+                        />
+                    </div>
+                </ButtonStyle>
+                {isShow && (
+                    <div>
+                        {data.children.map((list, key) => {
+                            return (
+                                <Link
+                                    key={key}
+                                    to={`${list.path}`}
+                                    // tag={NavLinkRRD}
+                                    // onClick={this.closeCollapse}
+                                    className={`nav-link nav-component ${
+                                        window.location.pathname.split(
+                                            "/"
+                                        )[2] === data.sidebar.activeName
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                    style={{
+                                        borderBottom: "unset",
+                                        paddingLeft: 40,
+                                        fontSize: 14,
+                                    }}
+                                >
+                                    {list.sidebar.icon && (
+                                        <i
+                                            className={`${list.sidebar.icon} mr-2`}
+                                        />
+                                    )}
+                                    {list.sidebar.name}
+                                </Link>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
+        );
+    };
     const createLinkMolekul = (routes) => {
         return routes
             .filter((item) => item.setting === "molekul")
             .map((prop, key) => {
                 return (
                     <NavItem key={key}>
-                        <Link
-                            to={`${prop.path}`}
-                            // tag={NavLinkRRD}
-                            // onClick={this.closeCollapse}
-                            className={`nav-link nav-component ${
-                                window.location.pathname.split("/")[1] ===
-                                prop.sidebar.activeName
-                                    ? "active"
-                                    : ""
-                            }`}
-                        >
-                            {prop.sidebar.icon && (
-                                <i className={`${prop.sidebar.icon} mr-2`} />
-                            )}
-                            {prop.sidebar.name}
-                        </Link>
+                        {prop.children ? (
+                            <SidebarList data={prop} />
+                        ) : (
+                            <Link
+                                to={`${prop.path}`}
+                                // tag={NavLinkRRD}
+                                // onClick={this.closeCollapse}
+                                className={`nav-link nav-component ${
+                                    window.location.pathname.split("/")[1] ===
+                                    prop.sidebar.activeName
+                                        ? "active"
+                                        : ""
+                                }`}
+                            >
+                                {prop.sidebar.icon && (
+                                    <i
+                                        className={`${prop.sidebar.icon} mr-2`}
+                                    />
+                                )}
+                                {prop.sidebar.name}
+                            </Link>
+                        )}
                     </NavItem>
                 );
             });

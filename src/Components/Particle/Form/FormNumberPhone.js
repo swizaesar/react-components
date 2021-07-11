@@ -89,11 +89,7 @@ const FormNumberPhone = (props) => {
             id: id,
             name: item.name,
             value: vals.value,
-            status: item.required
-                ? vals.value.length < 9
-                    ? false
-                    : true
-                : true,
+            status: vals.value.length < 9 ? false : true,
         });
         setValue(value);
         setValid(vals.value.length < 1 ? true : false);

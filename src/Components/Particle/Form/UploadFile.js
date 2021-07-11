@@ -27,7 +27,7 @@ const UploadFile = ({ validateForm, item, isStatus, id, onGetValue }) => {
             id: id,
             name: e.target.name,
             value: value.name,
-            status: item.required ? (value.name === "" ? false : true) : true,
+            status: value.name === "" ? false : true,
         });
         setValid(!item.status);
     };

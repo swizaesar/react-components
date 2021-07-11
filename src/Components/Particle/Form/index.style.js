@@ -99,8 +99,30 @@ export const ImageUploadStyle = styled.div`
                         background: unset;
                     }
                 }
+                img{
+                    border-radius: 50%;
+                }
             }
         `}
+`;
+export const SelectCurrency = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    select {
+        font-size: 0;
+        border: unset;
+        background: transparent;
+        display: flex;
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
+        }
+    }
 `;
 export const CurrencyStyle = styled.div`
     width: 100%;

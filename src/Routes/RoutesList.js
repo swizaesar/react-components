@@ -1,11 +1,16 @@
 import { lazy } from "react";
+import LandingPage from "../Pages/LandingPage";
+import Button from "../Pages/Button";
+import Rating from "../Pages/Rating";
+import FormText from "../Pages/ValidationForm/FormText";
+import Tab from "../Pages/Tab";
 
 export default [
     {
-        component: lazy(() => import("../Pages/LandingPage")),
+        component: LandingPage,
+        layout: import("./RouteGuestLayout"),
         path: "/",
         isHeader: true,
-        layout: "",
         isFooter: true,
         setting: false,
         sidebar: {
@@ -16,10 +21,10 @@ export default [
         title: "Home",
     },
     {
-        component: lazy(() => import("../Pages/Button")),
+        component: Button,
+        layout: import("./RouteGuestLayout"),
         path: "/button",
         isHeader: true,
-        layout: "",
         isFooter: true,
         setting: "particle",
         sidebar: {
@@ -30,10 +35,10 @@ export default [
         title: "Button",
     },
     {
-        component: lazy(() => import("../Pages/Rating")),
+        component: Rating,
+        layout: import("./RouteGuestLayout"),
         path: "/rating",
         isHeader: true,
-        layout: "",
         isFooter: true,
         setting: "particle",
         sidebar: {
@@ -44,24 +49,36 @@ export default [
         title: "Rating",
     },
     {
-        component: lazy(() => import("../Pages/ValidationForm")),
-        path: "/validation-form",
-        isHeader: true,
-        layout: "",
-        isFooter: true,
+        activeList: "form",
+
         setting: "molekul",
+        children: [
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormText,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-text",
+                label: "Input Text",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Text",
+                    activeName: "input-text",
+                },
+            },
+        ],
         sidebar: {
             icon: "fas fa-wallet mr-2",
             name: "Validation Form",
-            activeName: "validation-form",
+            activeName: "form",
         },
-        title: "Button",
+        title: "Validation Form",
     },
     {
-        component: lazy(() => import("../Pages/Tab")),
+        component: Tab,
+        layout: import("./RouteGuestLayout"),
         path: "/tab",
         isHeader: true,
-        layout: "",
         isFooter: true,
         setting: "molekul",
         sidebar: {

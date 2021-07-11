@@ -29,7 +29,6 @@ const FormText = ({
     const [isValue, setValue] = useState("");
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
-        console.log("item.character", item.character);
         let value = e.target.value;
         onGetValue({
             id: id,
@@ -111,9 +110,9 @@ const FormText = ({
                     <i>
                         {item.character === undefined
                             ? item.valid
-                            : isValue.length < item.character.min.length
+                            : item.character.min.length > isValue.length
                             ? item.character.min.valid
-                            : isValue.length > item.character.max.length
+                            : item.character.max.length < isValue.length
                             ? item.character.max.valid
                             : item.valid}
                     </i>

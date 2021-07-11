@@ -11,14 +11,8 @@ const Form = ({
     onCheckValue = () => {},
 }) => {
     const onGetValue = (param) => {
-        // let isError = false;
         form[param.id].value = param.value;
         form[param.id].status = param.status;
-        // for (let key in form) {
-        //     if (!form[key].status) {
-        //         isError = true;
-        //     }
-        // }
         setForm(form);
         onCheckValue(form);
     };

@@ -11,58 +11,45 @@ const Style = styled.section`
 `;
 
 const RouteGuestLayout = (props) => {
+    const { item } = props;
+    console.log(item);
     return (
         <Switch>
             <Suspense fallback={<div>Loading...</div>}>
-                {routesList
-                    .filter(
-                        (item) =>
-                            window.location.pathname === item.path &&
-                            item.sidebar
-                    )
-                    .map((item, key) => {
-                        return (
-                            <Sidebar
-                                item={item}
-                                key={key}
-                                routes={routesList.filter(
-                                    (item) => item.sidebar
-                                )}
-                            />
-                        );
-                    })}
-
-                <Style>
-                    <div id="content-page">
-                        {routesList
-                            .filter((item) => item.layout === "")
-                            .map((item, key) => {
+                <div id="content-page">
+                    {item.sidebar && (
+                        <Sidebar
+                            item={item}
+                            routes={routesList.filter((item) => item.sidebar)}
+                        />
+                    )}
+                    <Style>
+                        <Route
+                            exact
+                            path={item.path}
+                            component={item.component}
+                        />
+                        {/* {item.children !== undefined ? (
+                            item.children.map((data, key) => {
+                                console.log(data, "data");
                                 return (
-                                    <Fragment key={key}>
-                                        {/* {item.isHeader === true &&
-                                item.path === window.location.pathname ? (
-                                    <Header />
-                                ) : (
-                                    false
-                                )} */}
-                                        {/* {/* {item.isSidebar === true && */}
-
-                                        <Route
-                                            exact
-                                            path={item.path}
-                                            component={item.component}
-                                        />
-                                        {/* {item.isFooter === true &&
-                                item.path === window.location.pathname ? (
-                                    <Footer />
-                                ) : (
-                                    false
-                                )} */}
-                                    </Fragment>
+                                    <Route
+                                        exact
+                                        key={key}
+                                        path={`${item.path}${data.path}`}
+                                        component={data.component}
+                                    />
                                 );
-                            })}
-                    </div>
-                </Style>
+                            })
+                        ) : (
+                            <Route
+                                exact
+                                path={item.path}
+                                component={item.component}
+                            />
+                        )} */}
+                    </Style>
+                </div>
             </Suspense>
         </Switch>
     );

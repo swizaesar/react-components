@@ -26,11 +26,7 @@ const FormEmail = ({
             id: id,
             name: e.target.name,
             value: value,
-            status: item.required
-                ? validateEmail(value)
-                    ? true
-                    : false
-                : true,
+            status: validateEmail(value) ? true : false,
         });
         setValid(!item.status);
         setValue(value);
@@ -60,6 +56,7 @@ const FormEmail = ({
                 rows={item.rows}
                 defaultValue={item.value}
                 type={item.type}
+                disabled={item.disable}
                 placeholder={item.placeholder}
                 className={className}
             />

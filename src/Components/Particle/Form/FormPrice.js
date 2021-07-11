@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input";
-import { CurrencyStyle } from "./index.style";
-import { FormGroup } from "reactstrap";
+import { CurrencyStyle, SelectCurrency } from "./index.style";
+import { FormGroup, Input } from "reactstrap";
 
 const FormPrice = (props) => {
     const {
@@ -15,6 +15,7 @@ const FormPrice = (props) => {
     const [amount, setAmount] = useState(
         item.defaultValue ? item.defaultValue : defaultValue
     );
+    const [suffix, setSuffix] = useState(item.suffix);
     const [isValid, setValid] = useState(false);
 
     const [unFormatValue, setFormatValue] = useState(0);
@@ -31,7 +32,8 @@ const FormPrice = (props) => {
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: item.required ? error : true,
+                status: error,
+                suffix: suffix,
             });
             setValid(!error);
         }
@@ -42,22 +44,27 @@ const FormPrice = (props) => {
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: item.required ? error : true,
+                status: error,
+                suffix: suffix,
             });
             setValid(!error);
         }
         if (item.max === undefined && item.min === undefined) {
-            let error = value === 0 ? true : false;
+            let error = value < 1 ? false : true;
             setValid(!error);
             setAmount(resultValue);
             onGetValue({
                 id: id,
                 name: e.target.name,
                 value: value,
-                status: item.required ? error : true,
+                status: error,
+                suffix: suffix,
             });
         }
         setFormatValue(value);
+    };
+    const handleChangeSuffix = (e) => {
+        setSuffix(` ${e.target.value}`);
     };
     const handleSetValid = () => {
         if (!validateForm) {
@@ -89,9 +96,27 @@ const FormPrice = (props) => {
                         precision={item.precision ? item.precision : 0}
                         decimalSeparator=","
                         thousandSeparator="."
-                        suffix={item.suffix}
+                        suffix={suffix}
                         prefix={item.currencyLogo}
                     />
+                    {item.multiSuffix && (
+                        <SelectCurrency>
+                            <Input
+                                type="select"
+                                name="select"
+                                id="multiSuffix"
+                                onChange={handleChangeSuffix}
+                            >
+                                {item.multiSuffix.map((value, key) => {
+                                    return (
+                                        <option value={value} key={key}>
+                                            {value}
+                                        </option>
+                                    );
+                                })}
+                            </Input>
+                        </SelectCurrency>
+                    )}
                 </div>
                 {isValid ? (
                     item.min && unFormatValue < item.min.price ? (

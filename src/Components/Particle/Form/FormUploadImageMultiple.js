@@ -1,11 +1,8 @@
 /* eslint-disable */
 import React, { useRef, useState } from "react";
 import { FormGroup, Label, Button } from "reactstrap";
-// import DummyImage from "../../../assets/img/default-image/deault-avatar.png";
-// import service from "../../../services";
 import { useEffect } from "react";
 import { useStore } from "../../../Reducers";
-// import GrowingLoading from "../../../Components/Loading/GrowingLoading";
 import styled from "styled-components";
 
 const FormUploadImageMultipleStyle = styled.div`
@@ -45,10 +42,13 @@ const FormUploadImageMultipleStyle = styled.div`
                 bottom: 0;
                 display: flex;
                 justify-content: center;
-                align-items: baseline;
+                align-items: center;
                 .plus-icon {
-                    font-size: 70px;
+                    font-size: 75px;
                     color: #4a4a4a;
+                    @media (max-width: 575px) {
+                        font-size: 50px;
+                    }
                 }
             }
             img {
@@ -57,6 +57,10 @@ const FormUploadImageMultipleStyle = styled.div`
                 display: block;
                 border-radius: 12px;
                 object-fit: contain;
+            }
+            @media (max-width: 575px) {
+                width: 70px;
+                height: 70px;
             }
         }
     }
@@ -75,8 +79,6 @@ const FormUploadImageMultiple = ({
         productId: false,
     },
 }) => {
-    // const [isLoading, setLoading] = useState(false);
-    // const [isLoadingRemove, setLoadingRemove] = useState(false);
     const { dispatch, state } = useStore();
     const [isValid, setValid] = useState(false);
 
@@ -85,27 +87,26 @@ const FormUploadImageMultiple = ({
     const [data, setData] = useState(item.value || []);
     const refInput = useRef();
 
-    // useEffect(() => {
-    //     if (!isFirstGet) {
-    //         setData(item.value);
-    //         onGetValue({
-    //             id: id,
-    //             name: item.name,
-    //             value: data,
-    //             status: item.required
-    //                 ? item.max !== undefined
-    //                     ? data.length < 1
-    //                         ? false
-    //                         : true
-    //                     : data.length < 1
-    //                     ? false
-    //                     : true
-    //                 : true,
-    //         });
-    //         setFirstGet(true);
-    //     }
-    //     return () => {};
-    // }, []);
+    useEffect(() => {
+        if (!isFirstGet) {
+            setData(item.value);
+            onGetValue({
+                id: id,
+                name: item.name,
+                value: data,
+                status:
+                    item.max !== undefined
+                        ? data.length < 1
+                            ? false
+                            : true
+                        : data.length < 1
+                        ? false
+                        : true,
+            });
+            setFirstGet(true);
+        }
+        return () => {};
+    }, []);
     const eventOnClickImage = (e) => {
         e.preventDefault();
         refInput.current.click();
@@ -142,18 +143,6 @@ const FormUploadImageMultiple = ({
         setData((prevState) => {
             return [...prevState, ...resultData];
         });
-
-        // const result = await service({
-        //     ...serviceOptions,
-        //     data: formData
-        // });
-        // if (result?.status === 200) {
-        //     setLoading(false);
-        //     const resultData = [result.data];
-        //     setData(prevState => {
-        //         return [...prevState, ...resultData];
-        //     });
-        // }
         refInput.current.value = "";
         setFirstGet(false);
     };
@@ -165,12 +154,6 @@ const FormUploadImageMultiple = ({
             reader.onerror = (error) => reject(error);
         });
     const onRemoveData = async (value) => {
-        // const result = await service({
-        //     ...serviceOptionsRemove,
-        //     url: `${serviceOptionsRemove.url}?id=${value.id}`
-        // });
-        // if (result?.status === 200) {
-        //     setLoadingRemove(false);
         setData((prevState) => {
             return prevState.filter((item) => item !== value);
         });
@@ -178,15 +161,14 @@ const FormUploadImageMultiple = ({
             id: id,
             name: item.name,
             value: data,
-            status: item.required
-                ? item.max !== undefined
+            status:
+                item.max !== undefined
                     ? data.length < 1
                         ? false
                         : true
                     : data.length < 1
                     ? false
-                    : true
-                : true,
+                    : true,
         });
         setFirstGet(false);
         // }
@@ -220,24 +202,24 @@ const FormUploadImageMultiple = ({
     useEffect(() => {
         handleSetValidCallback();
     }, [handleSetValidCallback]);
-    // useEffect(() => {
-    //     if (!isFirstGet) {
-    //         onGetValue({
-    //             id: id,
-    //             name: item.name,
-    //             value: data,
-    //             status:
-    //                 item.max !== undefined
-    //                     ? data.length < 1
-    //                         ? false
-    //                         : true
-    //                     : data.length < 1
-    //                     ? false
-    //                     : true,
-    //         });
-    //         setFirstGet(true);
-    //     }
-    // }, [isFirstGet, id, item, data]);
+    useEffect(() => {
+        if (!isFirstGet) {
+            onGetValue({
+                id: id,
+                name: item.name,
+                value: data,
+                status:
+                    item.max !== undefined
+                        ? data.length < 1
+                            ? false
+                            : true
+                        : data.length < 1
+                        ? false
+                        : true,
+            });
+            setFirstGet(true);
+        }
+    }, [isFirstGet, id, item, data]);
     return (
         <FormUploadImageMultipleStyle>
             {/* <GrowingLoading active={isLoadingRemove}></GrowingLoading> */}

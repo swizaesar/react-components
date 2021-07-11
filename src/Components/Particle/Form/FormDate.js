@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import { Col, FormGroup, Row } from "reactstrap";
 import "react-datepicker/dist/react-datepicker.css";
-import CustomDate from "./CustomDate";
+// import CustomDate from "./CustomDate";
 import styled from "styled-components";
 
 const Style = styled.div`
@@ -16,6 +16,20 @@ const Style = styled.div`
         }
     }
 `;
+export const CustomDate = React.forwardRef((props, ref) => {
+    return (
+        <>
+            <button
+                {...props}
+                ref={ref}
+                className="form-control w-100"
+                onClick={props.onClick}
+            >
+                {props.value} <i className="far fa-calendar ml-4"></i>
+            </button>
+        </>
+    );
+});
 const FormDate = ({
     isStatus,
     item,
@@ -24,7 +38,7 @@ const FormDate = ({
     onGetValue = () => {},
     validateForm = true,
 }) => {
-    const [value, setValue] = React.useState(new Date());
+    const [value, setValue] = React.useState(new Date(item.value));
     const [startDate, setStartDate] = React.useState(new Date());
     const [endDate, setEndDate] = React.useState(new Date());
 
@@ -34,8 +48,8 @@ const FormDate = ({
                 id: id,
                 name: item.name,
                 value: {
-                    start: moment(startDate).format("DD-MM-YYYY"),
-                    end: moment(endDate).format("DD-MM-YYYY"),
+                    start: moment(startDate).format("YYYY-MM-DD"),
+                    end: moment(endDate).format("YYYY-MM-DD"),
                 },
                 status: true,
             });
@@ -44,7 +58,7 @@ const FormDate = ({
             onGetValue({
                 id: id,
                 name: item.name,
-                value: moment(value).format("DD-MM-YYYY"),
+                value: moment(value).format("YYYY-MM-DD"),
                 status: true,
             });
             setValue(value);
@@ -89,7 +103,7 @@ const FormDate = ({
                                 showMonthDropdown
                                 showYearDropdown
                                 adjustDateOnChange
-                                dateFormat="dd-MM-y"
+                                dateFormat="y-MM-dd"
                                 startDate={startDate}
                                 endDate={endDate}
                                 customInput={<CustomDate />}
@@ -114,7 +128,7 @@ const FormDate = ({
                                 adjustDateOnChange
                                 onChange={(value) => handleSetEndDate(value)}
                                 selectsEnd
-                                dateFormat="dd-MM-y"
+                                dateFormat="y-MM-dd"
                                 startDate={startDate}
                                 endDate={endDate}
                                 minDate={startDate}
@@ -129,7 +143,7 @@ const FormDate = ({
                         showMonthDropdown
                         showYearDropdown
                         adjustDateOnChange
-                        dateFormat="dd-MM-y"
+                        dateFormat="y-MM-dd"
                         onChange={(value) => _onGetValue(value)}
                         customInput={<CustomDate />}
                     />

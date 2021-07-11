@@ -8,8 +8,8 @@ const Style = styled(Select)`
     text-transform: capitalize;
     background: #ffff;
     width: ${(props) => props.width};
-    @media (max-width: 450px) {
-        font-size: 12px;
+    @media (max-width: 575px) {
+        font-size: 12px !important;
     }
 `;
 const DEFAULT_LIMIT_DATA = 100;
@@ -24,7 +24,7 @@ const FormSelect = ({
     const { service = { group: false, key: false, api: () => {} } } = item;
     const { dispatch, state } = useStore();
     const [isValid, setValid] = useState(false);
-    const [selectedOption, setSelected] = useState("");
+    const [selectedOption, setSelected] = useState(item.value);
     const [data, setData] = useState([]);
     const [params, setParams] = useState({
         page: 0,
@@ -67,7 +67,7 @@ const FormSelect = ({
             id: id,
             name: item.name,
             value: valueResult,
-            status: valueResult === "" ? false : true,
+            status: valueResult === "" || valueResult === null ? false : true,
         });
         setValid(!item.status);
     };
@@ -117,11 +117,23 @@ const FormSelect = ({
                 onChange={(e) => handleChange(e)}
                 readOnly={item.readOnly !== undefined ? false : item.readOnly}
                 rows={item.rows}
-                defaultValue={value}
+                defaultValue={selectedOption}
                 type={item.type}
                 value={selectedOption}
                 classNamePrefix={className}
-                options={item.service ? data : item.option}
+                options={
+                    item.service
+                        ? item.defaultValue
+                            ? [
+                                  {
+                                      label: item.defaultValue.label,
+                                      value: item.defaultValue.value,
+                                  },
+                                  ...data,
+                              ]
+                            : data
+                        : item.option
+                }
                 isMulti={item.isMulti}
                 closeMenuOnSelect={item.isMulti ? false : true}
             >

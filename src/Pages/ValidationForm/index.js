@@ -120,20 +120,6 @@ const ValidationForm = () => {
         //     haveRange: true,
         // },
     ]);
-    // const onGetValue = (param) => {
-    //     let isError = false;
-    //     for (let key in param) {
-    //         if (!param[key].status) {
-    //             isError = true;
-    //         }
-    //     }
-    //     setValidationClick(isError);
-    //     setValidateForm(false);
-    //     console.log("isError", isError);
-    //     if (!validationClick) {
-    //         alert("form is valid, put your action endpoint is here");
-    //     }
-    // };
     const handlerSubmitData = () => {
         let isError = false;
         for (let key in listForm) {
@@ -147,8 +133,6 @@ const ValidationForm = () => {
         if (!isError) {
             alert("form is valid, put your action endpoint is here");
         }
-        // onGetValue(listForm);
-        // console.log("validationClick", validationClick);
     };
     console.log(listForm);
     return (

@@ -543,17 +543,6 @@ const Code = () => {
                                 <span> </span>
                                 <span> </span>
                                 <span> </span>
-                                <span>required: </span>
-                                <span className="code-number">true</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
                                 <span>action: </span>
                                 <span className="code-string">{'"phone"'}</span>
                                 <span>,</span>

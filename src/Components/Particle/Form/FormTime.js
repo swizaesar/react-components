@@ -83,7 +83,7 @@ const FormStyle = styled.div`
 
 const FormTime = (props) => {
     const { item, onGetValue = () => {}, validateForm = true, id } = props;
-    const [isValue, setValue] = useState("");
+    const [isValue, setValue] = useState(item.value);
     const [isValid, setValid] = useState(false);
 
     const _onGetValue = (value) => {
@@ -92,7 +92,7 @@ const FormTime = (props) => {
             id: id,
             name: item.name,
             value: value.formattedValue,
-            status: value.value === "" ? false : true,
+            status: value.value === "" || value.value === null ? false : true,
         });
     };
     const handleSetValid = () => {
@@ -118,16 +118,12 @@ const FormTime = (props) => {
                 <NumberFormat
                     id={item.name}
                     name={item.name}
-                    format="##.## WIB"
-                    className={
-                        item.status
-                            ? "is-invalid form-control"
-                            : "form-control-alternative form-control"
-                    }
+                    format="##:##"
+                    className={"form-control-alternative form-control"}
                     placeholder={item.placeholder}
                     onValueChange={(value) => _onGetValue(value)}
                     value={isValue}
-                    mask="_"
+                    mask=":"
                 ></NumberFormat>
                 {isValid && (
                     <small className="text-danger">

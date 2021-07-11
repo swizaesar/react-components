@@ -3,50 +3,30 @@ import { ImageUploadStyle } from "./index.style";
 import { FormGroup } from "reactstrap";
 
 const ImageUpload = ({ validateForm, item, isStatus, id, onGetValue }) => {
-    // const {
-    //     id,
-    //     name,
-    //     setDataImage,
-    //     // onGetValue,
-    //     defaultValue = false,
-    //     normalData = false,
-    // } = props;
     const [isValid, setValid] = useState(false);
-    // const [errorInput, setValueText] = useState(true);
     const [image, setImage] = useState(item.value);
     const inputFileRef = useRef(null);
     const handleClickImage = () => {
         inputFileRef.current.click();
     };
-
-    // useEffect(() => {
-    //     if (defaultValue) {
-    //         setImage(defaultValue);
-    //     }
-    // }, [defaultValue]);
     const handleOnChangeImage = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
-        // let error = false;
         let value = "";
         if (item.normalData) {
             value = file;
         } else {
             value = await toBase64(file);
         }
-
-        // error = value ? true : false;
         setImage(URL.createObjectURL(file));
-        // setValueText(error);;
         onGetValue({
             id: id,
             name: item.name,
             value: value,
-            status: item.required
-                ? value === null || value === undefined || value === ""
+            status:
+                value === null || value === undefined || value === ""
                     ? false
-                    : true
-                : true,
+                    : true,
         });
         setValid(!item.status);
     };
