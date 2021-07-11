@@ -4,6 +4,7 @@ import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
 import FormText from "../Pages/ValidationForm/FormText";
 import Tab from "../Pages/Tab";
+import ValidationForm from "../Pages/ValidationForm";
 
 export default [
     {
@@ -50,9 +51,21 @@ export default [
     },
     {
         activeList: "form",
-
         setting: "molekul",
         children: [
+            {
+                isHeader: true,
+                isFooter: true,
+                component: ValidationForm,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/using",
+                label: "Using",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Using",
+                    activeName: "input-text",
+                },
+            },
             {
                 isHeader: true,
                 isFooter: true,

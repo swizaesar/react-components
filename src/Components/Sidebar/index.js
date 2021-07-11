@@ -34,6 +34,35 @@ const ButtonStyle = styled(Button)`
         }
     }
 `;
+const SidebarListStyle = styled.div`
+    animation: mymove 0.25s;
+    animation-fill-mode: forwards;
+    transition: all 0.25s ease;
+    &.active {
+        animation: mymove 0.25s;
+        animation-fill-mode: forwards;
+        transition: all 0.25s ease;
+        font-weight: bold;
+        color: #2e3159;
+        @keyframes mymove {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+    }
+    a {
+        color: #aaa;
+        transition: all 0.25s ease;
+        &:hover {
+            transition: all 0.25s ease;
+            color: #fff;
+            opacity: 1;
+        }
+    }
+`;
 const Sidebar = (props) => {
     const { routes = [] } = props;
     const createLinkComponentsHome = (routes) => {
@@ -98,7 +127,7 @@ const Sidebar = (props) => {
             setShow(!isShow);
         };
         return (
-            <div style={{ borderBottom: "2px solid #41474e" }}>
+            <div style={{ borderBottom: "2px solid #41474e", width: "100%" }}>
                 <ButtonStyle onClick={handleShowList}>
                     {data.sidebar.icon && (
                         <i className={`${data.sidebar.icon} mr-2`} />
@@ -113,7 +142,7 @@ const Sidebar = (props) => {
                     </div>
                 </ButtonStyle>
                 {isShow && (
-                    <div>
+                    <SidebarListStyle className={isShow ? "active" : ""}>
                         {data.children.map((list, key) => {
                             return (
                                 <Link
@@ -143,7 +172,7 @@ const Sidebar = (props) => {
                                 </Link>
                             );
                         })}
-                    </div>
+                    </SidebarListStyle>
                 )}
             </div>
         );
@@ -153,30 +182,33 @@ const Sidebar = (props) => {
             .filter((item) => item.setting === "molekul")
             .map((prop, key) => {
                 return (
-                    <NavItem key={key}>
+                    <React.Fragment key={key}>
                         {prop.children ? (
                             <SidebarList data={prop} />
                         ) : (
-                            <Link
-                                to={`${prop.path}`}
-                                // tag={NavLinkRRD}
-                                // onClick={this.closeCollapse}
-                                className={`nav-link nav-component ${
-                                    window.location.pathname.split("/")[1] ===
-                                    prop.sidebar.activeName
-                                        ? "active"
-                                        : ""
-                                }`}
-                            >
-                                {prop.sidebar.icon && (
-                                    <i
-                                        className={`${prop.sidebar.icon} mr-2`}
-                                    />
-                                )}
-                                {prop.sidebar.name}
-                            </Link>
+                            <NavItem>
+                                <Link
+                                    to={`${prop.path}`}
+                                    // tag={NavLinkRRD}
+                                    // onClick={this.closeCollapse}
+                                    className={`nav-link nav-component ${
+                                        window.location.pathname.split(
+                                            "/"
+                                        )[1] === prop.sidebar.activeName
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                >
+                                    {prop.sidebar.icon && (
+                                        <i
+                                            className={`${prop.sidebar.icon} mr-2`}
+                                        />
+                                    )}
+                                    {prop.sidebar.name}
+                                </Link>
+                            </NavItem>
                         )}
-                    </NavItem>
+                    </React.Fragment>
                 );
             });
     };

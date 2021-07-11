@@ -138,8 +138,9 @@ const ValidationForm = () => {
     return (
         <section>
             <h3 className="title">Validation Form</h3>
-            <Card>
+            <Card style={{ marginBottom: 30 }}>
                 <CardBody>
+                    <h5>Example</h5>
                     <TabMenu
                         color={{
                             text: "#aaa",
@@ -176,6 +177,7 @@ const ValidationForm = () => {
                             },
                         ]}
                     />
+
                     {/* <div>
                         <p>Download Component Form in here</p>
                     </div>
@@ -184,6 +186,8 @@ const ValidationForm = () => {
                     </div> */}
                 </CardBody>
             </Card>
+            <h5>Penjelasan</h5>
+            <div></div>
         </section>
     );
 };
