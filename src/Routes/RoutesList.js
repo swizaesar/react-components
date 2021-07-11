@@ -4,7 +4,7 @@ import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
 import FormText from "../Pages/ValidationForm/FormText";
 import Tab from "../Pages/Tab";
-import ValidationForm from "../Pages/ValidationForm";
+import Using from "../Pages/ValidationForm/Using";
 
 export default [
     {
@@ -56,14 +56,14 @@ export default [
             {
                 isHeader: true,
                 isFooter: true,
-                component: ValidationForm,
+                component: Using,
                 layout: import("./RouteGuestLayout"),
                 path: "/form/using",
                 label: "Using",
                 sidebar: {
                     icon: "fas fa-wallet mr-2",
                     name: "Using",
-                    activeName: "input-text",
+                    activeName: "using",
                 },
             },
             {

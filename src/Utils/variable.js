@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const color = {
-    primary: "#000A8C",
+    primary: "#BF9C4A",
     secondary: "#6488f3",
     orange: "#f6b733",
     user: {

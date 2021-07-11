@@ -68,9 +68,6 @@ const App = (props) => {
                                                         <div className="loading-border">
                                                             <FirstLoad />
                                                         </div>
-                                                        <div className="loading">
-                                                            loading
-                                                        </div>
                                                     </LoadingStyle>
                                                 ) : (
                                                     <Component

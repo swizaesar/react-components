@@ -4,21 +4,29 @@ import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import Button from "../Particle/Button";
 import styled from "styled-components";
+import { color } from "../../Utils/Variable";
 const ButtonStyle = styled(Button)`
     background: transparent;
     width: 100%;
-    color: #aaa;
+    color: #fff;
     border: unset;
     padding: 0.5rem 1rem;
     text-align: left;
     display: flex;
     align-items: center;
+    font-weight: 400;
+    font-size: 1rem;
     &:hover,
     &:focus,
     &:active {
+        color: ${color.primary};
         background-color: transparent !important;
-        border-color: #41474e !important;
+        border-color: ${color.primary} !important;
         box-shadow: unset !important;
+    }
+    &.active {
+        background-color: transparent !important;
+        color: ${color.primary} !important;
     }
     .btn-list {
         display: flex;
@@ -35,31 +43,16 @@ const ButtonStyle = styled(Button)`
     }
 `;
 const SidebarListStyle = styled.div`
-    animation: mymove 0.25s;
-    animation-fill-mode: forwards;
-    transition: all 0.25s ease;
-    &.active {
-        animation: mymove 0.25s;
-        animation-fill-mode: forwards;
-        transition: all 0.25s ease;
-        font-weight: bold;
-        color: #2e3159;
-        @keyframes mymove {
-            from {
-                height: 0;
-            }
-            to {
-                height: 100%;
-            }
-        }
-    }
     a {
-        color: #aaa;
+        color: #fff;
         transition: all 0.25s ease;
         &:hover {
             transition: all 0.25s ease;
             color: #fff;
             opacity: 1;
+        }
+        &.active {
+            color: ${color.primary};
         }
     }
 `;
@@ -127,8 +120,16 @@ const Sidebar = (props) => {
             setShow(!isShow);
         };
         return (
-            <div style={{ borderBottom: "2px solid #41474e", width: "100%" }}>
-                <ButtonStyle onClick={handleShowList}>
+            <div
+                style={{
+                    borderBottom: `2px solid #fff`,
+                    width: "100%",
+                }}
+            >
+                <ButtonStyle
+                    onClick={handleShowList}
+                    className={isShow ? "active" : ""}
+                >
                     {data.sidebar.icon && (
                         <i className={`${data.sidebar.icon} mr-2`} />
                     )}
@@ -142,7 +143,7 @@ const Sidebar = (props) => {
                     </div>
                 </ButtonStyle>
                 {isShow && (
-                    <SidebarListStyle className={isShow ? "active" : ""}>
+                    <SidebarListStyle>
                         {data.children.map((list, key) => {
                             return (
                                 <Link
@@ -153,7 +154,7 @@ const Sidebar = (props) => {
                                     className={`nav-link nav-component ${
                                         window.location.pathname.split(
                                             "/"
-                                        )[2] === data.sidebar.activeName
+                                        )[2] === list.sidebar.activeName
                                             ? "active"
                                             : ""
                                     }`}

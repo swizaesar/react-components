@@ -22,7 +22,7 @@ const Style = styled.div`
             transition: all 0.25s ease;
             color: ${(props) =>
                 props.color.text ? props.color.text : "#b0b0b0"};
-            background: #fff;
+            background: ${(props) => props.color.background || "#fff"};
             font-weight: bold;
             /* border-bottom: 1px solid #fff; */
             cursor: pointer;
@@ -38,9 +38,9 @@ const Style = styled.div`
                         : "#25aae2"};
                 /* border-bottom: 3px solid
                     ${(props) =>
-                    props.color.activeColor
-                        ? props.color.activeColor
-                        : "#25aae2"}; */
+                        props.color.activeColor
+                            ? props.color.activeColor
+                            : "#25aae2"}; */
                 transition: 0.3 all ease-in;
                 background: ${(props) =>
                     props.color.activeBackground
