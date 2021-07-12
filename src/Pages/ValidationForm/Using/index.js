@@ -6,7 +6,7 @@ import Code from "./Code";
 import Button from "../../../Components/Particle/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { color } from "../../../Utils/Variable";
+import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
         margin-bottom: 20px;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Navbar } from "reactstrap";
-import { color } from "../../Utils/Variable";
+import { color } from "../../Utils/VariableName";
 const Style = styled(Navbar)`
     position: fixed;
     display: block;

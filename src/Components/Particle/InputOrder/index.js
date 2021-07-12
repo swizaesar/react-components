@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "../../../Utils/Variable";
+import { color } from "../../../Utils/VariableName";
 
 const Style = styled.div`
     width: max-content;

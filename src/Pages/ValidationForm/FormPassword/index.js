@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
-import { color } from "../../../Utils/Variable";
+import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
         margin-bottom: 20px;

@@ -4,7 +4,7 @@ import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import Button from "../Particle/Button";
 import styled from "styled-components";
-import { color } from "../../Utils/Variable";
+import { color } from "../../Utils/VariableName";
 const ButtonStyle = styled(Button)`
     background: transparent;
     width: 100%;

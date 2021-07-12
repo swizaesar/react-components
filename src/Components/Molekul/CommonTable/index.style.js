@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../../Utils/Variable";
+import { color } from "../../../Utils/VariableName";
 
 const StyleCommon = styled.div`
     .search-box {
