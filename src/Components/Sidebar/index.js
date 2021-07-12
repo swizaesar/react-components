@@ -4,23 +4,33 @@ import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import Button from "../Particle/Button";
 import styled from "styled-components";
+import { color } from "../../Utils/Variable";
 const ButtonStyle = styled(Button)`
     background: transparent;
     width: 100%;
-    color: #aaa;
+    color: #fff;
     border: unset;
     padding: 0.5rem 1rem;
     text-align: left;
     display: flex;
     align-items: center;
+    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 600;
     &:hover,
     &:focus,
     &:active {
+        color: ${color.primary};
         background-color: transparent !important;
-        border-color: #41474e !important;
+        border-color: ${color.primary} !important;
         box-shadow: unset !important;
     }
+    &.active {
+        background-color: transparent !important;
+        color: ${color.primary} !important;
+    }
     .btn-list {
+        font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -31,6 +41,20 @@ const ButtonStyle = styled(Button)`
         &.active {
             transition: all 0.25s ease;
             transform: rotate(90deg);
+        }
+    }
+`;
+const SidebarListStyle = styled.div`
+    a {
+        color: #fff;
+        transition: all 0.25s ease;
+        &:hover {
+            transition: all 0.25s ease;
+            color: #fff;
+            opacity: 1;
+        }
+        &.active {
+            color: ${color.primary};
         }
     }
 `;
@@ -98,8 +122,16 @@ const Sidebar = (props) => {
             setShow(!isShow);
         };
         return (
-            <div style={{ borderBottom: "2px solid #41474e" }}>
-                <ButtonStyle onClick={handleShowList}>
+            <div
+                style={{
+                    borderBottom: `2px solid #fff`,
+                    width: "100%",
+                }}
+            >
+                <ButtonStyle
+                    onClick={handleShowList}
+                    className={isShow ? "active" : ""}
+                >
                     {data.sidebar.icon && (
                         <i className={`${data.sidebar.icon} mr-2`} />
                     )}
@@ -113,7 +145,7 @@ const Sidebar = (props) => {
                     </div>
                 </ButtonStyle>
                 {isShow && (
-                    <div>
+                    <SidebarListStyle>
                         {data.children.map((list, key) => {
                             return (
                                 <Link
@@ -124,7 +156,7 @@ const Sidebar = (props) => {
                                     className={`nav-link nav-component ${
                                         window.location.pathname.split(
                                             "/"
-                                        )[2] === data.sidebar.activeName
+                                        )[2] === list.sidebar.activeName
                                             ? "active"
                                             : ""
                                     }`}
@@ -143,7 +175,7 @@ const Sidebar = (props) => {
                                 </Link>
                             );
                         })}
-                    </div>
+                    </SidebarListStyle>
                 )}
             </div>
         );
@@ -153,30 +185,33 @@ const Sidebar = (props) => {
             .filter((item) => item.setting === "molekul")
             .map((prop, key) => {
                 return (
-                    <NavItem key={key}>
+                    <React.Fragment key={key}>
                         {prop.children ? (
                             <SidebarList data={prop} />
                         ) : (
-                            <Link
-                                to={`${prop.path}`}
-                                // tag={NavLinkRRD}
-                                // onClick={this.closeCollapse}
-                                className={`nav-link nav-component ${
-                                    window.location.pathname.split("/")[1] ===
-                                    prop.sidebar.activeName
-                                        ? "active"
-                                        : ""
-                                }`}
-                            >
-                                {prop.sidebar.icon && (
-                                    <i
-                                        className={`${prop.sidebar.icon} mr-2`}
-                                    />
-                                )}
-                                {prop.sidebar.name}
-                            </Link>
+                            <NavItem>
+                                <Link
+                                    to={`${prop.path}`}
+                                    // tag={NavLinkRRD}
+                                    // onClick={this.closeCollapse}
+                                    className={`nav-link nav-component ${
+                                        window.location.pathname.split(
+                                            "/"
+                                        )[1] === prop.sidebar.activeName
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                >
+                                    {prop.sidebar.icon && (
+                                        <i
+                                            className={`${prop.sidebar.icon} mr-2`}
+                                        />
+                                    )}
+                                    {prop.sidebar.name}
+                                </Link>
+                            </NavItem>
                         )}
-                    </NavItem>
+                    </React.Fragment>
                 );
             });
     };

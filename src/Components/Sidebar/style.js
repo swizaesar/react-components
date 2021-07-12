@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Navbar } from "reactstrap";
+import { color } from "../../Utils/Variable";
 const Style = styled(Navbar)`
     position: fixed;
     display: block;
@@ -10,7 +11,7 @@ const Style = styled(Navbar)`
     padding: 50px 0 0;
     bottom: 0;
     height: 100%;
-    background: #33383e;
+    background: #000000;
     width: 250px;
     .navbar-heading {
         padding-left: 10px;
@@ -19,20 +20,24 @@ const Style = styled(Navbar)`
         display: block;
         width: 100%;
         .nav-link {
-            color: #aaa;
+            color: #fff;
+            font-weight: 600;
             transition: all 0.5s ease;
         }
         &:hover {
             .nav-link {
-                color: #fff;
+                color: ${color.primary};
             }
         }
         .active {
-            color: #fff;
+            color: ${color.primary};
         }
     }
     .nav-component {
-        border-bottom: 2px solid #41474e;
+        border-bottom: 2px solid #fff;
+        &.active {
+            border-color: ${color.primary};
+        }
     }
 `;
 export default Style;

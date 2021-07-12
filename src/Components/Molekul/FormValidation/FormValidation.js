@@ -21,7 +21,13 @@ const FormValidation = ({
     // };
     return (
         <Fragment>
-            <Col xl={item.col}>
+            <Col
+                xl={item.col.xl || item.col}
+                lg={item.col.lg || item.col}
+                md={item.col.md || item.col}
+                sm={item.col.sm || item.col}
+                xs={item.col.xs || item.col}
+            >
                 {renderType({
                     id,
                     item,

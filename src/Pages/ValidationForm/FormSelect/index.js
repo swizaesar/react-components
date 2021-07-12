@@ -34,23 +34,38 @@ const Style = styled.section`
         background: #282a2d;
         border-color: #282a2d;
     }
+    .btn-link {
+        color: ${color.primary};
+        padding: 0;
+        margin: 0;
+        border: unset;
+        text-decoration: underline;
+        background: transparent;
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
+        }
+    }
 `;
-const FormText = () => {
+const FormSelect = () => {
+    const handleShowService = () => {
+        alert("Halaman ini belum tersedia");
+    };
     return (
         <Style>
-            <h3 className="title">Input Text Form</h3>
+            <h3 className="title">Input Select</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Text Form ini cukup dengan membuat
-                    opsi data form berbentuk object yang akan di letakan pada
-                    list form.
+                    Cara menggunakan Input Select ini cukup dengan membuat opsi
+                    data form berbentuk object yang akan di letakan pada list
+                    form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/using">
+                <Link to="/form/input-textarea">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-email">
+                <Link to="/form/input-image">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -72,7 +87,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"select"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -81,7 +96,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Nama"'}
+                                            {'"Kategori"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -97,7 +112,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"select"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -106,7 +121,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"name"'}
+                                            {'"category"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -115,7 +130,111 @@ const FormText = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Name"'}
+                                            {'"Kategori"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>option: </span>
+                                        <span className="code-primary">
+                                            {"["}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"{"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>label: </span>
+                                        <span className="code-string">
+                                            {'"Fashion Pria"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>value: </span>
+                                        <span className="code-number">
+                                            {"1"}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"}"}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"{"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>label: </span>
+                                        <span className="code-string">
+                                            {'"Fashion Wanita"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>value: </span>
+                                        <span className="code-number">
+                                            {"2"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"}"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-primary">
+                                            {"]"}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -133,7 +252,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Nama tidak boleh kosong"'}
+                                            {'"Harap pilih kategori"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -167,90 +286,93 @@ const FormText = () => {
                 </CardBody>
             </Card>
             <p>
-                Anda bisa merubah <code>type</code> menjadi <code>number</code>{" "}
-                untuk input tipe number.
-            </p>
-            <p>
-                Anda juga bisa menambahkan minimal atau maximal karakter input
-                beserta text validasinya
+                Input Select ini juga tersedia untuk select multiple hanya
+                menambahkan <code>isMulti</code>.
             </p>
             <Card className="card-code" style={{ marginBottom: 30 }}>
                 <CardBody>
                     <code>
                         <pre>
                             <div>
-                                <span>character: </span>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>isMulti: </span>
+                                <span className="code-number">true,</span>
+                            </div>
+                            <div>
+                                <span>value: </span>
+                                <span className="code-primary">[],</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Untuk data option yang didapat dari <code>API</code> gunakan{" "}
+                <code>service</code> untuk menggantikan <code>option</code>.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    {/* service: {
+                api: service.category,
+                group: "category",
+                key: "category",
+            }, */}
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>service: </span>
                                 <span className="code-brace">{"{"}</span>
                             </div>
                             <div>
                                 <span> </span>
                                 <span> </span>
-                                <span>min: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">3</span>
+                                <span className="code-green">api: </span>
+                                <span>service.</span>
+                                <span className="code-green">categoryList</span>
                                 <span>,</span>
                             </div>
                             <div>
                                 <span> </span>
                                 <span> </span>
+                                <span>group: </span>
+                                <span className="code-string">"category"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
                                 <span> </span>
                                 <span> </span>
-                                <span>valid: </span>
+                                <span>key: </span>
                                 <span className="code-string">
-                                    {'"Minimal 3 character"'}
+                                    "categoryList"
                                 </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>max: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">10</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Maximal 10 character"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
                                 <span>,</span>
                             </div>
                             <span className="code-brace">{"}"}</span>
+                            <span>,</span>
+                            <div>
+                                <span>...</span>
+                            </div>
                         </pre>
                     </code>
                 </CardBody>
             </Card>
+            <p>
+                Apa itu isi dari <code>service</code>, <code>api</code>,{" "}
+                <code>group</code>, dan <code>key</code>? <br />
+                Klik{" "}
+                <button className="btn-link" onClick={handleShowService}>
+                    disini
+                </button>{" "}
+                untuk melihat selengkapnya.
+            </p>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -268,6 +390,10 @@ const FormText = () => {
                         <code>required</code> digunakan untuk memberikan
                         kewajiban (status) untuk mengisi form tersebut (
                         <code>true</code> / <code>false</code>).
+                    </li>
+                    <li>
+                        <code>service</code> digunakan untuk mengambil data list
+                        yang tersedia di dalam <code>REST API</code> .
                     </li>
                     <li>
                         <code>name</code> digunakan untuk attribute name pada
@@ -348,10 +474,6 @@ const FormText = () => {
                         <code>value</code> value dari form input.
                     </li>
                     <li>
-                        <code>character</code> memberikan ketentuan dari limit
-                        text form value tersebut.
-                    </li>
-                    <li>
                         <code>status</code> untuk memberikan default status form
                         tersebut.
                     </li>
@@ -361,14 +483,6 @@ const FormText = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
-export default FormText;
+export default FormSelect;

@@ -1,9 +1,16 @@
-import { lazy } from "react";
 import LandingPage from "../Pages/LandingPage";
 import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
 import FormText from "../Pages/ValidationForm/FormText";
+import FormEmail from "../Pages/ValidationForm/FormEmail";
+import FormPhoneNumber from "../Pages/ValidationForm/FormPhoneNumber";
+import FormPassword from "../Pages/ValidationForm/FormPassword";
+import FormTextarea from "../Pages/ValidationForm/FormTextarea";
+import FormSelect from "../Pages/ValidationForm/FormSelect";
+import FormImage from "../Pages/ValidationForm/FormImage";
+import FormImageMultiple from "../Pages/ValidationForm/FormImageMultiple";
 import Tab from "../Pages/Tab";
+import Using from "../Pages/ValidationForm/Using";
 
 export default [
     {
@@ -50,9 +57,21 @@ export default [
     },
     {
         activeList: "form",
-
         setting: "molekul",
         children: [
+            {
+                isHeader: true,
+                isFooter: true,
+                component: Using,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/using",
+                label: "Penggunaan",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Penggunaan",
+                    activeName: "using",
+                },
+            },
             {
                 isHeader: true,
                 isFooter: true,
@@ -64,6 +83,97 @@ export default [
                     icon: "fas fa-wallet mr-2",
                     name: "Input Text",
                     activeName: "input-text",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormEmail,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-email",
+                label: "Input Email",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Email",
+                    activeName: "input-email",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormPhoneNumber,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-phone",
+                label: "Input Phone Number",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Phone Number",
+                    activeName: "input-phone",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormPassword,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-password",
+                label: "Input Password",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Password",
+                    activeName: "input-password",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormTextarea,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-textarea",
+                label: "Input Textarea",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Textarea",
+                    activeName: "input-textarea",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormSelect,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-select",
+                label: "Input Select",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Select",
+                    activeName: "input-select",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormImage,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-image",
+                label: "Input Image",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Image",
+                    activeName: "input-image",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormImageMultiple,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-image-multiple",
+                label: "Input Image Multiple",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Image Multiple",
+                    activeName: "input-image-multiple",
                 },
             },
         ],

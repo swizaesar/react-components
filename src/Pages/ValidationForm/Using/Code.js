@@ -38,12 +38,10 @@ const Code = () => {
                         </div>
                         <div>
                             <span className="code-red">import </span>
-                            <span className="code-yellow">{"{"} </span>
                             <span>Button </span>
-                            <span className="code-yellow">{"}"} </span>
                             <span className="code-red">from </span>
                             <span className="code-string">
-                                {"'reactstrap'"}
+                                {"'../../Components/Particle/Button'"}
                             </span>
                             <span>;</span>
                         </div>
@@ -106,6 +104,129 @@ const Code = () => {
                             <span className="code-green">useState</span>
                             <span className="code-brace">(</span>
                             <span className="code-primary">{"["}</span>
+
+                            {/* Upload Image */}
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span className="code-yellow">{"{"} </span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>type: </span>
+                                <span className="code-string">{'"image"'}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>label: </span>
+                                <span className="code-string">
+                                    {'"Upload Gambar"'}
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>required: </span>
+                                <span className="code-number">true</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>action: </span>
+                                <span className="code-string">
+                                    {'"uploadImage"'}
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>name: </span>
+                                <span className="code-string">{'"image"'}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>col: </span>
+                                <span className="code-number">{"12"}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>valid: </span>
+                                <span className="code-string">
+                                    {'"Harap masukan gambar"'}
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>value: </span>
+                                <span className="code-string">{'""'}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>status: </span>
+                                <span className="code-number">{"false"}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span className="code-yellow">{"}"}</span>
+                                <span>,</span>
+                            </div>
+
                             {/* Form Text */}
                             <div>
                                 <span> </span>
@@ -804,250 +925,6 @@ const Code = () => {
                                 <span className="code-yellow">{"}"}</span>
                                 <span>,</span>
                             </div>
-                            {/* Upload File */}
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"{"} </span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>type: </span>
-                                <span className="code-string">{'"file"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>action: </span>
-                                <span className="code-string">{'"file"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>name: </span>
-                                <span className="code-string">{'"file"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>placeholder: </span>
-                                <span className="code-string">
-                                    {'"Upload file"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>col: </span>
-                                <span className="code-number">{"6"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Harap masukan file"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>value: </span>
-                                <span className="code-string">{'""'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>status: </span>
-                                <span className="code-number">{"true"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"}"}</span>
-                                <span>,</span>
-                            </div>
-
-                            {/* Upload Image */}
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"{"} </span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>type: </span>
-                                <span className="code-string">{'"image"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>label: </span>
-                                <span className="code-string">
-                                    {'"Upload Gambar"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>required: </span>
-                                <span className="code-number">true</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>action: </span>
-                                <span className="code-string">
-                                    {'"uploadImage"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>name: </span>
-                                <span className="code-string">{'"image"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>placeholder: </span>
-                                <span className="code-string">
-                                    {'"Klik Untuk Masukan Gambar"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>col: </span>
-                                <span className="code-number">{"6"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Harap masukan gambar"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>value: </span>
-                                <span className="code-string">{'""'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>status: </span>
-                                <span className="code-number">{"false"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"}"}</span>
-                                <span>,</span>
-                            </div>
-
                             {/* Upload Image Multiple*/}
                             <div>
                                 <span> </span>
@@ -1087,6 +964,17 @@ const Code = () => {
                                 <span> </span>
                                 <span> </span>
                                 <span> </span>
+                                <span>required: </span>
+                                <span className="code-number">true</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
                                 <span>name: </span>
                                 <span className="code-string">
                                     {'"image-multiple"'}
@@ -1101,7 +989,7 @@ const Code = () => {
                                 <span> </span>
                                 <span> </span>
                                 <span>col: </span>
-                                <span className="code-number">{"6"}</span>
+                                <span className="code-number">{"12"}</span>
                                 <span>,</span>
                             </div>
                             <div>
@@ -1149,7 +1037,7 @@ const Code = () => {
                                 <span> </span>
                                 <span> </span>
                                 <span>status: </span>
-                                <span className="code-number">{"true"}</span>
+                                <span className="code-number">{"false"}</span>
                                 <span>,</span>
                             </div>
                             <div>
@@ -1171,182 +1059,6 @@ const Code = () => {
                                 <span className="code-yellow">{"}"}</span>
                                 <span>,</span>
                             </div>
-                            {/* Input Range */}
-                            {/* <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"{"} </span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>type: </span>
-                                <span className="code-string">{'"range"'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>action: </span>
-                                <span className="code-string">
-                                    {'"inputRange"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>label: </span>
-                                <span className="code-string">
-                                    {'"Input Range"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>name: </span>
-                                <span className="code-string">
-                                    {'"input-range"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>col: </span>
-                                <span className="code-number">{"6"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">{'""'}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>value: </span>
-                                <span className="code-number">100</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>status: </span>
-                                <span className="code-number">{"false"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>maxValue: </span>
-                                <span className="code-number">100</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>minValue: </span>
-                                <span className="code-number">0</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>haveInput: </span>
-                                <span className="code-number">true</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>haveRange: </span>
-                                <span className="code-number">true</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>isMulti: </span>
-                                <span className="code-number">true</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>formatLabel: </span>
-                                <span className="code-string">{"kg"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-yellow">{"}"}</span>
-                                <span>,</span>
-                            </div> */}
                             <div>
                                 <span> </span>
                                 <span> </span>
@@ -1621,6 +1333,12 @@ const Code = () => {
                                     <span className="code-primary">
                                         <i>Button </i>
                                     </span>
+                                    <span> </span>
+                                    <span className="code-green">color=</span>
+                                    <span className="code-string">
+                                        "primary"
+                                    </span>
+                                    <span> </span>
                                     <span className="code-green">onClick</span>
                                     <span className="code-red">=</span>
                                     <span className="code-brace">{"{"}</span>
@@ -1628,6 +1346,7 @@ const Code = () => {
                                         handlerSubmitData
                                     </span>
                                     <span className="code-brace">{"}"}</span>
+
                                     <span>{">"}</span>
                                 </div>
                                 <div>
@@ -1649,9 +1368,11 @@ const Code = () => {
                                     <span> </span>
                                     <span> </span>
                                     <span>{"<"}</span>
+
                                     <span className="code-primary">
                                         <i>Button </i>
                                     </span>
+
                                     <span>{"/>"}</span>
                                 </div>
                                 <div>

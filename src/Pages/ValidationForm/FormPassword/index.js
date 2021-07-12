@@ -35,22 +35,22 @@ const Style = styled.section`
         border-color: #282a2d;
     }
 `;
-const FormText = () => {
+const FormPassword = () => {
     return (
         <Style>
-            <h3 className="title">Input Text Form</h3>
+            <h3 className="title">Input FormPassword</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Text Form ini cukup dengan membuat
+                    Cara menggunakan Input FormPassword ini cukup dengan membuat
                     opsi data form berbentuk object yang akan di letakan pada
                     list form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/using">
+                <Link to="/form/input-phone">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-email">
+                <Link to="/form/input-textarea">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -81,7 +81,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Nama"'}
+                                            {'"Password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -97,7 +97,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -106,7 +106,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"name"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -115,7 +115,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Name"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -133,7 +133,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Nama tidak boleh kosong"'}
+                                            {'"Password tidak boleh kosong"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -167,86 +167,52 @@ const FormText = () => {
                 </CardBody>
             </Card>
             <p>
-                Anda bisa merubah <code>type</code> menjadi <code>number</code>{" "}
-                untuk input tipe number.
-            </p>
-            <p>
-                Anda juga bisa menambahkan minimal atau maximal karakter input
-                beserta text validasinya
+                Anda juga bisa menambahkan untuk konfirmasi password beserta
+                label / placeholder dengan cara mengganti <code>action</code>{" "}
+                menjadi <i>confirmPassword</i>, juga bisa mengatur tampilan tata
+                letak form (<code>inline</code> / <code>block</code>) dengan
+                cara menambahkan <code>block</code> di dalamnya.
             </p>
             <Card className="card-code" style={{ marginBottom: 30 }}>
                 <CardBody>
                     <code>
                         <pre>
                             <div>
-                                <span>character: </span>
-                                <span className="code-brace">{"{"}</span>
+                                <span>...</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>min: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">3</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
+                                <span>action: </span>
                                 <span className="code-string">
-                                    {'"Minimal 3 character"'}
+                                    "confirmPassword",
                                 </span>
-                                <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
+                                <span>placeholder: </span>
+                                <span className="code-string">"Password",</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>max: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">10</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
+                                <span>placeholder2: </span>
                                 <span className="code-string">
-                                    {'"Maximal 10 character"'}
+                                    "Konfirmasi Password",
                                 </span>
-                                <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
+                                <span>label: </span>
+                                <span className="code-string">"Password",</span>
                             </div>
-                            <span className="code-brace">{"}"}</span>
+                            <div>
+                                <span>label2: </span>
+                                <span className="code-string">
+                                    "Konfirmasi Password",
+                                </span>
+                            </div>
+                            <div>
+                                <span>block: </span>
+                                <span className="code-number">true,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
                         </pre>
                     </code>
                 </CardBody>
@@ -276,6 +242,12 @@ const FormText = () => {
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
                         form tersebut.
+                    </li>
+                    <li>
+                        <code>block</code> digunakan untuk mengatur tata letak
+                        input password (<code>inline</code> / <code>block</code>
+                        ) khusus untuk <code>action</code>{" "}
+                        <i>confirmPassword</i>.
                     </li>
                     <li>
                         <code>col</code> digunakan untuk lebar colum form input.
@@ -361,14 +333,6 @@ const FormText = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
-export default FormText;
+export default FormPassword;

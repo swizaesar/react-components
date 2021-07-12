@@ -1,15 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routesList from "./Routes/RoutesList";
-import Sidebar from "./Components/Sidebar";
 import styled from "styled-components";
 import CodeSplit from "./Components/CodeSplit";
 import FirstLoad from "./Components/Loading/FirstLoad";
-const Style = styled.section`
-    width: calc(100% - 250px);
-    margin: 0 0 0 auto;
-    padding: 20px;
-`;
 const LoadingStyle = styled.div`
     position: fixed;
     top: 0;
@@ -68,9 +62,6 @@ const App = (props) => {
                                                         <div className="loading-border">
                                                             <FirstLoad />
                                                         </div>
-                                                        <div className="loading">
-                                                            loading
-                                                        </div>
                                                     </LoadingStyle>
                                                 ) : (
                                                     <Component
@@ -109,26 +100,6 @@ const App = (props) => {
                             )}
                         />
                     );
-                    // <React.Fragment>
-                    //     {item.sidebar && (
-                    //         <Sidebar
-                    //             item={item}
-                    //             key={key}
-                    //             routes={routesList.filter(
-                    //                 (item) => item.sidebar
-                    //             )}
-                    //         />
-                    //     )}
-                    //     <Style>
-                    //         <React.Fragment key={key}>
-                    //             <Route
-                    //                 exact
-                    //                 path={item.path}
-                    //                 component={item.component}
-                    //             />
-                    //         </React.Fragment>
-                    //     </Style>
-                    // </React.Fragment>
                 })}
             </Switch>
         </Router>

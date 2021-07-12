@@ -34,23 +34,29 @@ const Style = styled.section`
         background: #282a2d;
         border-color: #282a2d;
     }
+    .card-note {
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        background: #ffffbb;
+        border-radius: 5px;
+    }
 `;
-const FormText = () => {
+const FormImage = () => {
     return (
         <Style>
-            <h3 className="title">Input Text Form</h3>
+            <h3 className="title">Input Image</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Text Form ini cukup dengan membuat
-                    opsi data form berbentuk object yang akan di letakan pada
-                    list form.
+                    Cara menggunakan Input Image ini cukup dengan membuat opsi
+                    data form berbentuk object yang akan di letakan pada list
+                    form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/using">
+                <Link to="/form/input-select">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-email">
+                <Link to="/form/input-image-multiple">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -72,7 +78,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"image"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -81,7 +87,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Nama"'}
+                                            {'"Upload Gambar"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -97,7 +103,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"uploadImage"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -106,7 +112,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"name"'}
+                                            {'"image"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -115,7 +121,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Name"'}
+                                            {'"Klik Untuk Masukan Gambar"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -133,7 +139,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Nama tidak boleh kosong"'}
+                                            {'"Harap masukan gambar"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -166,87 +172,30 @@ const FormText = () => {
                     </Card>
                 </CardBody>
             </Card>
-            <p>
-                Anda bisa merubah <code>type</code> menjadi <code>number</code>{" "}
-                untuk input tipe number.
-            </p>
-            <p>
-                Anda juga bisa menambahkan minimal atau maximal karakter input
-                beserta text validasinya
-            </p>
+            <div className="card-note">
+                <div>
+                    <span className="text-danger">Note</span> :{" "}
+                    <i>
+                        value pada image berbentuk data base64, jika ingin
+                        mengubah nilai value berbentuk object tambahkan{" "}
+                        <code>normalData</code>.
+                    </i>
+                </div>
+            </div>
             <Card className="card-code" style={{ marginBottom: 30 }}>
                 <CardBody>
                     <code>
                         <pre>
                             <div>
-                                <span>character: </span>
-                                <span className="code-brace">{"{"}</span>
+                                <span>...</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>min: </span>
-                                <span className="code-primary">{"{"}</span>
+                                <span>normalData: </span>
+                                <span className="code-number">true,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">3</span>
-                                <span>,</span>
+                                <span>...</span>
                             </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Minimal 3 character"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>max: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">10</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Maximal 10 character"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
-                            </div>
-                            <span className="code-brace">{"}"}</span>
                         </pre>
                     </code>
                 </CardBody>
@@ -272,6 +221,11 @@ const FormText = () => {
                     <li>
                         <code>name</code> digunakan untuk attribute name pada
                         element input.
+                    </li>
+                    <li>
+                        <code>normalData</code> digunakan untuk mengubah nulai
+                        value menjadi object (<code>true</code> /{" "}
+                        <code>false</code>).
                     </li>
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
@@ -348,10 +302,6 @@ const FormText = () => {
                         <code>value</code> value dari form input.
                     </li>
                     <li>
-                        <code>character</code> memberikan ketentuan dari limit
-                        text form value tersebut.
-                    </li>
-                    <li>
                         <code>status</code> untuk memberikan default status form
                         tersebut.
                     </li>
@@ -361,14 +311,6 @@ const FormText = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
-export default FormText;
+export default FormImage;
