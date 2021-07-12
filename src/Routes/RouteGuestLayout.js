@@ -12,7 +12,6 @@ const Style = styled.section`
 
 const RouteGuestLayout = (props) => {
     const { item } = props;
-    console.log(item);
     return (
         <Switch>
             <Suspense fallback={<div>Loading...</div>}>
@@ -29,25 +28,6 @@ const RouteGuestLayout = (props) => {
                             path={item.path}
                             component={item.component}
                         />
-                        {/* {item.children !== undefined ? (
-                            item.children.map((data, key) => {
-                                console.log(data, "data");
-                                return (
-                                    <Route
-                                        exact
-                                        key={key}
-                                        path={`${item.path}${data.path}`}
-                                        component={data.component}
-                                    />
-                                );
-                            })
-                        ) : (
-                            <Route
-                                exact
-                                path={item.path}
-                                component={item.component}
-                            />
-                        )} */}
                     </Style>
                 </div>
             </Suspense>

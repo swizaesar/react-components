@@ -136,6 +136,7 @@ const Using = () => {
                 isError = true;
             }
         }
+        console.log(listForm);
         setValidationClick(isError);
         setValidateForm(false);
         console.log("isError", isError);

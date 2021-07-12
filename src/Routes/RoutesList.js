@@ -11,6 +11,7 @@ import FormImage from "../Pages/ValidationForm/FormImage";
 import FormImageMultiple from "../Pages/ValidationForm/FormImageMultiple";
 import Tab from "../Pages/Tab";
 import Using from "../Pages/ValidationForm/Using";
+import FormPrice from "../Pages/ValidationForm/FormPrice";
 
 export default [
     {
@@ -174,6 +175,20 @@ export default [
                     icon: "fas fa-wallet mr-2",
                     name: "Input Image Multiple",
                     activeName: "input-image-multiple",
+                },
+            },
+
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormPrice,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-price",
+                label: "Input Harga",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Harga",
+                    activeName: "input-price",
                 },
             },
         ],

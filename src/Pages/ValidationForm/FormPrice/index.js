@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
-import Form from "../../../Components/Molekul/FormValidation";
-import Button from "../../../Components/Particle/Button";
 import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
@@ -15,9 +13,6 @@ const Style = styled.section`
             margin-bottom: 0;
             line-height: 1.8;
         }
-    }
-    .example-form {
-        margin: 30px 0;
     }
     .next-step {
         display: flex;
@@ -40,117 +35,24 @@ const Style = styled.section`
         border-color: #282a2d;
     }
 `;
-const FormText = () => {
-    const [validationClick, setValidationClick] = React.useState(true);
-    const [validateForm, setValidateForm] = React.useState(true);
-    const [form, setForm] = React.useState([
-        {
-            type: "text",
-            label: "Nama",
-            required: true,
-            action: "text",
-            name: "name",
-            placeholder: "Name",
-            col: 6,
-            valid: "Nama tidak boleh kosong",
-            value: "",
-            status: false,
-            // character: {
-            //     min: {
-            //         length: 3,
-            //         valid: "Minimal 3 character",
-            //     },
-            //     max: {
-            //         length: 10,
-            //         valid: "Maximal 10 character",
-            //     },
-            // },
-        },
-    ]);
-    const [validationClickTwo, setValidationClickTwo] = React.useState(true);
-    const [validateFormTwo, setValidateFormTwo] = React.useState(true);
-    const [formTwo, setFormTwo] = React.useState([
-        {
-            type: "text",
-            label: "Nama",
-            required: true,
-            action: "text",
-            name: "name",
-            placeholder: "Name",
-            col: 6,
-            valid: "Nama tidak boleh kosong",
-            value: "",
-            status: false,
-            character: {
-                min: {
-                    length: 3,
-                    valid: "Minimal 3 character",
-                },
-                max: {
-                    length: 10,
-                    valid: "Maximal 10 character",
-                },
-            },
-        },
-    ]);
-    const handlerSubmitData = () => {
-        let isError = false;
-        for (let key in form) {
-            if (!form[key].status) {
-                isError = true;
-            }
-        }
-        console.log(form);
-        setValidationClick(isError);
-        setValidateForm(false);
-        console.log("isError", isError);
-        if (!isError) {
-            alert("Valid");
-        }
-    };
-    const handlerSubmitDataTwo = () => {
-        let isError = false;
-        for (let key in formTwo) {
-            if (!formTwo[key].status) {
-                isError = true;
-            }
-        }
-        console.log(formTwo);
-        setValidationClickTwo(isError);
-        setValidateFormTwo(false);
-        console.log("isError", isError);
-        if (!isError) {
-            alert("Valid");
-        }
-    };
+const FormPrice = () => {
     return (
         <Style>
-            <h3 className="title">Input Text Form</h3>
+            <h3 className="title">Input Harga</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Text Form ini cukup dengan membuat
-                    opsi data form berbentuk object yang akan di letakan pada
-                    list form.
+                    Cara menggunakan Input Harga ini cukup dengan membuat opsi
+                    data form berbentuk object yang akan di letakan pada list
+                    form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/using">
+                <Link to="/form/input-image-multiple">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-email">
+                <Link to="/form/input-select">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
-            </div>
-            <div className="example-form">
-                <Form
-                    setForm={setForm}
-                    validateForm={validateForm}
-                    validationClick={validationClick}
-                    form={form}
-                />
-                <Button color="primary" onClick={handlerSubmitData}>
-                    Submit
-                </Button>
             </div>
             <Card style={{ marginBottom: 10 }}>
                 <CardBody>
@@ -164,22 +66,12 @@ const FormText = () => {
                                             {"{"}{" "}
                                         </span>
                                     </div>
-
-                                    <div>
-                                        <span> </span>
-                                        <span> </span>
-                                        <span>type: </span>
-                                        <span className="code-string">
-                                            {'"text"'}
-                                        </span>
-                                        <span>,</span>
-                                    </div>
                                     <div>
                                         <span> </span>
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Nama"'}
+                                            {'"Harga"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -195,7 +87,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"price"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -204,16 +96,16 @@ const FormText = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"name"'}
+                                            {'"price"'}
                                         </span>
                                         <span>,</span>
                                     </div>
                                     <div>
                                         <span> </span>
                                         <span> </span>
-                                        <span>placeholder: </span>
+                                        <span>currencyLogo: </span>
                                         <span className="code-string">
-                                            {'"Name"'}
+                                            "Rp. "
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -231,7 +123,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Nama tidak boleh kosong"'}
+                                            {'"Harap isi form harga"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -239,9 +131,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span> </span>
                                         <span>value: </span>
-                                        <span className="code-string">
-                                            {'""'}
-                                        </span>
+                                        <span className="code-number">0</span>
                                         <span>,</span>
                                     </div>
                                     <div>
@@ -265,110 +155,141 @@ const FormText = () => {
                 </CardBody>
             </Card>
             <p>
-                Anda bisa merubah <code>type</code> menjadi <code>number</code>{" "}
-                untuk input tipe number.
-            </p>
-            <p>
-                Anda juga bisa menambahkan minimal atau maximal karakter input
-                beserta text validasinya
+                Input Harga ini juga tersedia untuk label nilai belakang dengan{" "}
+                <code>currencyLogo</code> diganti dengan <code>suffix</code>.
             </p>
             <Card className="card-code" style={{ marginBottom: 30 }}>
                 <CardBody>
                     <code>
                         <pre>
                             <div>
-                                <span>character: </span>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>suffix: </span>
+                                <span className="code-string">" %"</span>
+                                <span>,</span>
+                                <span> </span>
+                                <span className="code-command">/</span>
+                                <span className="code-command">/</span>
+                                <span className="code-command"> </span>
+                                <span className="code-command">
+                                    "kg ", "g", etc
+                                </span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Jika menggunakan <code>suffix</code> Anda bisa menyediakan lebih
+                dari 1 label dengan menambahkan <code>multiSuffix</code>
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>suffix: </span>
+                                <span className="code-string">" %"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span>multiSuffix: </span>
+                                <span className="code-brace">[</span>
+                                <span className="code-string">"%"</span>
+                                <span>, </span>
+                                <span className="code-string">"kg"</span>
+                                <span>, </span>
+                                <span className="code-string">"g"</span>
+                                <span>, </span>
+                                <span className="code-brace">]</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Untuk memberikan maximal atau minimal value gunakan{" "}
+                <code>max</code> atau <code>min</code>
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>min: </span>
                                 <span className="code-brace">{"{"}</span>
                             </div>
                             <div>
                                 <span> </span>
                                 <span> </span>
-                                <span>min: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">3</span>
+                                <span>price: </span>
+                                <span className="code-number">1000</span>
                                 <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
                                 <span> </span>
                                 <span> </span>
                                 <span>valid: </span>
                                 <span className="code-string">
-                                    {'"Minimal 3 character"'}
+                                    "Minimal harga Rp. 1.000"
                                 </span>
                                 <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
+                                <span className="code-brace">{"}"}</span>
                                 <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
                                 <span>max: </span>
-                                <span className="code-primary">{"{"}</span>
+                                <span className="code-brace">{"{"}</span>
                             </div>
                             <div>
                                 <span> </span>
                                 <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">10</span>
+                                <span>price: </span>
+                                <span className="code-number">1000000</span>
                                 <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
                                 <span> </span>
                                 <span> </span>
                                 <span>valid: </span>
                                 <span className="code-string">
-                                    {'"Maximal 10 character"'}
+                                    "Maximal harga Rp. 1.000.000"
                                 </span>
                                 <span>,</span>
                             </div>
                             <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
+                                <span className="code-brace">{"}"}</span>
                                 <span>,</span>
                             </div>
-                            <span className="code-brace">{"}"}</span>
+                            <div>
+                                <span>...</span>
+                            </div>
                         </pre>
                     </code>
                 </CardBody>
             </Card>
-            <div className="example-form">
-                <Form
-                    setForm={setFormTwo}
-                    validateForm={validateFormTwo}
-                    validationClick={validationClickTwo}
-                    form={formTwo}
-                />
-                <Button color="primary" onClick={handlerSubmitDataTwo}>
-                    Submit
-                </Button>
-            </div>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
                 </h6>
                 <ul>
-                    <li>
-                        <code>type</code> digunakan untuk attribute type pada
-                        element input.
-                    </li>
                     <li>
                         <code>label</code> digunakan untuk memberikan label pada
                         input element.
@@ -378,9 +299,24 @@ const FormText = () => {
                         kewajiban (status) untuk mengisi form tersebut (
                         <code>true</code> / <code>false</code>).
                     </li>
+
+                    <li>
+                        <code>currencyLogo</code> digunakan untuk nilai label
+                        depan value.
+                    </li>
+                    <li>
+                        <code>suffix</code> digunakan untuk nilai label belakang
+                        value.
+                    </li>
                     <li>
                         <code>name</code> digunakan untuk attribute name pada
                         element input.
+                    </li>
+                    <li>
+                        <code>min</code> minimal value.
+                    </li>
+                    <li>
+                        <code>max</code> maximal value.
                     </li>
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
@@ -457,27 +393,12 @@ const FormText = () => {
                         <code>value</code> value dari form input.
                     </li>
                     <li>
-                        <code>character</code> memberikan ketentuan dari limit
-                        text form value tersebut.
-                    </li>
-                    <li>
                         <code>status</code> untuk memberikan default status form
                         tersebut.
-                    </li>
-                    <li>
-                        <code>placeholder</code> tau lah ya~~.
                     </li>
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
-export default FormText;
+export default FormPrice;

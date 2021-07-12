@@ -53,10 +53,10 @@ const FormImageMultiple = () => {
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/input-select">
+                <Link to="/form/input-image">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-image-multiple">
+                <Link to="/form/input-price">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -219,7 +219,7 @@ const FormImageMultiple = () => {
                 </h6>
                 <ul>
                     <li>
-                        <code>text</code> digunakan untuk attribute type pada
+                        <code>type</code> digunakan untuk attribute type pada
                         element input.
                     </li>
                     <li>
@@ -243,6 +243,9 @@ const FormImageMultiple = () => {
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
                         form tersebut.
+                    </li>
+                    <li>
+                        <code>max</code> maximal image yang di upload.
                     </li>
                     <li>
                         <code>col</code> digunakan untuk lebar colum form input.
