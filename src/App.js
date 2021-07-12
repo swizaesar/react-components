@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routesList from "./Routes/RoutesList";
 import styled from "styled-components";
 import CodeSplit from "./Components/CodeSplit";
-import FirstLoad from "./Components/Loading/FirstLoad";
+// import FirstLoad from "./Components/Loading/FirstLoad";
 const LoadingStyle = styled.div`
     position: fixed;
     top: 0;
@@ -60,7 +60,7 @@ const App = (props) => {
                                                 return Component === null ? (
                                                     <LoadingStyle>
                                                         <div className="loading-border">
-                                                            <FirstLoad />
+                                                            {/* <FirstLoad /> */}
                                                         </div>
                                                     </LoadingStyle>
                                                 ) : (
@@ -86,7 +86,7 @@ const App = (props) => {
                                         return Component === null ? (
                                             <LoadingStyle>
                                                 <div className="loading-border">
-                                                    <FirstLoad />
+                                                    {/* <FirstLoad /> */}
                                                 </div>
                                                 <div className="loading">
                                                     loading

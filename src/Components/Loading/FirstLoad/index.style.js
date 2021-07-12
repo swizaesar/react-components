@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { color } from "../../../Utils/Variable";
 
 const FirstLoadStyle = styled.div`
-    @keyframes ldio-sr15fpxd91d {
+    /* @keyframes ldio-sr15fpxd91d {
         0% {
             transform: rotate(0);
         }
@@ -82,11 +81,11 @@ const FirstLoadStyle = styled.div`
         position: relative;
         transform: translateZ(0) scale(1);
         backface-visibility: hidden;
-        transform-origin: 0 0; /* see note above */
+        transform-origin: 0 0;
     }
     .ldio-sr15fpxd91d div {
         box-sizing: content-box;
-    }
+    } */
 `;
 
 export default FirstLoadStyle;
