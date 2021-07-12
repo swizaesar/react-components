@@ -21,6 +21,7 @@ const Style = styled(Navbar)`
         width: 100%;
         .nav-link {
             color: #fff;
+            font-weight: 600;
             transition: all 0.5s ease;
         }
         &:hover {

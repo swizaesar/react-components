@@ -34,29 +34,38 @@ const Style = styled.section`
         background: #282a2d;
         border-color: #282a2d;
     }
-    .card-note {
-        padding: 15px 20px;
-        margin-bottom: 30px;
-        background: #ffffbb;
-        border-radius: 5px;
+    .btn-link {
+        color: ${color.primary};
+        padding: 0;
+        margin: 0;
+        border: unset;
+        text-decoration: underline;
+        background: transparent;
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
+        }
     }
 `;
-const FormEmail = () => {
+const FormSelect = () => {
+    const handleShowService = () => {
+        alert("Halaman ini belum tersedia");
+    };
     return (
         <Style>
-            <h3 className="title">Input Email Form</h3>
+            <h3 className="title">Input Select</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Email Form ini cukup dengan membuat
-                    opsi data form berbentuk object yang akan di letakan pada
-                    list form.
+                    Cara menggunakan Input Select ini cukup dengan membuat opsi
+                    data form berbentuk object yang akan di letakan pada list
+                    form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/input-text">
+                <Link to="/form/input-textarea">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-phone">
+                <Link to="/form/input-image">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -78,7 +87,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"select"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -87,7 +96,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Email"'}
+                                            {'"Kategori"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -103,7 +112,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"select"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -112,7 +121,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"category"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -121,7 +130,111 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Email"'}
+                                            {'"Kategori"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>option: </span>
+                                        <span className="code-primary">
+                                            {"["}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"{"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>label: </span>
+                                        <span className="code-string">
+                                            {'"Fashion Pria"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>value: </span>
+                                        <span className="code-number">
+                                            {"1"}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"}"}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"{"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>label: </span>
+                                        <span className="code-string">
+                                            {'"Fashion Wanita"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>value: </span>
+                                        <span className="code-number">
+                                            {"2"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-brace">
+                                            {"}"}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span className="code-primary">
+                                            {"]"}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -139,7 +252,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Email tidak boleh kosong"'}
+                                            {'"Harap pilih kategori"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -172,12 +285,94 @@ const FormEmail = () => {
                     </Card>
                 </CardBody>
             </Card>
-            <div className="card-note">
-                <div>
-                    <span className="text-danger">Note</span> :{" "}
-                    <i>Input email ini sudah termaksud regex email type</i>
-                </div>
-            </div>
+            <p>
+                Input Select ini juga tersedia untuk select multiple hanya
+                menambahkan <code>isMulti</code>.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>isMulti: </span>
+                                <span className="code-number">true,</span>
+                            </div>
+                            <div>
+                                <span>value: </span>
+                                <span className="code-primary">[],</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Untuk data option yang didapat dari <code>API</code> gunakan{" "}
+                <code>service</code> untuk menggantikan <code>option</code>.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    {/* service: {
+                api: service.category,
+                group: "category",
+                key: "category",
+            }, */}
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>service: </span>
+                                <span className="code-brace">{"{"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span className="code-green">api: </span>
+                                <span>service.</span>
+                                <span className="code-green">categoryList</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>group: </span>
+                                <span className="code-string">"category"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>key: </span>
+                                <span className="code-string">
+                                    "categoryList"
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <span className="code-brace">{"}"}</span>
+                            <span>,</span>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Apa itu isi dari <code>service</code>, <code>api</code>,{" "}
+                <code>group</code>, dan <code>key</code>? <br />
+                Klik{" "}
+                <button className="btn-link" onClick={handleShowService}>
+                    disini
+                </button>{" "}
+                untuk melihat selengkapnya.
+            </p>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -195,6 +390,10 @@ const FormEmail = () => {
                         <code>required</code> digunakan untuk memberikan
                         kewajiban (status) untuk mengisi form tersebut (
                         <code>true</code> / <code>false</code>).
+                    </li>
+                    <li>
+                        <code>service</code> digunakan untuk mengambil data list
+                        yang tersedia di dalam <code>REST API</code> .
                     </li>
                     <li>
                         <code>name</code> digunakan untuk attribute name pada
@@ -286,4 +485,4 @@ const FormEmail = () => {
         </Style>
     );
 };
-export default FormEmail;
+export default FormSelect;

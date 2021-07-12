@@ -1,4 +1,3 @@
-import { lazy } from "react";
 import LandingPage from "../Pages/LandingPage";
 import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
@@ -7,6 +6,9 @@ import FormEmail from "../Pages/ValidationForm/FormEmail";
 import FormPhoneNumber from "../Pages/ValidationForm/FormPhoneNumber";
 import FormPassword from "../Pages/ValidationForm/FormPassword";
 import FormTextarea from "../Pages/ValidationForm/FormTextarea";
+import FormSelect from "../Pages/ValidationForm/FormSelect";
+import FormImage from "../Pages/ValidationForm/FormImage";
+import FormImageMultiple from "../Pages/ValidationForm/FormImageMultiple";
 import Tab from "../Pages/Tab";
 import Using from "../Pages/ValidationForm/Using";
 
@@ -133,6 +135,45 @@ export default [
                     icon: "fas fa-wallet mr-2",
                     name: "Input Textarea",
                     activeName: "input-textarea",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormSelect,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-select",
+                label: "Input Select",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Select",
+                    activeName: "input-select",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormImage,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-image",
+                label: "Input Image",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Image",
+                    activeName: "input-image",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormImageMultiple,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-image-multiple",
+                label: "Input Image Multiple",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Image Multiple",
+                    activeName: "input-image-multiple",
                 },
             },
         ],

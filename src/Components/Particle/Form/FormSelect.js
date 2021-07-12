@@ -48,7 +48,10 @@ const FormSelect = ({
                 data.content.map((item) => {
                     return {
                         ...{ label: "Pilih", value: 0 },
-                        ...{ label: item.name, value: item.id },
+                        ...{
+                            label: item.name || item.label,
+                            value: item.id || item.value,
+                        },
                     };
                 })
             );

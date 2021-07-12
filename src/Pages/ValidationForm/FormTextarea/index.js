@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, Table } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
 import { color } from "../../../Utils/Variable";
 const Style = styled.section`
@@ -50,7 +50,7 @@ const FormTextarea = () => {
                 <Link to="/form/input-password">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-password">
+                <Link to="/form/input-select">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>

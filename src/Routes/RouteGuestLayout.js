@@ -1,4 +1,4 @@
-import React, { Suspense, Fragment } from "react";
+import React, { Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import routesList from "./RoutesList";
 import Sidebar from "../Components/Sidebar";

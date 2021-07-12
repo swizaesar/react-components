@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, Table } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
 import { color } from "../../../Utils/Variable";
 const Style = styled.section`
@@ -333,14 +333,6 @@ const FormPassword = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
 export default FormPassword;

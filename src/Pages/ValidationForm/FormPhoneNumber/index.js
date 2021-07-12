@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, Table } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
 import { color } from "../../../Utils/Variable";
 const Style = styled.section`

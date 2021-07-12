@@ -16,6 +16,7 @@ const ButtonStyle = styled(Button)`
     align-items: center;
     font-weight: 400;
     font-size: 1rem;
+    font-weight: 600;
     &:hover,
     &:focus,
     &:active {
@@ -29,6 +30,7 @@ const ButtonStyle = styled(Button)`
         color: ${color.primary} !important;
     }
     .btn-list {
+        font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: space-between;

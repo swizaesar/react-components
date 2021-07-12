@@ -41,22 +41,22 @@ const Style = styled.section`
         border-radius: 5px;
     }
 `;
-const FormEmail = () => {
+const FormImageMultiple = () => {
     return (
         <Style>
-            <h3 className="title">Input Email Form</h3>
+            <h3 className="title">Input Image Multiple</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Email Form ini cukup dengan membuat
-                    opsi data form berbentuk object yang akan di letakan pada
-                    list form.
+                    Cara menggunakan Input Image Multiple ini cukup dengan
+                    membuat opsi data form berbentuk object yang akan di letakan
+                    pada list form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/input-text">
+                <Link to="/form/input-select">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-phone">
+                <Link to="/form/input-image-multiple">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -78,7 +78,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"image"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -87,7 +87,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Email"'}
+                                            {'"Upload Gambar Multiple""'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -103,7 +103,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"uploadImageMultiple"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -112,16 +112,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"email"'}
-                                        </span>
-                                        <span>,</span>
-                                    </div>
-                                    <div>
-                                        <span> </span>
-                                        <span> </span>
-                                        <span>placeholder: </span>
-                                        <span className="code-string">
-                                            {'"Email"'}
+                                            {'"image-multiple"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -139,7 +130,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Email tidak boleh kosong"'}
+                                            {'"Harap masukan gambar"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -147,8 +138,8 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span> </span>
                                         <span>value: </span>
-                                        <span className="code-string">
-                                            {'""'}
+                                        <span className="code-brace">
+                                            {"[]"}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -175,9 +166,53 @@ const FormEmail = () => {
             <div className="card-note">
                 <div>
                     <span className="text-danger">Note</span> :{" "}
-                    <i>Input email ini sudah termaksud regex email type</i>
+                    <i>
+                        value pada image berbentuk data base64, jika ingin
+                        mengubah nilai value berbentuk object tambahkan{" "}
+                        <code>normalData</code>.
+                    </i>
                 </div>
             </div>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>normalData: </span>
+                                <span className="code-number">true,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Anda bisa menambahkan maksimal upload image dengan menggunakan{" "}
+                <code>max</code>.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>max: </span>
+                                <span className="code-number">3,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -199,6 +234,11 @@ const FormEmail = () => {
                     <li>
                         <code>name</code> digunakan untuk attribute name pada
                         element input.
+                    </li>
+                    <li>
+                        <code>normalData</code> digunakan untuk mengubah nulai
+                        value menjadi object (<code>true</code> /{" "}
+                        <code>false</code>).
                     </li>
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
@@ -278,12 +318,9 @@ const FormEmail = () => {
                         <code>status</code> untuk memberikan default status form
                         tersebut.
                     </li>
-                    <li>
-                        <code>placeholder</code> tau lah ya~~.
-                    </li>
                 </ul>
             </div>
         </Style>
     );
 };
-export default FormEmail;
+export default FormImageMultiple;
