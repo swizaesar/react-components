@@ -179,7 +179,7 @@ const FormTextarea = () => {
                 </h6>
                 <ul>
                     <li>
-                        <code>text</code> digunakan untuk attribute type pada
+                        <code>type</code> digunakan untuk attribute type pada
                         element input.
                     </li>
                     <li>

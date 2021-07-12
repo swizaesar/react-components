@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
+import Form from "../../../Components/Molekul/FormValidation";
+import Button from "../../../Components/Particle/Button";
 import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
@@ -13,6 +15,9 @@ const Style = styled.section`
             margin-bottom: 0;
             line-height: 1.8;
         }
+    }
+    .example-form {
+        margin: 30px 0;
     }
     .next-step {
         display: flex;
@@ -42,6 +47,37 @@ const Style = styled.section`
     }
 `;
 const FormEmail = () => {
+    const [validationClick, setValidationClick] = React.useState(true);
+    const [validateForm, setValidateForm] = React.useState(true);
+    const [form, setForm] = React.useState([
+        {
+            type: "email",
+            label: "Email",
+            required: true,
+            action: "email",
+            name: "email",
+            placeholder: "Email",
+            col: 6,
+            valid: "Email tidak boleh kosong",
+            value: "",
+            status: false,
+        },
+    ]);
+    const handlerSubmitData = () => {
+        let isError = false;
+        for (let key in form) {
+            if (!form[key].status) {
+                isError = true;
+            }
+        }
+        console.log(form);
+        setValidationClick(isError);
+        setValidateForm(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
     return (
         <Style>
             <h3 className="title">Input Email Form</h3>
@@ -59,6 +95,17 @@ const FormEmail = () => {
                 <Link to="/form/input-phone">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
+            </div>
+            <div className="example-form">
+                <Form
+                    setForm={setForm}
+                    validateForm={validateForm}
+                    validationClick={validationClick}
+                    form={form}
+                />
+                <Button color="primary" onClick={handlerSubmitData}>
+                    Submit
+                </Button>
             </div>
             <Card style={{ marginBottom: 10 }}>
                 <CardBody>
@@ -184,7 +231,7 @@ const FormEmail = () => {
                 </h6>
                 <ul>
                     <li>
-                        <code>text</code> digunakan untuk attribute type pada
+                        <code>type</code> digunakan untuk attribute type pada
                         element input.
                     </li>
                     <li>
