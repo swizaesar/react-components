@@ -38,12 +38,10 @@ const Code = () => {
                         </div>
                         <div>
                             <span className="code-red">import </span>
-                            <span className="code-yellow">{"{"} </span>
                             <span>Button </span>
-                            <span className="code-yellow">{"}"} </span>
                             <span className="code-red">from </span>
                             <span className="code-string">
-                                {"'reactstrap'"}
+                                {"'../../Components/Particle/Button'"}
                             </span>
                             <span>;</span>
                         </div>

@@ -3,6 +3,7 @@ import LandingPage from "../Pages/LandingPage";
 import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
 import FormText from "../Pages/ValidationForm/FormText";
+import FormEmail from "../Pages/ValidationForm/FormEmail";
 import Tab from "../Pages/Tab";
 import Using from "../Pages/ValidationForm/Using";
 
@@ -77,6 +78,19 @@ export default [
                     icon: "fas fa-wallet mr-2",
                     name: "Input Text",
                     activeName: "input-text",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormEmail,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-email",
+                label: "Input Email",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Email",
+                    activeName: "input-email",
                 },
             },
         ],

@@ -34,20 +34,26 @@ const Style = styled.section`
         background: #282a2d;
         border-color: #282a2d;
     }
+    .card-note {
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        background: #ffffbb;
+        border-radius: 5px;
+    }
 `;
-const FormText = () => {
+const FormEmail = () => {
     return (
         <Style>
-            <h3 className="title">Input Text Form</h3>
+            <h3 className="title">Input Email Form</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Text Form ini cukup dengan membuat
+                    Cara menggunakan Input Email Form ini cukup dengan membuat
                     opsi data form berbentuk object yang akan di letakan pada
                     list form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/using">
+                <Link to="/form/input-text">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
                 <Link to="/form/input-email">
@@ -72,7 +78,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"email"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -81,7 +87,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Nama"'}
+                                            {'"Email"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -97,7 +103,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"text"'}
+                                            {'"email"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -106,7 +112,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"name"'}
+                                            {'"email"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -115,7 +121,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Name"'}
+                                            {'"Email"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -133,7 +139,7 @@ const FormText = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Nama tidak boleh kosong"'}
+                                            {'"Email tidak boleh kosong"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -166,87 +172,12 @@ const FormText = () => {
                     </Card>
                 </CardBody>
             </Card>
-            <p>
-                Anda juga bisa menambahkan minimal atau maximal karakter input
-                beserta text validasinya
-            </p>
-            <Card className="card-code" style={{ marginBottom: 30 }}>
-                <CardBody>
-                    <code>
-                        <pre>
-                            <div>
-                                <span>character: </span>
-                                <span className="code-brace">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>min: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">3</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Minimal 3 character"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span>max: </span>
-                                <span className="code-primary">{"{"}</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>length: </span>
-                                <span className="code-number">10</span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span> </span>
-                                <span>valid: </span>
-                                <span className="code-string">
-                                    {'"Maximal 10 character"'}
-                                </span>
-                                <span>,</span>
-                            </div>
-                            <div>
-                                <span> </span>
-                                <span> </span>
-                                <span className="code-primary">{"}"}</span>
-                                <span>,</span>
-                            </div>
-                            <span className="code-brace">{"}"}</span>
-                        </pre>
-                    </code>
-                </CardBody>
-            </Card>
+            <div className="card-note">
+                <div>
+                    <span className="text-danger">Note</span> :{" "}
+                    <i>Input email ini sudah termaksud regex email type</i>
+                </div>
+            </div>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -344,10 +275,6 @@ const FormText = () => {
                         <code>value</code> value dari form input.
                     </li>
                     <li>
-                        <code>character</code> memberikan ketentuan dari limit
-                        text form value tersebut.
-                    </li>
-                    <li>
                         <code>status</code> untuk memberikan default status form
                         tersebut.
                     </li>
@@ -357,14 +284,6 @@ const FormText = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
-export default FormText;
+export default FormEmail;
