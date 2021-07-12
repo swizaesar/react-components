@@ -167,6 +167,10 @@ const FormText = () => {
                 </CardBody>
             </Card>
             <p>
+                Anda bisa merubah <code>type</code> menjadi <code>number</code>{" "}
+                untuk input tipe number.
+            </p>
+            <p>
                 Anda juga bisa menambahkan minimal atau maximal karakter input
                 beserta text validasinya
             </p>

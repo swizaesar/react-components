@@ -4,6 +4,9 @@ import Button from "../Pages/Button";
 import Rating from "../Pages/Rating";
 import FormText from "../Pages/ValidationForm/FormText";
 import FormEmail from "../Pages/ValidationForm/FormEmail";
+import FormPhoneNumber from "../Pages/ValidationForm/FormPhoneNumber";
+import FormPassword from "../Pages/ValidationForm/FormPassword";
+import FormTextarea from "../Pages/ValidationForm/FormTextarea";
 import Tab from "../Pages/Tab";
 import Using from "../Pages/ValidationForm/Using";
 
@@ -60,10 +63,10 @@ export default [
                 component: Using,
                 layout: import("./RouteGuestLayout"),
                 path: "/form/using",
-                label: "Using",
+                label: "Penggunaan",
                 sidebar: {
                     icon: "fas fa-wallet mr-2",
-                    name: "Using",
+                    name: "Penggunaan",
                     activeName: "using",
                 },
             },
@@ -91,6 +94,45 @@ export default [
                     icon: "fas fa-wallet mr-2",
                     name: "Input Email",
                     activeName: "input-email",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormPhoneNumber,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-phone",
+                label: "Input Phone Number",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Phone Number",
+                    activeName: "input-phone",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormPassword,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-password",
+                label: "Input Password",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Password",
+                    activeName: "input-password",
+                },
+            },
+            {
+                isHeader: true,
+                isFooter: true,
+                component: FormTextarea,
+                layout: import("./RouteGuestLayout"),
+                path: "/form/input-textarea",
+                label: "Input Textarea",
+                sidebar: {
+                    icon: "fas fa-wallet mr-2",
+                    name: "Input Textarea",
+                    activeName: "input-textarea",
                 },
             },
         ],

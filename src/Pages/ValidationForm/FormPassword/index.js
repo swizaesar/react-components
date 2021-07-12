@@ -34,29 +34,23 @@ const Style = styled.section`
         background: #282a2d;
         border-color: #282a2d;
     }
-    .card-note {
-        padding: 15px 20px;
-        margin-bottom: 30px;
-        background: #ffffbb;
-        border-radius: 5px;
-    }
 `;
-const FormEmail = () => {
+const FormPassword = () => {
     return (
         <Style>
-            <h3 className="title">Input Email Form</h3>
+            <h3 className="title">Input FormPassword</h3>
             <div className="desc">
                 <p>
-                    Cara menggunakan Input Email Form ini cukup dengan membuat
+                    Cara menggunakan Input FormPassword ini cukup dengan membuat
                     opsi data form berbentuk object yang akan di letakan pada
                     list form.
                 </p>
             </div>
             <div className="next-step">
-                <Link to="/form/input-text">
+                <Link to="/form/input-phone">
                     <i className="fas fa-angle-left mr-2"></i> Kembali
                 </Link>
-                <Link to="/form/input-phone">
+                <Link to="/form/input-textarea">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
             </div>
@@ -78,7 +72,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>type: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"text"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -87,7 +81,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>label: </span>
                                         <span className="code-string">
-                                            {'"Email"'}
+                                            {'"Password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -103,7 +97,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>action: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -112,7 +106,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>name: </span>
                                         <span className="code-string">
-                                            {'"email"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -121,7 +115,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>placeholder: </span>
                                         <span className="code-string">
-                                            {'"Email"'}
+                                            {'"password"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -139,7 +133,7 @@ const FormEmail = () => {
                                         <span> </span>
                                         <span>valid: </span>
                                         <span className="code-string">
-                                            {'"Email tidak boleh kosong"'}
+                                            {'"Password tidak boleh kosong"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -172,12 +166,57 @@ const FormEmail = () => {
                     </Card>
                 </CardBody>
             </Card>
-            <div className="card-note">
-                <div>
-                    <span className="text-danger">Note</span> :{" "}
-                    <i>Input email ini sudah termaksud regex email type</i>
-                </div>
-            </div>
+            <p>
+                Anda juga bisa menambahkan untuk konfirmasi password beserta
+                label / placeholder dengan cara mengganti <code>action</code>{" "}
+                menjadi <i>confirmPassword</i>, juga bisa mengatur tampilan tata
+                letak form (<code>inline</code> / <code>block</code>) dengan
+                cara menambahkan <code>block</code> di dalamnya.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>action: </span>
+                                <span className="code-string">
+                                    "confirmPassword",
+                                </span>
+                            </div>
+                            <div>
+                                <span>placeholder: </span>
+                                <span className="code-string">"Password",</span>
+                            </div>
+                            <div>
+                                <span>placeholder2: </span>
+                                <span className="code-string">
+                                    "Konfirmasi Password",
+                                </span>
+                            </div>
+                            <div>
+                                <span>label: </span>
+                                <span className="code-string">"Password",</span>
+                            </div>
+                            <div>
+                                <span>label2: </span>
+                                <span className="code-string">
+                                    "Konfirmasi Password",
+                                </span>
+                            </div>
+                            <div>
+                                <span>block: </span>
+                                <span className="code-number">true,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -203,6 +242,12 @@ const FormEmail = () => {
                     <li>
                         <code>action</code> digunakan untuk membaca aksi dari
                         form tersebut.
+                    </li>
+                    <li>
+                        <code>block</code> digunakan untuk mengatur tata letak
+                        input password (<code>inline</code> / <code>block</code>
+                        ) khusus untuk <code>action</code>{" "}
+                        <i>confirmPassword</i>.
                     </li>
                     <li>
                         <code>col</code> digunakan untuk lebar colum form input.
@@ -275,6 +320,10 @@ const FormEmail = () => {
                         <code>value</code> value dari form input.
                     </li>
                     <li>
+                        <code>character</code> memberikan ketentuan dari limit
+                        text form value tersebut.
+                    </li>
+                    <li>
                         <code>status</code> untuk memberikan default status form
                         tersebut.
                     </li>
@@ -284,6 +333,14 @@ const FormEmail = () => {
                 </ul>
             </div>
         </Style>
+        // required: true,
+        // action: "text",
+        // name: "name",
+        // placeholder: "Name",
+        // col: 6,
+        // valid: "Nama tidak boleh kosong",
+        // value: "",
+        // status: false,
     );
 };
-export default FormEmail;
+export default FormPassword;
