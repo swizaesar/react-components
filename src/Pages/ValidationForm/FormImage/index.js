@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
+import Form from "../../../Components/Molekul/FormValidation";
+import Button from "../../../Components/Particle/Button";
 import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
@@ -13,6 +15,9 @@ const Style = styled.section`
             margin-bottom: 0;
             line-height: 1.8;
         }
+    }
+    .example-form {
+        margin: 30px 0;
     }
     .next-step {
         display: flex;
@@ -42,6 +47,72 @@ const Style = styled.section`
     }
 `;
 const FormImage = () => {
+    const [validationClick, setValidationClick] = React.useState(true);
+    const [validateForm, setValidateForm] = React.useState(true);
+    const [form, setForm] = React.useState([
+        {
+            type: "image",
+            label: "Upload Gambar",
+            required: true,
+            action: "uploadImage",
+            name: "image",
+            placeholder: "Klik Untuk Masukan Gambar",
+            col: 6,
+            valid: "Harap masukan gambar",
+            value: "",
+            status: false,
+            heightStyle: "300px",
+        },
+    ]);
+    const [validationClickTwo, setValidationClickTwo] = React.useState(true);
+    const [validateFormTwo, setValidateFormTwo] = React.useState(true);
+    const [formTwo, setFormTwo] = React.useState([
+        {
+            type: "image",
+            label: "Upload Gambar",
+            required: true,
+            action: "uploadImage",
+            name: "image",
+            placeholder: "Klik Untuk Masukan Gambar",
+            col: 6,
+            valid: "Harap masukan gambar",
+            value: "",
+            status: false,
+            heightStyle: "200px",
+            widthStyle: "200px",
+            avatar: true,
+        },
+    ]);
+    const handlerSubmitData = () => {
+        let isError = false;
+        for (let key in form) {
+            if (!form[key].status) {
+                isError = true;
+            }
+        }
+        console.log(form);
+        setValidationClick(isError);
+        setValidateForm(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
+    const handlerSubmitDataTwo = () => {
+        let isError = false;
+        for (let key in formTwo) {
+            if (!formTwo[key].status) {
+                isError = true;
+            }
+        }
+        console.log(formTwo);
+        setValidationClickTwo(isError);
+        setValidateFormTwo(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
     return (
         <Style>
             <h3 className="title">Input Image</h3>
@@ -59,6 +130,17 @@ const FormImage = () => {
                 <Link to="/form/input-image-multiple">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
+            </div>
+            <div className="example-form">
+                <Form
+                    setForm={setForm}
+                    validateForm={validateForm}
+                    validationClick={validationClick}
+                    form={form}
+                />
+                <Button color="primary" onClick={handlerSubmitData}>
+                    Submit
+                </Button>
             </div>
             <Card style={{ marginBottom: 10 }}>
                 <CardBody>
@@ -104,6 +186,15 @@ const FormImage = () => {
                                         <span>action: </span>
                                         <span className="code-string">
                                             {'"uploadImage"'}
+                                        </span>
+                                        <span>,</span>
+                                    </div>
+                                    <div>
+                                        <span> </span>
+                                        <span> </span>
+                                        <span>heightStyle: </span>
+                                        <span className="code-string">
+                                            {'"300px"'}
                                         </span>
                                         <span>,</span>
                                     </div>
@@ -191,7 +282,8 @@ const FormImage = () => {
                             </div>
                             <div>
                                 <span>normalData: </span>
-                                <span className="code-number">true,</span>
+                                <span className="code-number">true</span>
+                                <span>,</span>
                             </div>
                             <div>
                                 <span>...</span>
@@ -200,6 +292,50 @@ const FormImage = () => {
                     </code>
                 </CardBody>
             </Card>
+            <p>
+                Untuk merubah tampilan image menjadi circle, tambahkan{" "}
+                <code>avatar</code>
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>...</span>
+                            </div>
+                            <div>
+                                <span>avatar: </span>
+                                <span className="code-number">true</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span>heightStyle: </span>
+                                <span className="code-string">"200px"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span>widthStyle: </span>
+                                <span className="code-string">"200px"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span>...</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <div className="example-form">
+                <Form
+                    setForm={setFormTwo}
+                    validateForm={validateFormTwo}
+                    validationClick={validationClickTwo}
+                    form={formTwo}
+                />
+                <Button color="primary" onClick={handlerSubmitDataTwo}>
+                    Submit
+                </Button>
+            </div>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -217,6 +353,14 @@ const FormImage = () => {
                         <code>required</code> digunakan untuk memberikan
                         kewajiban (status) untuk mengisi form tersebut (
                         <code>true</code> / <code>false</code>).
+                    </li>
+                    <li>
+                        <code>heightStyle</code> digunakan untuk form tinggi
+                        gambar.
+                    </li>
+                    <li>
+                        <code>widthStyle</code> digunakan untuk form lebar
+                        gambar.
                     </li>
                     <li>
                         <code>name</code> digunakan untuk attribute name pada

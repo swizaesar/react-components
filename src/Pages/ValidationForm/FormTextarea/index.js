@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
+import Form from "../../../Components/Molekul/FormValidation";
+import Button from "../../../Components/Particle/Button";
 import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
@@ -13,6 +15,9 @@ const Style = styled.section`
             margin-bottom: 0;
             line-height: 1.8;
         }
+    }
+    .example-form {
+        margin: 30px 0;
     }
     .next-step {
         display: flex;
@@ -36,6 +41,80 @@ const Style = styled.section`
     }
 `;
 const FormTextarea = () => {
+    const [validationClick, setValidationClick] = React.useState(true);
+    const [validateForm, setValidateForm] = React.useState(true);
+    const [form, setForm] = React.useState([
+        {
+            type: "textarea",
+            label: "Alamat",
+            required: true,
+            action: "textarea",
+            name: "address",
+            placeholder: "Alamat",
+            col: 6,
+            rows: 5,
+            valid: "Alamat tidak boleh kosong",
+            value: "",
+            status: false,
+        },
+    ]);
+    const [validationClickTwo, setValidationClickTwo] = React.useState(true);
+    const [validateFormTwo, setValidateFormTwo] = React.useState(true);
+    const [formTwo, setFormTwo] = React.useState([
+        {
+            type: "textarea",
+            label: "Alamat",
+            required: true,
+            action: "textarea",
+            name: "address",
+            placeholder: "Alamat",
+            col: 6,
+            rows: 5,
+            valid: "Alamat tidak boleh kosong",
+            value: "",
+            status: false,
+            character: {
+                min: {
+                    length: 30,
+                    valid: "Minimal 3 character",
+                },
+                max: {
+                    length: 200,
+                    valid: "Maximal 10 character",
+                },
+            },
+        },
+    ]);
+    const handlerSubmitData = () => {
+        let isError = false;
+        for (let key in form) {
+            if (!form[key].status) {
+                isError = true;
+            }
+        }
+        console.log(form);
+        setValidationClick(isError);
+        setValidateForm(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
+    const handlerSubmitDataTwo = () => {
+        let isError = false;
+        for (let key in formTwo) {
+            if (!formTwo[key].status) {
+                isError = true;
+            }
+        }
+        console.log(formTwo);
+        setValidationClickTwo(isError);
+        setValidateFormTwo(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
     return (
         <Style>
             <h3 className="title">Input Textarea</h3>
@@ -53,6 +132,17 @@ const FormTextarea = () => {
                 <Link to="/form/input-select">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
+            </div>
+            <div className="example-form">
+                <Form
+                    setForm={setForm}
+                    validateForm={validateForm}
+                    validationClick={validationClick}
+                    form={form}
+                />
+                <Button color="primary" onClick={handlerSubmitData}>
+                    Submit
+                </Button>
             </div>
             <Card style={{ marginBottom: 10 }}>
                 <CardBody>
@@ -173,6 +263,98 @@ const FormTextarea = () => {
                     </Card>
                 </CardBody>
             </Card>
+            <p>
+                Anda juga bisa menambahkan minimal atau maximal karakter input
+                beserta text validasinya
+            </p>
+            <Card className="card-code" style={{ marginBottom: 30 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>character: </span>
+                                <span className="code-brace">{"{"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>min: </span>
+                                <span className="code-primary">{"{"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>length: </span>
+                                <span className="code-number">30</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>valid: </span>
+                                <span className="code-string">
+                                    {'"Minimal 30 character"'}
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span className="code-primary">{"}"}</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>max: </span>
+                                <span className="code-primary">{"{"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>length: </span>
+                                <span className="code-number">200</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span> </span>
+                                <span>valid: </span>
+                                <span className="code-string">
+                                    {'"Maximal 200 character"'}
+                                </span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span className="code-primary">{"}"}</span>
+                                <span>,</span>
+                            </div>
+                            <span className="code-brace">{"}"}</span>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <div className="example-form">
+                <Form
+                    setForm={setFormTwo}
+                    validateForm={validateFormTwo}
+                    validationClick={validationClickTwo}
+                    form={formTwo}
+                />
+                <Button color="primary" onClick={handlerSubmitDataTwo}>
+                    Submit
+                </Button>
+            </div>
             <div style={{ marginBottom: 10 }}>
                 <h6 className="title" style={{ marginBottom: 10 }}>
                     Penjelasan
@@ -272,6 +454,10 @@ const FormTextarea = () => {
                     </li>
                     <li>
                         <code>value</code> value dari form input.
+                    </li>
+                    <li>
+                        <code>character</code> memberikan ketentuan dari limit
+                        text form value tersebut.
                     </li>
                     <li>
                         <code>status</code> untuk memberikan default status form

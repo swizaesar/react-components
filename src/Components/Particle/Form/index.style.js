@@ -94,6 +94,7 @@ export const ImageUploadStyle = styled.div`
                 .label-title{
                     border-radius: 50%;
                     span{
+                        text-align: center;
                         position: absolute;
                         bottom: 0;
                         background: unset;
@@ -101,6 +102,7 @@ export const ImageUploadStyle = styled.div`
                 }
                 img{
                     border-radius: 50%;
+                    object-fit: cover;
                 }
             }
         `}

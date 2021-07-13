@@ -36,7 +36,7 @@ const FormUploadImageMultipleStyle = styled.div`
             }
             .loading {
                 position: absolute;
-                top: 0;
+                top: -10px;
                 left: 0;
                 right: 0;
                 bottom: 0;
