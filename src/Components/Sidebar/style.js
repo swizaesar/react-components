@@ -26,17 +26,23 @@ const Style = styled(Navbar)`
         }
         &:hover {
             .nav-link {
-                color: ${color.primary};
+                color: ${() => {
+                    return color.primary;
+                }};
             }
         }
         .active {
-            color: ${color.primary};
+            color: ${() => {
+                return color.primary;
+            }};
         }
     }
     .nav-component {
         border-bottom: 2px solid #fff;
         &.active {
-            border-color: ${color.primary};
+            border-color: ${() => {
+                return color.primary;
+            }};
         }
     }
 `;

@@ -20,14 +20,20 @@ const ButtonStyle = styled(Button)`
     &:hover,
     &:focus,
     &:active {
-        color: ${color.primary};
+        color: ${() => {
+            return color.primary;
+        }};
         background-color: transparent !important;
-        border-color: ${color.primary} !important;
+        border-color: ${() => {
+            return color.primary;
+        }} !important;
         box-shadow: unset !important;
     }
     &.active {
         background-color: transparent !important;
-        color: ${color.primary} !important;
+        color: ${() => {
+            return color.primary;
+        }} !important;
     }
     .btn-list {
         font-weight: 600;
@@ -54,7 +60,9 @@ const SidebarListStyle = styled.div`
             opacity: 1;
         }
         &.active {
-            color: ${color.primary};
+            color: ${() => {
+                return color.primary;
+            }};
         }
     }
 `;

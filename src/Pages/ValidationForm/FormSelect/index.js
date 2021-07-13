@@ -26,7 +26,9 @@ const Style = styled.section`
         a {
             color: #fff;
             font-weight: bold;
-            background: ${color.primary};
+            background: ${() => {
+                return color.primary;
+            }};
             padding: 10px;
             border-radius: 5px;
         }
@@ -40,7 +42,9 @@ const Style = styled.section`
         border-color: #282a2d;
     }
     .btn-link {
-        color: ${color.primary};
+        color: ${() => {
+            return color.primary;
+        }};
         padding: 0;
         margin: 0;
         border: unset;

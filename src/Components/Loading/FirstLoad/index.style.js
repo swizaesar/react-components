@@ -20,7 +20,11 @@ const FirstLoadStyle = styled.div`
         left: 28px;
         border-radius: 50%;
         border: 16px solid #000;
-        border-color: ${color.primary} transparent ${color.primary} transparent;
+        border-color: ${() => {
+            return color.primary;
+        }} transparent ${() => {
+    return color.primary;
+}} transparent;
         @media (max-width: 575px) {
             width: 144px;
             height: 144px;
@@ -45,20 +49,30 @@ const FirstLoadStyle = styled.div`
         height: 16px;
         top: -16px;
         left: 98px;
-        background: ${color.primary};
+        background: ${() => {
+            return color.primary;
+        }};
         border-radius: 50%;
-        box-shadow: 0 228px 0 0 ${color.primary};
+        box-shadow: 0 228px 0 0 ${() => {
+            return color.primary;
+        }};
         @media (max-width: 575px) {
-            box-shadow: 0 128px 0 0 ${color.primary};
+            box-shadow: 0 128px 0 0 ${() => {
+                return color.primary;
+            }};
             left: 49px;
         }
     }
     .ldio-sr15fpxd91d > div:nth-child(2) div:after {
         left: -16px;
         top: 98px;
-        box-shadow: 228px 0 0 0 ${color.primary};
+        box-shadow: 228px 0 0 0 ${() => {
+            return color.primary;
+        }};
         @media (max-width: 575px) {
-            box-shadow: 0 128px 0 0 ${color.primary};
+            box-shadow: 0 128px 0 0 ${() => {
+                return color.primary;
+            }};
             left: 112px;
             top: 49px;
             transform: rotate(90deg);

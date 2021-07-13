@@ -10,7 +10,7 @@ const RatingStyle = styled.div`
         font-size: 12px;
     }
     ${({ ratingStars }) =>
-        ratingStars &&
+        ratingStars === true &&
         `
         text-align: ${(props) => props.align};
         &:hover > i:before {
@@ -27,7 +27,7 @@ const RatingStyle = styled.div`
 
 const Rating = ({
     onGetValue = () => {},
-    ratingStars = false,
+    ratingStars = "",
     align = "left",
     size = "14px",
     rating = 0,
@@ -58,7 +58,7 @@ const Rating = ({
                 )
             )}
             {textColor && (
-                <span className={textColor || ""}>{` (${rating})`}</span>
+                <span className={String(textColor)}>{` (${rating})`}</span>
             )}
         </RatingStyle>
     );

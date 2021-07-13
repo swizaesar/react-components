@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, CardBody, Col, FormGroup, Row } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import Rating from "../../Components/Particle/Rating";
 import styled from "styled-components";
-import Button from "../../Components/Particle/Button";
 
 const Style = styled.div`
     .title {

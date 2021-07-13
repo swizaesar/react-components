@@ -3,6 +3,7 @@ import ButtonStyle from "../../Components/Particle/Button";
 import styled from "styled-components";
 import { Card, CardBody, Col, FormGroup, Input, Row } from "reactstrap";
 import { color } from "../../Utils/VariableName";
+import { useHistory } from "react-router";
 
 const Style = styled.div`
     .title {
@@ -22,20 +23,34 @@ const Style = styled.div`
         background: #282a2d;
         border-color: #282a2d;
     }
+    .btn-link {
+        color: ${() => {
+            return color.primary;
+        }};
+        padding: 0;
+        margin: 0;
+        border: unset;
+        text-decoration: underline;
+        background: transparent;
+        &:focus {
+            outline: unset;
+            box-shadow: unset;
+        }
+    }
 `;
 const Button = () => {
-    const [primaryColor, setPrimaryColor] = React.useState("primary");
-    const [valueColorPrimary, setValueColorPrimary] = React.useState("");
-
+    const [valueColorPrimary, setValueColorPrimary] = React.useState(
+        color.primary
+    );
+    const history = useHistory();
     const handleChangeColorPrimary = () => {
-        setPrimaryColor(
-            valueColorPrimary === "" ? "primary" : valueColorPrimary
-        );
+        color.primary =
+            valueColorPrimary === "" ? "#BF9C4A" : valueColorPrimary;
+        history.push("/button");
     };
     const handleChangePrimaryInput = (e) => {
         let value = e.target.value;
         setValueColorPrimary(value);
-        color.primary = value;
     };
     return (
         <Style>
@@ -51,9 +66,17 @@ const Button = () => {
                 </div>
             </div>
             <p>
-                Button ini hampir sama dengan bootstrap, tetapi kina bisa
-                merubah warna primary dan outline primary sesuai dengan
-                kebutuhan.
+                Button ini adalah button{" "}
+                <a
+                    href="https://reactstrap.github.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-link"
+                >
+                    Reactstrap
+                </a>{" "}
+                yang di modifikasi, agar kita bisa merubah warna primary dan
+                outline primary sesuai dengan kebutuhan.
             </p>
             <Card>
                 <CardBody>
@@ -62,9 +85,10 @@ const Button = () => {
                         <Col md={12}>
                             <div style={{ marginBottom: 20 }}>
                                 <Row>
-                                    <Col sm={4}>
+                                    <Col sm={3}>
                                         <FormGroup>
                                             <Input
+                                                defaultValue={color.primary}
                                                 type="text"
                                                 placeholder="Code warna"
                                                 onChange={
@@ -73,7 +97,7 @@ const Button = () => {
                                             />
                                         </FormGroup>
                                     </Col>
-                                    <Col sm={2}>
+                                    <Col sm={3}>
                                         <FormGroup>
                                             <ButtonStyle
                                                 onClick={
@@ -82,14 +106,11 @@ const Button = () => {
                                                 block
                                                 color="primary"
                                             >
-                                                Ubah Warna
+                                                Ubah Warna Primary
                                             </ButtonStyle>
                                         </FormGroup>
                                     </Col>
                                 </Row>
-                                <ButtonStyle color={primaryColor}>
-                                    Example Primary
-                                </ButtonStyle>
                             </div>
                             <Card className="card-code">
                                 <CardBody>
@@ -105,7 +126,7 @@ const Button = () => {
                                                     color=
                                                 </span>
                                                 <span className="code-string">
-                                                    {`"${primaryColor}"`}
+                                                    {`"primary"`}
                                                 </span>
                                                 <span>{">"}</span>
                                             </div>
