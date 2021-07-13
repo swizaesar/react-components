@@ -68,27 +68,29 @@ const Style = styled(Button)`
         opacity: 0.8;
         transform: translateY(-1px);
     }
-    &:focus {
+    &:focus,
+    &:active {
         color: ${(props) =>
             props.color === "primary"
                 ? "#fff"
                 : props.color === "outline-primary"
                 ? color.primary
                 : "#fff"};
-        background: ${(props) =>
+        background-color: ${(props) =>
             props.color === "primary"
                 ? color.primary
                 : props.color === "outline-primary"
                 ? "#fff"
-                : props.color};
-        border: ${(props) =>
+                : props.color} !important;
+        border-color: ${(props) =>
             props.color === "primary"
-                ? `1px solid ${color.primary}`
+                ? `${color.primary} !important`
                 : props.color === "outline-primary"
-                ? "1px solid  #fff"
-                : `1px solid  ${props.color}`};
+                ? "#fff !important"
+                : `${props.color} !important`};
         opacity: 0.8;
-        transform: translateY(-1px);
+        transform: translateY(-1px) !important;
+        box-shadow: unset !important;
     }
 `;
 export default Style;
