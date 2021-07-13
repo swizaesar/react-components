@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 import styled from "styled-components";
+import Form from "../../../Components/Molekul/FormValidation";
+import Button from "../../../Components/Particle/Button";
 import { color } from "../../../Utils/VariableName";
 const Style = styled.section`
     .title {
@@ -13,6 +15,9 @@ const Style = styled.section`
             margin-bottom: 0;
             line-height: 1.8;
         }
+    }
+    .example-form {
+        margin: 30px 0;
     }
     .next-step {
         display: flex;
@@ -36,6 +41,98 @@ const Style = styled.section`
     }
 `;
 const FormPrice = () => {
+    const [validationClick, setValidationClick] = React.useState(true);
+    const [validateForm, setValidateForm] = React.useState(true);
+    const [form, setForm] = React.useState([
+        {
+            label: "Harga",
+            required: true,
+            action: "price",
+            name: "price",
+            currencyLogo: "Rp. ",
+            col: 6,
+            valid: "Harap isi form harga",
+            value: 0,
+            status: false,
+        },
+    ]);
+    const [validationClickTwo, setValidationClickTwo] = React.useState(true);
+    const [validateFormTwo, setValidateFormTwo] = React.useState(true);
+    const [formTwo, setFormTwo] = React.useState([
+        {
+            label: "Keuntungan (%)",
+            required: true,
+            action: "price",
+            name: "price",
+            suffix: " %",
+            col: 6,
+            valid: "Keuntungan wajib disini",
+            value: 0,
+            status: false,
+        },
+    ]);
+    const [validationClickThree, setValidationClickThree] = React.useState(
+        true
+    );
+    const [validateFormThree, setValidateFormThree] = React.useState(true);
+    const [formThree, setFormThree] = React.useState([
+        {
+            required: true,
+            action: "price",
+            name: "price",
+            suffix: " %",
+            multiSuffix: ["%", "kg", "g"],
+            col: 6,
+            valid: "Form wajib disini",
+            value: 0,
+            status: false,
+        },
+    ]);
+    const handlerSubmitData = () => {
+        let isError = false;
+        for (let key in form) {
+            if (!form[key].status) {
+                isError = true;
+            }
+        }
+        console.log(form);
+        setValidationClick(isError);
+        setValidateForm(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
+    const handlerSubmitDataTwo = () => {
+        let isError = false;
+        for (let key in formTwo) {
+            if (!formTwo[key].status) {
+                isError = true;
+            }
+        }
+        console.log(formTwo);
+        setValidationClickTwo(isError);
+        setValidateFormTwo(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
+    const handlerSubmitDataThree = () => {
+        let isError = false;
+        for (let key in formThree) {
+            if (!formThree[key].status) {
+                isError = true;
+            }
+        }
+        console.log(formThree);
+        setValidationClickThree(isError);
+        setValidateFormThree(false);
+        console.log("isError", isError);
+        if (!isError) {
+            alert("Valid");
+        }
+    };
     return (
         <Style>
             <h3 className="title">Input Harga</h3>
@@ -53,6 +150,17 @@ const FormPrice = () => {
                 <Link to="/form/input-select">
                     Lanjut <i className="fas fa-angle-right ml-2"></i>
                 </Link>
+            </div>
+            <div className="example-form">
+                <Form
+                    setForm={setForm}
+                    validateForm={validateForm}
+                    validationClick={validationClick}
+                    form={form}
+                />
+                <Button color="primary" onClick={handlerSubmitData}>
+                    Submit
+                </Button>
             </div>
             <Card style={{ marginBottom: 10 }}>
                 <CardBody>
@@ -178,12 +286,35 @@ const FormPrice = () => {
                                 </span>
                             </div>
                             <div>
+                                <span>label: </span>
+                                <span className="text-string">
+                                    "Keuntungan (%)"
+                                </span>
+                            </div>
+                            <div>
+                                <span>valid: </span>
+                                <span className="text-string">
+                                    "Keuntungan wajib disini"
+                                </span>
+                            </div>
+                            <div>
                                 <span>...</span>
                             </div>
                         </pre>
                     </code>
                 </CardBody>
             </Card>
+            <div className="example-form">
+                <Form
+                    setForm={setFormTwo}
+                    validateForm={validateFormTwo}
+                    validationClick={validationClickTwo}
+                    form={formTwo}
+                />
+                <Button color="primary" onClick={handlerSubmitDataTwo}>
+                    Submit
+                </Button>
+            </div>
             <p>
                 Jika menggunakan <code>suffix</code> Anda bisa menyediakan lebih
                 dari 1 label dengan menambahkan <code>multiSuffix</code>
@@ -219,6 +350,17 @@ const FormPrice = () => {
                     </code>
                 </CardBody>
             </Card>
+            <div className="example-form">
+                <Form
+                    setForm={setFormThree}
+                    validateForm={validateFormThree}
+                    validationClick={validationClickThree}
+                    form={formThree}
+                />
+                <Button color="primary" onClick={handlerSubmitDataThree}>
+                    Submit
+                </Button>
+            </div>
             <p>
                 Untuk memberikan maximal atau minimal value gunakan{" "}
                 <code>max</code> atau <code>min</code>
