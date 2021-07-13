@@ -11,7 +11,9 @@ const Style = styled.div`
             font-size: 16px;
             transition: all 0.25s ease;
 
-            background: ${color.primary};
+            background: ${() => {
+                return color.primary;
+            }};
             color: ${color.user.primary};
             &.disabled {
                 background: #e8e8e8;

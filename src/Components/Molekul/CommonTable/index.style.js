@@ -151,7 +151,9 @@ const StyleCommon = styled.div`
             box-shadow: none;
             border-radius: 10px;
             &.arrow {
-                background-color: ${color.primary};
+                background-color: ${() => {
+                    return color.primary;
+                }};
                 opacity: 0.7;
                 color: #fff;
             }
@@ -165,7 +167,9 @@ const StyleCommon = styled.div`
                     color: #93a2dd;
                 }
                 &.arrow {
-                    background-color: ${color.primary};
+                    background-color: ${() => {
+                        return color.primary;
+                    }};
                     color: #fff;
                     opacity: 0.3;
                 }
@@ -174,7 +178,9 @@ const StyleCommon = styled.div`
         &.active {
             .page-link {
                 &.number {
-                    background: ${color.primary};
+                    background: ${() => {
+                        return color.primary;
+                    }};
                     color: #fcee31;
                 }
                 &.arrow {

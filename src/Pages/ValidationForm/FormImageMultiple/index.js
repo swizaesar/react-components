@@ -26,7 +26,9 @@ const Style = styled.section`
         a {
             color: #fff;
             font-weight: bold;
-            background: ${color.primary};
+            background: ${() => {
+                return color.primary;
+            }};
             padding: 10px;
             border-radius: 5px;
         }
