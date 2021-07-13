@@ -5,10 +5,11 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+import { StoreProvider } from "./Reducers";
 ReactDOM.render(
-    <React.StrictMode>
+    <StoreProvider>
         <App />
-    </React.StrictMode>,
+    </StoreProvider>,
     document.getElementById("root")
 );
 

@@ -55,16 +55,6 @@ const FormText = () => {
             valid: "Nama tidak boleh kosong",
             value: "",
             status: false,
-            // character: {
-            //     min: {
-            //         length: 3,
-            //         valid: "Minimal 3 character",
-            //     },
-            //     max: {
-            //         length: 10,
-            //         valid: "Maximal 10 character",
-            //     },
-            // },
         },
     ]);
     const [validationClickTwo, setValidationClickTwo] = React.useState(true);
@@ -470,14 +460,6 @@ const FormText = () => {
                 </ul>
             </div>
         </Style>
-        // required: true,
-        // action: "text",
-        // name: "name",
-        // placeholder: "Name",
-        // col: 6,
-        // valid: "Nama tidak boleh kosong",
-        // value: "",
-        // status: false,
     );
 };
 export default FormText;
