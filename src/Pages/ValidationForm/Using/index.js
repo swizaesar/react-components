@@ -169,11 +169,11 @@ const Using = () => {
                 <CardBody>
                     <h5>Contoh</h5>
                     <TabMenu
-                        color={{
-                            text: "#000",
-                            activeText: color.primary,
-                            background: "transparent",
-                            activeBackground: "transparent",
+                        settings={{
+                            color: {
+                                text: "#000",
+                                activeText: color.primary,
+                            },
                         }}
                         data={[
                             {

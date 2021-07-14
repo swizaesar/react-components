@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color } from "../../../Utils/VariableName";
 
 const Style = styled.div`
     display: flex;
@@ -21,8 +22,8 @@ const Style = styled.div`
             padding: 10px 12px;
             transition: all 0.25s ease;
             color: ${(props) =>
-                props.color.text ? props.color.text : "#b0b0b0"};
-            background: ${(props) => props.color.background || "#fff"};
+                props.color.text ? props.color.text : color.primary};
+            background: ${(props) => props.color.background || "transparent"};
             font-weight: bold;
             /* border-bottom: 1px solid #fff; */
             cursor: pointer;
@@ -35,7 +36,7 @@ const Style = styled.div`
                 color: ${(props) =>
                     props.color.activeText
                         ? props.color.activeText
-                        : "#25aae2"};
+                        : color.primary};
                 /* border-bottom: 3px solid
                     ${(props) =>
                         props.color.activeColor
@@ -45,7 +46,7 @@ const Style = styled.div`
                 background: ${(props) =>
                     props.color.activeBackground
                         ? props.color.activeBackground
-                        : "#fff"};
+                        : "transparent"};
             }
             &.radius {
                 padding: 10px 25px;
@@ -79,7 +80,7 @@ const Style = styled.div`
                     width: calc(100% - 20px);
                     -webkit-transition: all 0.25s ease-in;
                     transition: all 0.3s ease-in;
-                    background: ${(props) => props.color.activeColor};
+                    background: ${(props) => props.color.activeText};
                 }
             }
             @media (max-width: 422px) {
@@ -106,14 +107,12 @@ const Style = styled.div`
                     `${
                         props.color.activeBackground
                             ? props.color.activeBackground
-                            : "#25aae2"
+                            : color.primary
                     }`};
                 color: ${(props) =>
                     props.mergesTab &&
                     `${
-                        props.color.activeColor
-                            ? props.color.activeColor
-                            : "#fff"
+                        props.color.activeText ? props.color.activeText : "#fff"
                     }`};
                 border-bottom: ${(props) =>
                     props.mergesTab &&
@@ -127,14 +126,12 @@ const Style = styled.div`
                     `${
                         props.color.activeBackground
                             ? props.color.activeBackground
-                            : "#25aae2"
+                            : color.primary
                     }`};
                 color: ${(props) =>
                     props.mergesTab &&
                     `${
-                        props.color.activeColor
-                            ? props.color.activeColor
-                            : "#fff"
+                        props.color.activeText ? props.color.activeText : "#fff"
                     }`};
                 border: ${(props) => props.mergesTab && "none"};
             }

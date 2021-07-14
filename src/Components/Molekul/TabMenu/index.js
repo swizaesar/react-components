@@ -2,16 +2,19 @@ import React, { useState, useCallback, useEffect } from "react";
 import Style from "./index.style";
 
 const TabMenu = ({
-    color = {
-        text: false,
-        background: false,
-        activeText: false,
-        activeColor: false,
-        activeBackground: false,
+    settings = {
+        color: {
+            text: false,
+            background: false,
+            activeText: false,
+            activeColor: false,
+            activeBackground: false,
+        },
+        justifyContent: "start",
+        fullTab: false,
     },
     mergesTab = false,
     data,
-    typeTab = "",
     backToZero = true,
     loop = false,
     tabClass = "",
@@ -21,6 +24,7 @@ const TabMenu = ({
     onGetActiveTab = () => {},
     children = false,
 }) => {
+    const { color, fullTab, justifyContent } = settings;
     const [activeTab, setActiveTab] = useState(0);
 
     const handlePropsMenuTab = useCallback(() => {
@@ -50,13 +54,17 @@ const TabMenu = ({
 
     return (
         <Style color={color} mergesTab={mergesTab}>
-            <div className={`tab-top ${tabClass}`}>
+            <div className={`tab-top`}>
                 <div className="tab-top-menu">
                     {data.map((item, key) => {
                         return (
                             <div
+                                style={{
+                                    width: fullTab ? "100%" : "unset",
+                                    justifyContent: justifyContent,
+                                }}
                                 key={key}
-                                className={`tab-top-title ${typeTab} ${
+                                className={`tab-top-title ${tabClass} ${
                                     key === activeTab ? "active" : ""
                                 } `}
                                 onClick={(e) => handleClickMenuTab(e, key)}

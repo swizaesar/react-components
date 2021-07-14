@@ -1,6 +1,6 @@
 import React from "react";
 
 const ExampleTabSecond = () => {
-    return <div> This is Tab 2</div>;
+    return <div>Isi dari konten ke dua</div>;
 };
 export default ExampleTabSecond;

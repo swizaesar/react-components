@@ -1,6 +1,6 @@
 import React from "react";
 
 const ExampleTabFirst = () => {
-    return <div> This is Tab 1</div>;
+    return <div>ini adalah tab konten pertama</div>;
 };
 export default ExampleTabFirst;
