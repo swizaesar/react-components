@@ -188,7 +188,7 @@ const Tab = () => {
                                         <span> </span>
                                         <span> </span>
                                         <span className="code-number">
-                                            {"{"}
+                                            {"}"}
                                         </span>
                                         <span>,</span>
                                     </div>
