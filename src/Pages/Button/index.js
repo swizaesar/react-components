@@ -117,6 +117,26 @@ const Button = () => {
                                     <code>
                                         <pre>
                                             <div>
+                                                <span className="code-red">
+                                                    import{" "}
+                                                </span>
+                                                <span>Button </span>
+                                                <span className="code-red">
+                                                    from{" "}
+                                                </span>
+                                                <span className="code-string">
+                                                    {
+                                                        "'../../Components/Particle/Button'"
+                                                    }
+                                                </span>
+                                                <span>;</span>
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <span>...</span>
+                                            </div>
+                                            <br />
+                                            <div>
                                                 <span>{"<"}</span>
                                                 <span className="code-primary">
                                                     <i>Button </i>
