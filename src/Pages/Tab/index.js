@@ -533,7 +533,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // default color text header tab
+                                    {"// default color text header tab"}
                                 </span>
                             </div>
                             <div>
@@ -548,7 +548,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // active color text header tab
+                                    {"// active color text header tab"}
                                 </span>
                             </div>
                             <div>
@@ -563,7 +563,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // active border bottom color header tab
+                                    {"// active border bottom color header tab"}
                                 </span>
                             </div>
                             <div>
@@ -578,7 +578,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // default background color header tab
+                                    {"// default background color header tab"}
                                 </span>
                             </div>
                             <div>
@@ -593,7 +593,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // active background color header tab
+                                    {"// active background color header tab"}
                                 </span>
                             </div>
                             <div>
@@ -614,8 +614,9 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // position text header tab (start, center,
-                                    end)
+                                    {
+                                        "// position text header tab (start, center, end)"
+                                    }
                                 </span>
                             </div>
                             <div>
@@ -628,7 +629,7 @@ const Tab = () => {
                                 <span>,</span>
                                 <span className="code-command">
                                     {" "}
-                                    // full width tab header (true / false)
+                                    {"// full width tab header (true / false)"}
                                 </span>
                             </div>
                             <div>
@@ -649,7 +650,9 @@ const Tab = () => {
                                 <span className="code-primary">{"}"}</span>
                                 <span className="code-command">
                                     {" "}
-                                    // memberikan class khusus pada header tabs
+                                    {
+                                        "// memberikan class khusus pada header tabs"
+                                    }
                                 </span>
                             </div>
                             <div>
