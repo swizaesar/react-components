@@ -62,7 +62,7 @@ const FormText = ({
         handleSetValidCallback();
     }, [handleSetValidCallback]);
     return (
-        <FormGroup>
+        <FormGroup className="position-relative">
             {item.label && (
                 <label htmlFor={item.id} className={item.labelClass}>
                     {item.label}
@@ -75,6 +75,29 @@ const FormText = ({
                                 (Optional)
                             </span>
                         )
+                    )}
+                    {item?.character?.max?.length && (
+                        <div
+                            style={{
+                                position: "absolute",
+                                right: 0,
+                                top: 10,
+                                color:
+                                    isValue !== null || isValue !== undefined
+                                        ? isValue.length ===
+                                          item?.character?.max?.length
+                                            ? "red"
+                                            : "#aaa"
+                                        : "#aaa",
+                                fontSize: 12,
+                            }}
+                        >
+                            {`${
+                                isValue === null || isValue === undefined
+                                    ? 0
+                                    : isValue.length
+                            }/${item?.character?.max?.length}`}
+                        </div>
                     )}
                 </label>
             )}
