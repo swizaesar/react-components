@@ -1,10 +1,10 @@
-export const formatMoney = (
-    amount,
+export const formatMoney = ({
+    amount = 0,
     decimalCount = 0,
     decimal = ".",
     thousands = ".",
-    currency = "Rp"
-) => {
+    currency = "Rp ",
+}) => {
     try {
         let decimalCountData = Math.abs(decimalCount);
         decimalCountData = Number.isNaN(decimalCountData)
