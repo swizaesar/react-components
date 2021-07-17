@@ -20,7 +20,7 @@ const Button = (props) => {
             onClick={onClick}
             block={block}
             color={color}
-            size={size}
+            size={String(size)}
         >
             {props.children}
         </Style>

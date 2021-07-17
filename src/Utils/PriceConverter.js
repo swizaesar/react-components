@@ -34,7 +34,7 @@ export const formatMoney = ({
     }
 };
 
-export const percentage = (value, suffix) => {
+export const percentage = ({ value, suffix }) => {
     return `${String(value).replace(/[^0-9.,]+/g, "")}${
         !suffix || suffix === undefined ? "%" : suffix
     }`;
