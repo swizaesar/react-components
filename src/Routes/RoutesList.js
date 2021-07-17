@@ -12,6 +12,7 @@ import FormImageMultiple from "../Pages/ValidationForm/FormImageMultiple";
 import Tab from "../Pages/Tab";
 import Using from "../Pages/ValidationForm/Using";
 import FormPrice from "../Pages/ValidationForm/FormPrice";
+import FormatMoney from "../Pages/FormatMoney";
 
 export default [
     {
@@ -55,6 +56,20 @@ export default [
             activeName: "rating",
         },
         title: "Rating",
+    },
+    {
+        component: FormatMoney,
+        layout: import("./RouteGuestLayout"),
+        path: "/format-money",
+        isHeader: true,
+        isFooter: true,
+        setting: "particle",
+        sidebar: {
+            icon: "fas fa-wallet mr-2",
+            name: "Format Number",
+            activeName: "format-money",
+        },
+        title: "Format Money",
     },
     {
         activeList: "form",

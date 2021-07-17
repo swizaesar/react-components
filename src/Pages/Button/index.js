@@ -78,7 +78,7 @@ const Button = () => {
                 yang di modifikasi, agar kita bisa merubah warna primary dan
                 outline primary sesuai dengan kebutuhan.
             </p>
-            <Card>
+            <Card style={{ marginBottom: 10 }}>
                 <CardBody>
                     <h5>Contoh</h5>
                     <Row>
@@ -153,16 +153,45 @@ const Button = () => {
                                             <div>
                                                 <span> </span>
                                                 <span> </span>
-                                                <span>Example</span>
+                                                <span>Primary</span>
                                             </div>
                                             <div>
-                                                <span>{"<"}</span>
+                                                <span>{"</"}</span>
 
                                                 <span className="code-primary">
                                                     <i>Button </i>
                                                 </span>
 
-                                                <span>{"/>"}</span>
+                                                <span>{">"}</span>
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <span>{"<"}</span>
+                                                <span className="code-primary">
+                                                    <i>Button </i>
+                                                </span>
+                                                <span> </span>
+                                                <span className="code-green">
+                                                    color=
+                                                </span>
+                                                <span className="code-string">
+                                                    {`"outline-primary"`}
+                                                </span>
+                                                <span>{">"}</span>
+                                            </div>
+                                            <div>
+                                                <span> </span>
+                                                <span> </span>
+                                                <span>Outline Primary</span>
+                                            </div>
+                                            <div>
+                                                <span>{"</"}</span>
+
+                                                <span className="code-primary">
+                                                    <i>Button </i>
+                                                </span>
+
+                                                <span>{">"}</span>
                                             </div>
                                         </pre>
                                     </code>
@@ -172,6 +201,115 @@ const Button = () => {
                     </Row>
                 </CardBody>
             </Card>
+            <p>
+                Untuk membuat warna primary kamu, buatlah{" "}
+                <code>VariableName.js</code> di dalam folder <b>Utils</b>,
+            </p>
+            <Card className="card-code" style={{ marginBottom: 10 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span className="code-red">export</span>
+                                <span> </span>
+                                <span className="code-primary">const</span>
+                                <span> </span>
+                                <span>color </span>
+                                <span className="code-red">= </span>
+                                <span className="code-yellow">{"{"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>primary: </span>
+                                <span className="code-yellow">"#BF9C4A"</span>
+                                <span>,</span>
+                            </div>
+                            <div>
+                                <span className="code-yellow">{"}"}</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <p>
+                Untuk memberikan full width pada button tambahkan{" "}
+                <code>block</code>, dan untuk mengatur ukuran text gunakan{" "}
+                <code>size</code>.
+            </p>
+            <Card className="card-code" style={{ marginBottom: 10 }}>
+                <CardBody>
+                    <code>
+                        <pre>
+                            <div>
+                                <span>{"<"}</span>
+                                <span className="code-primary">
+                                    <i>Button </i>
+                                </span>
+                                <span> </span>
+                                <span className="code-green">color=</span>
+                                <span className="code-string">{`"primary"`}</span>
+                                <span> </span>
+                                <span className="code-green">block</span>
+                                <span> </span>
+                                <span className="code-green">size=</span>
+                                <span className="code-yellow">{"{"}</span>
+                                <span className="code-number">18</span>
+                                <span className="code-yellow">{"}"}</span>
+                                <span>{">"}</span>
+                            </div>
+                            <div>
+                                <span> </span>
+                                <span> </span>
+                                <span>Primary</span>
+                            </div>
+                            <div>
+                                <span>{"</"}</span>
+
+                                <span className="code-primary">
+                                    <i>Button </i>
+                                </span>
+
+                                <span>{">"}</span>
+                            </div>
+                        </pre>
+                    </code>
+                </CardBody>
+            </Card>
+            <div style={{ marginBottom: 30 }}>
+                <ButtonStyle color="primary" block size={18}>
+                    Primary
+                </ButtonStyle>
+            </div>
+            <div style={{ marginBottom: 10 }}>
+                <h6 className="title" style={{ marginBottom: 10 }}>
+                    Penjelasan
+                </h6>
+            </div>
+            <ul>
+                <li>
+                    <code>color</code> type button style (primary /
+                    outline-primary)
+                </li>
+                <li>
+                    <code>block</code> memberi display block pada{" "}
+                    <code>button</code>
+                </li>
+                <li>
+                    <code>onClick</code> fungsi aksi dari button
+                </li>
+                <li>
+                    <code>className</code> memberikan class pada button
+                </li>
+                <li>
+                    <code>size</code> memberikan <code>fontSize</code> pada
+                    button (px), type data <code>number</code>
+                </li>
+                <li>
+                    <code>disabled</code> disable button (<code>true</code> /{" "}
+                    <code>false</code>)
+                </li>
+            </ul>
         </Style>
     );
 };
