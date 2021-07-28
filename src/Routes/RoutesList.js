@@ -10,6 +10,7 @@ import FormSelect from "../Pages/ValidationForm/FormSelect";
 import FormImage from "../Pages/ValidationForm/FormImage";
 import FormImageMultiple from "../Pages/ValidationForm/FormImageMultiple";
 import Tab from "../Pages/Tab";
+import TabNavbar from "../Pages/TabNavbar";
 import Using from "../Pages/ValidationForm/Using";
 import FormPrice from "../Pages/ValidationForm/FormPrice";
 import FormatMoney from "../Pages/FormatMoney";
@@ -37,7 +38,6 @@ export default [
         isFooter: true,
         setting: "particle",
         sidebar: {
-            icon: "fas fa-wallet mr-2",
             name: "Button",
             activeName: "button",
         },
@@ -51,7 +51,6 @@ export default [
         isFooter: true,
         setting: "particle",
         sidebar: {
-            icon: "fas fa-wallet mr-2",
             name: "Rating",
             activeName: "rating",
         },
@@ -65,7 +64,6 @@ export default [
         isFooter: true,
         setting: "particle",
         sidebar: {
-            icon: "fas fa-wallet mr-2",
             name: "Format Number",
             activeName: "format-money",
         },
@@ -83,7 +81,6 @@ export default [
                 path: "/form/using",
                 label: "Penggunaan",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Penggunaan",
                     activeName: "using",
                 },
@@ -96,7 +93,6 @@ export default [
                 path: "/form/input-text",
                 label: "Input Text",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Text",
                     activeName: "input-text",
                 },
@@ -109,7 +105,6 @@ export default [
                 path: "/form/input-email",
                 label: "Input Email",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Email",
                     activeName: "input-email",
                 },
@@ -122,7 +117,6 @@ export default [
                 path: "/form/input-phone",
                 label: "Input Phone Number",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Phone Number",
                     activeName: "input-phone",
                 },
@@ -135,7 +129,6 @@ export default [
                 path: "/form/input-password",
                 label: "Input Password",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Password",
                     activeName: "input-password",
                 },
@@ -148,7 +141,6 @@ export default [
                 path: "/form/input-textarea",
                 label: "Input Textarea",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Textarea",
                     activeName: "input-textarea",
                 },
@@ -161,7 +153,6 @@ export default [
                 path: "/form/input-select",
                 label: "Input Select",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Select",
                     activeName: "input-select",
                 },
@@ -174,7 +165,6 @@ export default [
                 path: "/form/input-image",
                 label: "Input Image",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Image",
                     activeName: "input-image",
                 },
@@ -187,7 +177,6 @@ export default [
                 path: "/form/input-image-multiple",
                 label: "Input Image Multiple",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Image Multiple",
                     activeName: "input-image-multiple",
                 },
@@ -201,14 +190,12 @@ export default [
                 path: "/form/input-price",
                 label: "Input Harga",
                 sidebar: {
-                    icon: "fas fa-wallet mr-2",
                     name: "Input Harga",
                     activeName: "input-price",
                 },
             },
         ],
         sidebar: {
-            icon: "fas fa-wallet mr-2",
             name: "Validation Form",
             activeName: "form",
         },
@@ -222,10 +209,22 @@ export default [
         isFooter: true,
         setting: "molekul",
         sidebar: {
-            icon: "fas fa-wallet mr-2",
             name: "Tab Menu",
             activeName: "tab",
         },
         title: "Tab",
+    },
+    {
+        component: TabNavbar,
+        layout: import("./RouteGuestLayout"),
+        path: "/tab-link",
+        isHeader: true,
+        isFooter: true,
+        setting: "molekul",
+        sidebar: {
+            name: "Tab Link",
+            activeName: "tab-link",
+        },
+        title: "Tab Link",
     },
 ];
