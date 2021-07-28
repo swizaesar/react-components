@@ -1367,24 +1367,24 @@ const Code = () => {
                                     <span> </span>
                                     <span> </span>
                                     <span> </span>
-                                    <span>{"<"}</span>
+                                    <span>{"</"}</span>
 
                                     <span className="code-primary">
                                         <i>Button </i>
                                     </span>
 
-                                    <span>{"/>"}</span>
+                                    <span>{">"}</span>
                                 </div>
                                 <div>
                                     <span> </span>
                                     <span> </span>
                                     <span> </span>
                                     <span> </span>
-                                    <span>{"<"}</span>
+                                    <span>{"</"}</span>
                                     <span className="code-primary">
                                         <i>React.Fragment</i>
                                     </span>
-                                    <span>{"/>"}</span>
+                                    <span>{">"}</span>
                                 </div>
                                 <div>
                                     <span> </span>

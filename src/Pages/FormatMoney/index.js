@@ -172,7 +172,7 @@ const FormatMoney = () => {
                                         </span>
                                         <span>,</span>
                                         <span> </span>
-                                        <span>currency: </span>
+                                        <span>suffix: </span>
                                         <span className="code-string">"%"</span>
                                         <span> </span>
                                         <span className="code-primary">

@@ -20,13 +20,12 @@ const FormText = ({
     isStatus,
     value,
     item,
-    className,
     id,
     onGetValue = () => {},
     validateForm = true,
 }) => {
     const [showPassword, setShowPassword] = useState(true);
-    const [isValue, setValue] = useState("");
+    const [isValue, setValue] = useState(item.value);
     const [isValid, setValid] = useState(false);
     const _onGetValue = (e) => {
         let value = e.target.value;
@@ -76,30 +75,22 @@ const FormText = ({
                             </span>
                         )
                     )}
-                    {item?.character?.max?.length && (
-                        <div
-                            style={{
-                                position: "absolute",
-                                right: 0,
-                                top: 10,
-                                color:
-                                    isValue !== null || isValue !== undefined
-                                        ? isValue.length ===
-                                          item?.character?.max?.length
-                                            ? "red"
-                                            : "#aaa"
-                                        : "#aaa",
-                                fontSize: 12,
-                            }}
-                        >
-                            {`${
-                                isValue === null || isValue === undefined
-                                    ? 0
-                                    : isValue.length
-                            }/${item?.character?.max?.length}`}
-                        </div>
-                    )}
                 </label>
+            )}
+            {item?.character?.max?.length && (
+                <div
+                    style={{
+                        position: "absolute",
+                        right: 0,
+                        top: 0,
+                        color: "#aaa",
+                        fontSize: 14,
+                    }}
+                >
+                    {`${isValue === null ? 0 : isValue.length}/${
+                        item?.character?.max?.length
+                    }`}
+                </div>
             )}
             <div className="position-relative">
                 <Style
@@ -114,7 +105,7 @@ const FormText = ({
                     defaultValue={item.value ? item.value : value}
                     type={showPassword ? item.type : "text"}
                     placeholder={item.placeholder}
-                    className={className}
+                    className={item.className}
                 />
                 {item.type === "password" ? (
                     <ButtonPassword onClick={handlerShowPassword} type="button">
@@ -134,7 +125,9 @@ const FormText = ({
                         {item.character === undefined
                             ? item.valid
                             : item.character.min.length > isValue.length
-                            ? item.character.min.valid
+                            ? isValue.length === 0
+                                ? item.valid
+                                : item.character.min.valid
                             : item.character.max.length < isValue.length
                             ? item.character.max.valid
                             : item.valid}

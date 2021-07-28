@@ -6,6 +6,7 @@ import ExampleTabSecond from "./ExampleTabSecond";
 import { color } from "../../Utils/VariableName";
 import styled from "styled-components";
 import { Card, CardBody } from "reactstrap";
+import TabLink from "../../Components/TabLink";
 
 const Style = styled.div`
     .title {
@@ -28,9 +29,20 @@ const Style = styled.div`
     }
 `;
 const Tab = () => {
+    const tabLink = [
+        {
+            name: "Tab Menu",
+            link: "/tab",
+        },
+        {
+            name: "Tab Link",
+            link: "/tab-link",
+        },
+    ];
     return (
         <Style>
             <h3 className="title">Tabs</h3>
+            <TabLink data={tabLink} />
             <div className="desc">
                 <p>
                     Cara menggunakan Tabs ini cukup dengan menyediakan tab
